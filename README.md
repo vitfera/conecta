@@ -4,7 +4,7 @@ Site institucional em português brasileiro, construído com Astro, TypeScript e
 
 ## Desenvolvimento local
 
-Use Node 24 LTS (a versão de referência está em `.nvmrc`).
+Use Node 24.22.2 (a versão de referência está em `.nvmrc`).
 
 ```sh
 npm ci
@@ -20,6 +20,19 @@ npx astro dev stop
 ```
 
 Se o ambiente restringir a configuração global da telemetria, execute os comandos com `ASTRO_TELEMETRY_DISABLED=1`.
+
+## Homologação com Docker Compose
+
+O Docker preserva a arquitetura estática: build com Node 24.22.2 e `npm ci`, seguido de Nginx 1.30.6 sem root. A porta externa padrão é **3019**, configurável por `APP_PORT`. O processamento de imagens é compilado para CPU x86-64 básica, sem exigir AVX/AVX2; as otimizações continuam obrigatórias.
+
+```sh
+docker compose up --build -d --wait
+docker compose ps
+docker compose logs -f app
+docker compose down
+```
+
+Origem prevista na VM: **http://192.168.3.85:3019**. Hostname de homologação: **https://conecta.victor.ferreira.nom.br/**, com HTTPS atendido pelo Cloudflare. Consulte [operação e configuração Docker](docs/docker.md) e [resultados da validação](docs/docker-validation.md). Túnel, DNS e publicação externa são uma etapa separada.
 
 ## Verificação
 
@@ -82,7 +95,7 @@ As capas ficam em `src/assets/projetos/`, com o slug da história e extensão `.
 
 O contato comercial é o WhatsApp **+55 (62) 98275-5571**, configurado em `src/data/site.ts`. Os botões abrem `https://wa.me/5562982755571` em uma nova aba. O site não incorpora o WhatsApp, nem utiliza formulário ou cookies de rastreamento; a conversa acontece no serviço externo.
 
-O domínio definitivo ainda precisa ser informado. Copie `.env.example` para `.env` e preencha `SITE_URL` com a origem HTTPS real, por exemplo no formato `https://DOMINIO-OFICIAL`. Sem essa variável, a prévia usa `noindex`, o robots bloqueia indexação e não são gerados canonical nem URLs fictícias no sitemap. Com a variável definida, execute novamente o build e a verificação.
+O domínio de homologação confirmado é `https://conecta.victor.ferreira.nom.br`, já indicado em `.env.example` e no Compose. `SITE_URL` determina a origem HTTPS usada no build. Sem essa variável, o build local usa `noindex`, o robots bloqueia indexação e não são gerados canonical nem URLs fictícias no sitemap. Se a URL institucional definitiva for diferente, configure-a em `SITE_URL` e execute novamente o build e a verificação. O Nginx de homologação mantém `noindex` no cabeçalho HTTP, sem apagar canonical e sitemap.
 
 ## Publicação
 

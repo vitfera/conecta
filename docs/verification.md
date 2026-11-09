@@ -1,5 +1,7 @@
 # Verificação do site
 
+A execução em Docker tem relatório próprio em [validação Docker](docker-validation.md), com build Linux, CPU emulada sem AVX/AVX2, healthcheck, portas, navegação e contexto de build. Este documento mantém o histórico das verificações do site.
+
 Verificado em 9 de novembro de 2026, após a implementação das histórias de Campo Mourão e Cianorte. A prévia local permanece em `http://127.0.0.1:4321/`; as histórias estão em `/projetos/`.
 
 ## Comandos reproduzíveis

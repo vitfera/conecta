@@ -30,13 +30,17 @@ Arquivos: `Dockerfile`, `compose.yaml`, `.dockerignore`, `.env.example`, `.nvmrc
 
 ## Documentação e encerramento
 
-- [ ] Documentar o domínio de homologação confirmado `conecta.victor.ferreira.nom.br`, origem `http://192.168.3.85:3019`, terminação HTTPS no Cloudflare e conectividade do conector.
-- [ ] Explicar por que não há configuração de host do Astro ou teste de HMR nesse modo estático; não expor o servidor de desenvolvimento como homologação.
-- [ ] Documentar controle de acesso via Cloudflare Access e rede de origem, sem configurar serviços externos nesta rodada. A prévia de rascunhos não é habilitada implicitamente.
-- [ ] Registrar testes locais efetivos e os limites da confirmação na VM, com comandos de diagnóstico e códigos de saída.
-- [ ] Solicitar revisão independente, corrigir achados confirmados e atualizar README.
-- [ ] Fazer o commit final, preservar o checkout e a prévia local para acompanhamento.
+- [x] Documentar o domínio de homologação confirmado `conecta.victor.ferreira.nom.br`, origem `http://192.168.3.85:3019`, terminação HTTPS no Cloudflare e conectividade do conector.
+- [x] Explicar por que não há configuração de host do Astro ou teste de HMR nesse modo estático; não expor o servidor de desenvolvimento como homologação.
+- [x] Documentar controle de acesso via Cloudflare Access e rede de origem, sem configurar serviços externos nesta rodada. A prévia de rascunhos não é habilitada implicitamente.
+- [x] Registrar testes locais efetivos e os limites da confirmação na VM, com comandos de diagnóstico e códigos de saída.
+- [x] Solicitar revisão independente, corrigir achados confirmados e atualizar README.
+- [x] Fazer o commit final, preservar o checkout e a prévia local para acompanhamento.
 
 ## Ajuste de CPU confirmado
 
 O binding Linux precompilado do Sharp 0.35.5 sinalizou SIGILL em qemu64. O binding WebAssembly da mesma versão não carregou porque o perfil não suporta Wasm SIMD. A implementação final compila libvips 8.18.7 e o binding Sharp 0.35.5 para x86-64 básico, com checksum do release e ferramentas npm fixadas, preservando as versões existentes das dependências. O build Astro com cache de imagens limpo passou em `qemu64,-avx,-avx2`: 21 páginas, 577 links/assets, otimização das imagens obrigatória, código de saída 0. O Nginx final também passou pela validação HTTP emulada.
+
+## Entrega
+
+Planejamento em `bbee288`; implementação em `f10ae3a`. Relatórios em [operação Docker](../../docker.md) e [validação Docker](../../docker-validation.md). Serviço local saudável em 3019; prévia Astro preservada. Confirmação na VM, túnel, DNS e acesso público permanecem para a etapa externa autorizada.
