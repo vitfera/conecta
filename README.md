@@ -1,6 +1,6 @@
 # Conecta Soluções
 
-Site institucional em português brasileiro, construído com Astro, TypeScript e CSS. O build gera arquivos estáticos para hospedagem Apache/cPanel; não requer Node no servidor de produção.
+Site institucional em português brasileiro, construído com Astro, TypeScript e CSS, com atuação apresentada em gestão, tecnologia, cultura e turismo. O build gera arquivos estáticos para hospedagem Apache/cPanel; não requer Node no servidor de produção.
 
 ## Desenvolvimento local
 

@@ -429,15 +429,19 @@ main:focus {
 }
 .label-management {
   top: 12%;
-  left: 2%;
+  left: 0;
+}
+.label-tourism {
+  top: 12%;
+  right: -1%;
 }
 .label-culture {
-  top: 38%;
-  right: -4%;
+  bottom: 12%;
+  right: -1%;
 }
 .label-tech {
   bottom: 12%;
-  left: 7%;
+  left: 0;
 }
 .visual-note {
   position: absolute;
@@ -772,8 +776,9 @@ main:focus {
   .visual-core {
     width: 155px;
   }
-  .label-culture {
-    right: -2%;
+  .label-culture,
+  .label-tourism {
+    right: 0;
   }
   .visual-caption {
     font-size: 0.42rem;
@@ -858,6 +863,10 @@ main:focus {
     left: 1%;
     top: 8%;
   }
+  .label-tourism {
+    top: 8%;
+  }
+  .label-culture,
   .label-tech {
     bottom: 9%;
   }
@@ -952,6 +961,7 @@ main:focus {
   .connection-visual {
     max-width: 360px;
     width: 93%;
+    min-height: 310px;
     margin: auto;
   }
   .visual-core {
@@ -969,15 +979,19 @@ main:focus {
   }
   .label-management {
     left: 0;
-    top: 9%;
+    top: 8%;
+  }
+  .label-tourism {
+    right: 0;
+    top: 8%;
   }
   .label-culture {
-    right: -2%;
-    top: 39%;
+    right: 0;
+    bottom: 12%;
   }
   .label-tech {
-    bottom: 10%;
-    left: 5%;
+    bottom: 12%;
+    left: 0;
   }
   .visual-note {
     font-size: 0.5rem;
@@ -1088,6 +1102,21 @@ main:focus {
   .footer-bottom > a {
     max-width: 105px;
     line-height: 1.6;
+  }
+}
+@media (max-width: 360px) {
+  .visual-label {
+    padding: 11px 10px;
+    gap: 8px;
+  }
+  .visual-icon {
+    padding: 5px;
+  }
+  .visual-icon svg {
+    width: 20px;
+  }
+  .visual-label strong {
+    font-size: 0.85rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {

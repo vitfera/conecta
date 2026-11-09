@@ -7,7 +7,7 @@ order: 5
 publish: true
 publicationStatus: aprovado
 reviewedAt: 2026-11-09
-audience: Instituições, organizações e equipes responsáveis por projetos, iniciativas culturais e eventos.
+audience: Instituições, organizações e equipes responsáveis por projetos de cultura e turismo, comunicação e eventos.
 offerings:
   - Planejamento e coordenação de comunicação
   - Organização de canais e ações de divulgação
@@ -20,6 +20,8 @@ offerings:
 Cada projeto precisa comunicar o que faz com clareza e manter seus registros organizados. A Conecta atua no planejamento e na coordenação de comunicação institucional e de projetos.
 
 O escopo pode envolver canais digitais, campanhas de divulgação, acompanhamento de materiais, registros audiovisuais e organização de evidências. A produção e o uso de imagens respeitam as autorizações aplicáveis.
+
+Em projetos de cultura e turismo, a comunicação pode apoiar a divulgação de ações, a organização dos canais digitais e a documentação das atividades, considerando a identidade e o contexto de cada território.
 
 ## Tecnologia que apoia o encontro
 

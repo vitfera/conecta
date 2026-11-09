@@ -6,19 +6,21 @@ Implementação do briefing e da especificação técnica fornecidos pelo titula
 
 ## Experiência
 
-Site institucional em português brasileiro, com navegação entre Início, Quem Somos, Soluções, Projetos, Conteúdos e Contato. Seis páginas de soluções, página secundária de plataformas, privacidade e 404 completam a estrutura. A home apresenta o posicionamento aprovado, as frentes de atuação, a abordagem e os caminhos para conhecer a empresa ou iniciar uma conversa.
+Site institucional em português brasileiro, com navegação entre Início, Quem Somos, Soluções, Projetos e Contato. Seis páginas de soluções, página secundária de plataformas, privacidade e 404 completam a estrutura. A home apresenta o posicionamento aprovado, as frentes de atuação, a abordagem e os caminhos para conhecer a empresa ou iniciar uma conversa. A seção de notícias e artigos foi retirada por decisão do titular.
+
+Gestão, tecnologia, cultura e turismo têm presença equilibrada na apresentação da atuação. A ilustração “Ideias que se conectam” representa os quatro temas, e turismo também aparece nos textos da home, de Quem Somos e de soluções aplicáveis. A logomarca e seu slogan aprovado permanecem fiéis à referência.
 
 Direção visual: composição editorial contemporânea, azul institucional como base, laranja como acento, fundo branco e neutros claros, tipografia sem serifa local, espaços amplos, títulos expressivos e ilustração abstrata discreta de conexões. Preservar integralmente os elementos e as proporções da marca. Não usar imagens genéricas, métricas inventadas ou marcas de clientes.
 
 ## Arquitetura
 
-Astro com saída estática, TypeScript estrito e CSS responsivo. Componentes compartilhados para navegação, rodapé, títulos, cards e contato. Coleções Markdown `services`, `projects`, `posts` e `products`, com schemas Zod e consulta centralizada que exige publicação e revisão editorial. Páginas individuais são geradas somente para entradas liberadas.
+Astro com saída estática, TypeScript estrito e CSS responsivo. Componentes compartilhados para navegação, rodapé, títulos, cards e contato. Coleções Markdown `services`, `projects` e `products`, com schemas Zod e consulta centralizada que exige publicação e revisão editorial. Páginas individuais são geradas somente para entradas liberadas.
 
 Projetos sem liberação não aparecem em HTML, rotas, sitemap ou dados estruturados. Os catálogos exibem estados vazios úteis. Experiência do responsável técnico aparece separada dos contratos da empresa. Mapas Culturais é identificado como software livre sobre o qual a empresa presta serviços.
 
 ## Contato, privacidade e SEO
 
-E-mail confirmado pelo titular nesta conversa: `victor@victorferreira.com.br`. Contato direto por `mailto`, sem formulário inoperante, cookies ou ferramentas de rastreamento. A privacidade descreve esse funcionamento.
+Contato comercial definido pelo titular: WhatsApp **+55 (62) 98275-5571**, por botões para `https://wa.me/5562982755571`. Os links abrem o serviço externo em nova aba, sem incorporar scripts do WhatsApp. A privacidade descreve esse funcionamento; o site não possui formulário ou rastreadores.
 
 Domínio não confirmado: configurar por `SITE_URL`. Sem domínio, a prévia permanece não indexável, sem canonical ou sitemap com endereço fictício. A configuração de domínio habilita canonical, Open Graph, robots e sitemap com URLs reais. A publicação exige HTTPS e configuração do ambiente.
 

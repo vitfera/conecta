@@ -4,11 +4,11 @@
 
 **Objetivo:** entregar o site institucional estático da Conecta, verificável localmente e preparado para publicação no cPanel.
 
-**Arquitetura:** Astro estático, páginas semânticas e componentes compartilhados. Conteúdo Markdown validado e publicação bloqueada por padrão para projetos e conteúdos sem revisão.
+**Arquitetura:** Astro estático, páginas semânticas e componentes compartilhados. Conteúdo Markdown validado e publicação bloqueada por padrão para projetos sem revisão.
 
 **Tecnologias:** Astro, TypeScript, CSS, testes nativos Node e GitHub Actions.
 
-**Atualização de escopo:** as etapas 1 a 4 registram a primeira versão implementada. As decisões da próxima etapa, anotadas ao final deste documento, têm precedência sobre o briefing original nos pontos alterados pelo titular. O titular autorizou a execução dos ajustes de WhatsApp, retirada de Conteúdos e turismo. A inclusão dos SaaS continua aguardando informações.
+**Atualização de escopo:** as etapas 1 a 4 registram a primeira versão implementada. As decisões da próxima etapa, anotadas ao final deste documento, têm precedência sobre o briefing original nos pontos alterados pelo titular. Os ajustes de WhatsApp, retirada de Conteúdos e turismo foram implementados após autorização do titular. A inclusão dos SaaS continua aguardando informações.
 
 ## Etapa 1 — proteção do material e definição
 
@@ -59,7 +59,7 @@ Arquivos: `.github/workflows/build-and-deploy.yml`, `scripts/verify-build.mjs`, 
 
 Verificações e limites registrados em [docs/verification.md](../../verification.md). Prévia local mantida ativa por solicitação do titular; publicação externa não executada.
 
-## Próxima etapa — ajustes solicitados pelo titular
+## Ajustes solicitados pelo titular e pendências
 
 Anotações de 9 de novembro de 2026. Execução autorizada nesta conversa para WhatsApp, retirada de Conteúdos e turismo; SaaS permanecem para uma próxima rodada.
 
@@ -88,14 +88,19 @@ O titular não pretende publicar notícias ou manter um blog; essa página não 
 
 Na ilustração da home com a frase **“Ideias que se conectam”**, o titular percebeu destaque excessivo para cultura e ausência de turismo. A direção é mostrar melhor a amplitude da atuação e a conexão entre os dois setores, considerando oportunidades em estruturas públicas que reúnem cultura e turismo.
 
-- [ ] Reequilibrar `src/components/ConnectionVisual.astro` para incluir turismo explicitamente e reduzir o protagonismo exclusivo de cultura.
-- [ ] Revisar os textos e a distribuição de ênfase da home em `src/pages/index.astro`, conectando gestão, tecnologia, cultura e turismo.
-- [ ] Verificar a coerência dessa direção nas páginas de soluções e em Quem Somos, utilizando o histórico fornecido para apresentar a atuação em turismo.
-- [ ] Manter a logomarca aprovada; a solicitação se refere à apresentação da atuação e à composição da home.
+- [x] Reequilibrar `src/components/ConnectionVisual.astro` para incluir turismo explicitamente e reduzir o protagonismo exclusivo de cultura.
+- [x] Revisar os textos e a distribuição de ênfase da home em `src/pages/index.astro`, conectando gestão, tecnologia, cultura e turismo.
+- [x] Verificar a coerência dessa direção nas páginas de soluções e em Quem Somos, utilizando o histórico fornecido para apresentar a atuação em turismo.
+- [x] Manter a logomarca aprovada; a solicitação se refere à apresentação da atuação e à composição da home.
 
-### Verificação e commits da próxima etapa
+### Verificação e commits desta rodada
 
-- [ ] Conferir os botões de WhatsApp em desktop e celular e a ausência de referências à seção Conteúdos na navegação e no build.
-- [ ] Validar a apresentação de turismo em telas grandes e pequenas e os dados dos SaaS quando forem fornecidos.
-- [ ] Executar `npm test`, `npm run check`, `npm run build`, `npm run verify` e `git diff --check` após as alterações de código.
-- [ ] Fazer um commit ao concluir cada etapa de implementação, conforme a orientação inicial do titular.
+- [x] Conferir os botões de WhatsApp em desktop e celular e a ausência de referências à seção Conteúdos na navegação e no build.
+- [x] Validar a apresentação de turismo em telas grandes e pequenas.
+- [ ] Validar os dados dos SaaS quando forem fornecidos, na próxima rodada de Projetos.
+- [x] Executar `npm test`, `npm run check`, `npm run build`, `npm run verify` e `git diff --check` após as alterações de código.
+- [x] Fazer um commit ao concluir cada etapa de implementação, conforme a orientação inicial do titular.
+
+### Resultado desta rodada
+
+WhatsApp e retirada de Conteúdos registrados nos commits `23a8642` e `8ff00ef`; turismo e revisão final compõem a etapa seguinte. Build com 14 páginas e 340 links/assets verificados, nove testes aprovados e prévia local mantida ativa. As 13 rotas navegáveis foram verificadas em quatro larguras, incluindo a legibilidade dos quatro temas da ilustração. Domínio configurado validado em uma cópia temporária. Detalhes em [verificação](../../verification.md).

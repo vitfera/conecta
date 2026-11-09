@@ -7,7 +7,7 @@ order: 3
 publish: true
 publicationStatus: aprovado
 reviewedAt: 2026-11-09
-audience: Órgãos públicos, OSCs e instituições que precisam organizar processos e implantar serviços digitais.
+audience: Órgãos públicos, equipes de cultura e turismo, OSCs e instituições que precisam organizar processos e implantar serviços digitais.
 offerings:
   - Diagnóstico e mapeamento de processos
   - Análise de requisitos e regras de negócio
@@ -20,6 +20,8 @@ offerings:
 Digitalizar um formulário é apenas uma parte do trabalho. Uma transformação consistente considera as pessoas, as responsabilidades e os caminhos percorridos pela informação.
 
 A Conecta apoia instituições na análise de processos, no levantamento de requisitos e na estruturação de serviços digitais. A proposta é construir soluções compatíveis com a realidade administrativa e operacional de cada equipe.
+
+Nas áreas de cultura e turismo, o trabalho pode apoiar a organização de processos, informações e serviços ao cidadão. Consideramos tanto as necessidades específicas de cada setor quanto os fluxos compartilhados entre equipes.
 
 ## Da análise à implantação
 
