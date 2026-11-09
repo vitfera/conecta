@@ -8,6 +8,8 @@
 
 **Tecnologias:** Astro, TypeScript, CSS, testes nativos Node e GitHub Actions.
 
+**Atualização de escopo:** as etapas 1 a 4 registram a primeira versão implementada. As decisões da próxima etapa, anotadas ao final deste documento, têm precedência sobre o briefing original nos pontos alterados pelo titular. Por solicitação, essas mudanças ficam apenas planejadas nesta rodada.
+
 ## Etapa 1 — proteção do material e definição
 
 - [x] Ler todos os documentos e inspecionar a marca.
@@ -56,3 +58,44 @@ Arquivos: `.github/workflows/build-and-deploy.yml`, `scripts/verify-build.mjs`, 
 ## Resultado de validação
 
 Verificações e limites registrados em [docs/verification.md](../../verification.md). Prévia local mantida ativa por solicitação do titular; publicação externa não executada.
+
+## Próxima etapa — ajustes solicitados pelo titular
+
+Anotações de 9 de novembro de 2026. **Execução posterior; o site atual permanece como está.**
+
+### 1. WhatsApp como contato comercial
+
+- [ ] Substituir o contato comercial por e-mail por um botão de WhatsApp para **+55 (62) 98275-5571**, informado pelo titular.
+- [ ] Usar o endereço `https://wa.me/5562982755571` nos botões de contato.
+- [ ] Revisar `src/data/site.ts`, `src/components/Header.astro`, `src/components/Footer.astro`, `src/components/ContactCTA.astro`, `src/pages/index.astro` e `src/pages/contato.astro` para manter os caminhos de contato consistentes.
+- [ ] Atualizar `src/pages/politica-de-privacidade.astro`, metadados e documentação para refletir o contato via WhatsApp e a abertura de um serviço externo.
+
+### 2. Retirar Conteúdos do escopo
+
+O titular não pretende publicar notícias ou manter um blog; essa página não faz parte da oferta desejada.
+
+- [ ] Remover Conteúdos da navegação, do rodapé e da página inicial.
+- [ ] Retirar as rotas `/conteudos/` e `/conteudos/[slug]/`, a coleção `posts` e o artigo em revisão.
+- [ ] Ajustar `src/content.config.ts`, consultas da home, `src/pages/sitemap.xml.ts`, `scripts/verify-build.mjs`, testes e documentação para a estrutura sem blog.
+
+### 3. Incluir SaaS próprios em Projetos
+
+- [ ] Preparar o catálogo de projetos para apresentar também os SaaS que o titular já possui, além das atuações institucionais.
+- [ ] Identificar adequadamente soluções próprias, autoria, disponibilidade e links, distinguindo-as dos projetos executados para contratantes.
+- [ ] Cadastrar os SaaS depois que o titular enviar a relação e os detalhes de cada um. **Aguardando essas informações, que serão fornecidas posteriormente.**
+
+### 4. Dar presença explícita ao turismo
+
+Na ilustração da home com a frase **“Ideias que se conectam”**, o titular percebeu destaque excessivo para cultura e ausência de turismo. A direção é mostrar melhor a amplitude da atuação e a conexão entre os dois setores, considerando oportunidades em estruturas públicas que reúnem cultura e turismo.
+
+- [ ] Reequilibrar `src/components/ConnectionVisual.astro` para incluir turismo explicitamente e reduzir o protagonismo exclusivo de cultura.
+- [ ] Revisar os textos e a distribuição de ênfase da home em `src/pages/index.astro`, conectando gestão, tecnologia, cultura e turismo.
+- [ ] Verificar a coerência dessa direção nas páginas de soluções e em Quem Somos, utilizando o histórico fornecido para apresentar a atuação em turismo.
+- [ ] Manter a logomarca aprovada; a solicitação se refere à apresentação da atuação e à composição da home.
+
+### Verificação e commits da próxima etapa
+
+- [ ] Conferir os botões de WhatsApp em desktop e celular e a ausência de referências à seção Conteúdos na navegação e no build.
+- [ ] Validar a apresentação de turismo em telas grandes e pequenas e os dados dos SaaS quando forem fornecidos.
+- [ ] Executar `npm test`, `npm run check`, `npm run build`, `npm run verify` e `git diff --check` após as alterações de código.
+- [ ] Fazer um commit ao concluir cada etapa de implementação, conforme a orientação inicial do titular.
