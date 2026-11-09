@@ -81,8 +81,12 @@ Logs completos desta sessão ficaram somente em `/tmp`: `conecta-docker-baseline
 
 ## Confirmações pendentes na VM e no acesso público
 
+Em 9 de novembro de 2026, o titular compartilhou o log de build executado em `vitfera@docker:~/conecta`, após clonar o repositório. O build terminou com `Image conecta-app Built`: 24 testes aprovados, Astro check sem erros, 21 páginas, otimização de imagens concluída e 577 links/assets verificados. Isso confirma o build no ambiente informado pelo titular, além dos testes locais e emulados descritos acima.
+
+O comando mostrado foi `docker compose --progress plain build app`; o trecho do Conecta não inclui a inicialização do serviço. Uma consulta HTTP posterior a `http://192.168.3.85:3019/` retornou `ECONNREFUSED`. A execução e o healthcheck na VM ainda precisam ser confirmados com `docker compose up -d --wait` e `docker compose ps`.
+
 A porta 3019 estava disponível para bind no host local. Uma tentativa TCP para `192.168.3.85:3019`, antes de qualquer implantação remota, foi recusada (`connect_ex=61` no macOS). Isso não confirma a disponibilidade por bind, firewall ou execução do Compose na VM.
 
-Ainda é necessário executar os comandos de operação na VM e verificar o acesso à origem a partir do conector `cloudflared`. Configuração de túnel, DNS, HTTPS público e Cloudflare Access não foi executada nesta etapa. A validação pelo hostname público depende dessa configuração externa autorizada.
+Ainda é necessário iniciar o serviço na VM e verificar o acesso à origem a partir do conector `cloudflared`. Configuração de túnel, DNS, HTTPS público e Cloudflare Access não foi executada nesta etapa. A validação pelo hostname público depende dessa configuração externa autorizada.
 
 O serviço Docker local permaneceu saudável em `http://127.0.0.1:3019/`, e a prévia Astro existente em 4321 foi preservada. Os contêineres temporários de CPU e catálogos vazios foram encerrados.

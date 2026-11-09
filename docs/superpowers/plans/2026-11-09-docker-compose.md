@@ -43,4 +43,4 @@ O binding Linux precompilado do Sharp 0.35.5 sinalizou SIGILL em qemu64. O bindi
 
 ## Entrega
 
-Planejamento em `bbee288`; implementação em `f10ae3a`. Relatórios em [operação Docker](../../docker.md) e [validação Docker](../../docker-validation.md). Serviço local saudável em 3019; prévia Astro preservada. Confirmação na VM, túnel, DNS e acesso público permanecem para a etapa externa autorizada.
+Planejamento em `bbee288`; implementação em `f10ae3a`. Relatórios em [operação Docker](../../docker.md) e [validação Docker](../../docker-validation.md). Serviço local saudável em 3019; prévia Astro preservada. O titular posteriormente confirmou o build na VM por log, com testes e geração de imagens aprovados. Inicialização e healthcheck na VM, túnel, DNS e acesso público permanecem para confirmação na etapa externa autorizada.
