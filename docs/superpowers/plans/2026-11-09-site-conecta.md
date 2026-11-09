@@ -109,3 +109,27 @@ Na ilustração da home com a frase **“Ideias que se conectam”**, o titular 
 ### Resultado desta rodada
 
 WhatsApp e retirada de Conteúdos registrados nos commits `23a8642` e `8ff00ef`; turismo e revisão final compõem a etapa seguinte. Build com 14 páginas e 340 links/assets verificados, nove testes aprovados e prévia local mantida ativa. As 13 rotas navegáveis foram verificadas em quatro larguras, incluindo a legibilidade dos quatro temas da ilustração. Domínio configurado validado em uma cópia temporária. Detalhes em [verificação](../../verification.md).
+
+## Próxima rodada — navegação e apresentação da equipe
+
+Solicitações de 9 de novembro de 2026, registradas para execução posterior.
+
+### Menu desktop visível durante a rolagem
+
+- [ ] Manter o cabeçalho e o menu desktop visíveis no topo enquanto o visitante rola a página.
+- [ ] Ajustar `src/components/Header.astro` e `src/styles/global.css` para preservar alinhamento, fundo e sobreposição correta do cabeçalho.
+- [ ] Conferir que o menu não cubra títulos, destinos de links internos ou elementos com foco por teclado, e que não provoque saltos no layout.
+- [ ] Validar a rolagem em diferentes larguras de desktop e conferir a transição para o menu mobile.
+
+### Foto de Victor Ferreira e menção à equipe em Quem Somos
+
+- [ ] Reservar um espaço para a foto de Victor Ferreira no bloco de apresentação do responsável técnico em `src/pages/quem-somos.astro`.
+- [ ] Definir proporção, enquadramento e disposição responsiva em `src/styles/pages.css`; utilizar a foto real quando fornecida pelo titular.
+- [ ] Atualizar o texto para informar que a Conecta conta com uma equipe, apresentando Victor como liderança da empresa.
+- [ ] Preservar a distinção entre a trajetória profissional de Victor e as atuações da empresa; incluir apenas nomes, funções e informações da equipe que forem fornecidos.
+- [ ] Conferir legibilidade, hierarquia e organização do conjunto em desktop e celular.
+
+### Entrega da próxima rodada
+
+- [ ] Validar a navegação durante a rolagem, acessibilidade do cabeçalho e apresentação do perfil e da equipe.
+- [ ] Executar as verificações pertinentes e registrar um commit por etapa, conforme a orientação inicial do titular.
