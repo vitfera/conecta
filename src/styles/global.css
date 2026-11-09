@@ -738,6 +738,16 @@ main:focus {
 .footer-bottom a:hover {
   text-decoration: underline;
 }
+@media (min-width: 901px) {
+  html {
+    scroll-padding-top: 120px;
+  }
+  .site-header {
+    position: sticky;
+    top: 0;
+    box-shadow: 0 4px 18px #092c5008;
+  }
+}
 @media (min-width: 1500px) {
   .hero {
     padding-block: 95px 85px;

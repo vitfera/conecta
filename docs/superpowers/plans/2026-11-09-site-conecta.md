@@ -112,14 +112,14 @@ WhatsApp e retirada de Conteúdos registrados nos commits `23a8642` e `8ff00ef`;
 
 ## Próxima rodada — navegação e apresentação da equipe
 
-Solicitações de 9 de novembro de 2026, registradas para execução posterior.
+Solicitações de 9 de novembro de 2026, com execução autorizada pelo titular nesta conversa.
 
 ### Menu desktop visível durante a rolagem
 
-- [ ] Manter o cabeçalho e o menu desktop visíveis no topo enquanto o visitante rola a página.
-- [ ] Ajustar `src/components/Header.astro` e `src/styles/global.css` para preservar alinhamento, fundo e sobreposição correta do cabeçalho.
-- [ ] Conferir que o menu não cubra títulos, destinos de links internos ou elementos com foco por teclado, e que não provoque saltos no layout.
-- [ ] Validar a rolagem em diferentes larguras de desktop e conferir a transição para o menu mobile.
+- [x] Manter o cabeçalho e o menu desktop visíveis no topo enquanto o visitante rola a página.
+- [x] Ajustar `src/components/Header.astro` e `src/styles/global.css` para preservar alinhamento, fundo e sobreposição correta do cabeçalho.
+- [x] Conferir que o menu não cubra títulos, destinos de links internos ou elementos com foco por teclado, e que não provoque saltos no layout.
+- [x] Validar a rolagem em diferentes larguras de desktop e conferir a transição para o menu mobile.
 
 ### Foto de Victor Ferreira e menção à equipe em Quem Somos
 
