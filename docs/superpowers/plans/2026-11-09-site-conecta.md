@@ -123,11 +123,13 @@ Solicitações de 9 de novembro de 2026, com execução autorizada pelo titular 
 
 ### Foto de Victor Ferreira e menção à equipe em Quem Somos
 
-- [ ] Reservar um espaço para a foto de Victor Ferreira no bloco de apresentação do responsável técnico em `src/pages/quem-somos.astro`.
-- [ ] Definir proporção, enquadramento e disposição responsiva em `src/styles/pages.css`; utilizar a foto real quando fornecida pelo titular.
-- [ ] Atualizar o texto para informar que a Conecta conta com uma equipe, apresentando Victor como liderança da empresa.
-- [ ] Preservar a distinção entre a trajetória profissional de Victor e as atuações da empresa; incluir apenas nomes, funções e informações da equipe que forem fornecidos.
-- [ ] Conferir legibilidade, hierarquia e organização do conjunto em desktop e celular.
+- [x] Reservar um espaço para a foto de Victor Ferreira no bloco de apresentação do responsável técnico em `src/pages/quem-somos.astro`.
+- [x] Definir retrato vertical 3:4 e disposição responsiva; detectar automaticamente o arquivo `src/assets/equipe/victor-ferreira.jpg` quando fornecido pelo titular.
+- [x] Atualizar o texto para informar que a Conecta conta com uma equipe, apresentando Victor como liderança da empresa.
+- [x] Preservar a distinção entre a trajetória profissional de Victor e as atuações da empresa; incluir apenas nomes, funções e informações da equipe que forem fornecidos.
+- [x] Conferir legibilidade, hierarquia e organização do conjunto em desktop e celular.
+
+Foto: proporção **3:4**, dimensão recomendada **900 × 1200 px**, nome **`victor-ferreira.jpg`**, pasta **`src/assets/equipe/`**. Instruções em [README da foto](../../../src/assets/equipe/README.md). O componente reserva o espaço enquanto o arquivo real não está disponível; a foto será inserida pelo titular posteriormente.
 
 ### Entrega da próxima rodada
 

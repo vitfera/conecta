@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const portraits = import.meta.glob<{ default: ImageMetadata }>('../assets/equipe/*.jpg', {
+  eager: true,
+});
+const portrait = portraits['../assets/equipe/victor-ferreira.jpg']?.default;
+---
+
+<div class="profile-portrait" data-profile-photo={portrait ? 'image' : 'placeholder'}>
+  {portrait ? (
+    <Image
+      src={portrait}
+      alt="Victor Ferreira de Souza, liderança e responsável técnico da Conecta Soluções"
+      width={900}
+      height={1200}
+      widths={[360, 600, 900]}
+      sizes="(max-width: 360px) calc(100vw - 40px), (max-width: 640px) 320px, (max-width: 900px) 280px, 360px"
+      fit="cover"
+      format="webp"
+      loading="lazy"
+    />
+  ) : (
+    <div class="profile-portrait-placeholder" aria-hidden="true">
+      <span class="profile-monogram">VF</span>
+      <span class="profile-portrait-name">Victor Ferreira</span>
+    </div>
+  )}
+</div>

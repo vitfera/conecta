@@ -48,6 +48,8 @@ A pasta **`conecta-solucoes/` é material de referência local e não é version
 
 ## Conteúdo e revisão editorial
 
+Para inserir a foto de Victor Ferreira em Quem Somos, salve uma imagem JPEG vertical **3:4**, preferencialmente **900 × 1200 px**, em `src/assets/equipe/victor-ferreira.jpg`. O arquivo é detectado automaticamente e substitui o espaço reservado. A [orientação da foto](src/assets/equipe/README.md) detalha o enquadramento e a atualização do build.
+
 Uma entrada aparece no site somente quando tem publicação explícita, status aprovado e data válida de revisão:
 
 ```yaml

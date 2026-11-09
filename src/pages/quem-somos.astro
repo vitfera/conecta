@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeading from '../components/PageHeading.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Icon from '../components/Icon.astro';
+import ProfilePortrait from '../components/ProfilePortrait.astro';
 ---
 
 <BaseLayout
@@ -97,20 +98,21 @@ import Icon from '../components/Icon.astro';
       </div>
     </div>
   </section>
-  <section class="section">
+  <section class="section" id="equipe" aria-labelledby="victor-title">
     <div class="container profile-grid">
-      <div>
+      <div class="profile-media">
+        <ProfilePortrait />
+      </div>
+      <div class="profile-copy">
         <p class="eyebrow">
           <span class="orange-dash"></span>RESPONSÁVEL TÉCNICO
         </p>
-        <h2>
+        <h2 id="victor-title">
           Victor Ferreira
           <br />
           de Souza
         </h2>
         <p class="profile-role">Gestão, sistemas e projetos</p>
-      </div>
-      <div class="profile-copy">
         <p>
           A empresa é liderada por Victor Ferreira de Souza, profissional com trajetória em sistemas
           e projetos de gestão pública, turismo, cultura, comunicação e eventos.
@@ -120,6 +122,14 @@ import Icon from '../components/Icon.astro';
           Funarte, à Secretaria de Estado da Cultura de Goiás e ao Ministério das Cidades, além de
           projetos municipais e de tecnologia aplicada a eventos.
         </p>
+        <div class="team-presentation">
+          <h3>Uma equipe conectada ao seu projeto</h3>
+          <p>
+            A Conecta conta com uma equipe que trabalha em conjunto na construção e no
+            acompanhamento das soluções. Sob a liderança de Victor, a atuação reúne colaboração,
+            troca de conhecimento e organização das atividades em cada etapa do projeto.
+          </p>
+        </div>
         <div class="editorial-note">
           <strong>Trajetória profissional</strong>
           <p>
