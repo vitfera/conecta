@@ -18,5 +18,5 @@ export const navigation = [
   { href: '/quem-somos/', label: 'Quem somos' },
   { href: '/solucoes/', label: 'Soluções' },
   { href: '/projetos/', label: 'Projetos' },
-  { href: '/conteudos/', label: 'Conteúdos' },
+  { href: '/contato/', label: 'Contato' },
 ];

@@ -36,7 +36,7 @@ Os testes verificam a política editorial. `check` valida tipos e componentes. `
 
 - `src/pages/`: home, páginas institucionais, catálogos, detalhes e endpoints estáticos de SEO.
 - `src/components/`, `src/layouts/` e `src/styles/`: elementos e identidade visual compartilhados.
-- `src/content/`: serviços, projetos, artigos e plataformas em Markdown.
+- `src/content/`: serviços, projetos e plataformas em Markdown.
 - `src/content.config.ts`: schemas de conteúdo.
 - `src/lib/`: consultas e regras de publicação.
 - `src/data/site.ts`: identificação, contato e navegação.
@@ -58,7 +58,7 @@ reviewedAt: 2026-11-09
 
 Omitir esses campos mantém a entrada oculta. Uma revisão com data futura também não publica a entrada. As listas, a home, as páginas individuais e o sitemap usam a mesma regra. Para retirar uma entrada, defina `publish: false` e publique um novo build.
 
-Os seis serviços e a apresentação dos serviços sobre Mapas Culturais seguem o briefing fornecido. O projeto e o artigo de preparação permanecem em revisão e não são incluídos no site. Antes de liberar um projeto, confira contratante, vínculo, escopo, direitos de divulgação e evidência de cada entrega e resultado. Um contrato firmado não comprova conclusão. Experiências individuais do responsável técnico são apresentadas separadamente.
+Os seis serviços e a apresentação dos serviços sobre Mapas Culturais seguem o briefing fornecido. O projeto de preparação permanece em revisão e não é incluído no site. Antes de liberar um projeto, confira contratante, vínculo, escopo, direitos de divulgação e evidência de cada entrega e resultado. Um contrato firmado não comprova conclusão. Experiências individuais do responsável técnico são apresentadas separadamente. O site não possui seção de notícias ou blog.
 
 ## Contato e domínio
 

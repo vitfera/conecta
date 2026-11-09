@@ -42,7 +42,7 @@ Prefira um domínio de homologação e uma pasta exclusiva antes de usar o domí
 
 - Página inicial, seis soluções, contato e 404.
 - HTTPS, canonical, Open Graph, `robots.txt` e `sitemap.xml`.
-- Ausência de projetos e artigos ainda não liberados.
+- Ausência de projetos ainda não liberados e de rotas da antiga seção Conteúdos.
 - `.htaccess` ativo e cabeçalhos servidos pelo Apache.
 - Acesso por celular e navegação por teclado.
 

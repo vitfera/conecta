@@ -51,11 +51,6 @@ const projects = defineCollection({
   }),
 });
 
-const posts = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
-  schema: common.safeExtend({ date: editorialDate, category: z.string() }),
-});
-
 const products = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/products' }),
   schema: common.safeExtend({
@@ -64,4 +59,4 @@ const products = defineCollection({
   }),
 });
 
-export const collections = { services, projects, posts, products };
+export const collections = { services, projects, products };

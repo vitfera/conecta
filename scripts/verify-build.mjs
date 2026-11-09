@@ -12,7 +12,6 @@ const required = [
   'solucoes/index.html',
   'projetos/index.html',
   'produtos/index.html',
-  'conteudos/index.html',
   'contato/index.html',
   'politica-de-privacidade/index.html',
   '404.html',
@@ -36,7 +35,7 @@ async function filesIn(directory) {
 const files = await filesIn(root);
 const pages = files.filter((file) => file.endsWith('.html'));
 const unpublished = [];
-for (const collection of ['projects', 'posts', 'products', 'services']) {
+for (const collection of ['projects', 'products', 'services']) {
   for (const source of (await filesIn(`src/content/${collection}`)).filter((file) =>
     file.endsWith('.md'),
   )) {
@@ -59,7 +58,6 @@ for (const collection of ['projects', 'posts', 'products', 'services']) {
         id: relative(`src/content/${collection}`, source).replace(/\.md$/, ''),
         prefix: {
           projects: 'projetos',
-          posts: 'conteudos',
           services: 'solucoes',
           products: 'produtos',
         }[collection],
@@ -92,12 +90,18 @@ for (const file of pages) {
   assert.match(html, /href="#conteudo"/, `${label}: falta link para pular a navegação`);
   assert.match(html, /<main\b[^>]*id="conteudo"/, `${label}: falta landmark principal`);
   assert.ok(!html.includes('conecta-solucoes/'), `${label}: pacote de referência exposto`);
+  assert.ok(!html.includes('/conteudos/'), `${label}: link para a seção retirada`);
+  assert.ok(!html.includes('mailto:'), `${label}: contato antigo por e-mail`);
+  assert.ok(
+    html.includes('href="https://wa.me/5562982755571"'),
+    `${label}: botão do WhatsApp ausente`,
+  );
   for (const draft of unpublished) {
     assert.ok(
       !html.includes(`href="/${draft.prefix}/${draft.id}/"`),
       `${label}: link de rascunho exposto: ${draft.id}`,
     );
-    if (draft.prefix === 'projetos' || draft.prefix === 'conteudos') {
+    if (draft.prefix === 'projetos') {
       assert.ok(
         !draft.title || !html.includes(draft.title),
         `${label}: conteúdo em revisão exposto: ${draft.id}`,
@@ -145,6 +149,11 @@ for (const file of pages) {
 
 const robots = await readFile(join(root, 'robots.txt'), 'utf8');
 const sitemap = await readFile(join(root, 'sitemap.xml'), 'utf8');
+assert.ok(
+  !files.some((file) => file.startsWith('conteudos/') || file.includes('/conteudos/')),
+  'Rota de Conteúdos ainda gerada',
+);
+assert.ok(!sitemap.includes('/conteudos/'), 'Seção retirada ainda presente no sitemap');
 for (const draft of unpublished) {
   assert.ok(!sitemap.includes(`/${draft.prefix}/${draft.id}/`), `Rascunho no sitemap: ${draft.id}`);
   assert.ok(

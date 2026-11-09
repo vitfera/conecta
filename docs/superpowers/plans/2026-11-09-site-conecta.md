@@ -74,9 +74,9 @@ Anotações de 9 de novembro de 2026. Execução autorizada nesta conversa para 
 
 O titular não pretende publicar notícias ou manter um blog; essa página não faz parte da oferta desejada.
 
-- [ ] Remover Conteúdos da navegação, do rodapé e da página inicial.
-- [ ] Retirar as rotas `/conteudos/` e `/conteudos/[slug]/`, a coleção `posts` e o artigo em revisão.
-- [ ] Ajustar `src/content.config.ts`, consultas da home, `src/pages/sitemap.xml.ts`, `scripts/verify-build.mjs`, testes e documentação para a estrutura sem blog.
+- [x] Remover Conteúdos da navegação, do rodapé e da página inicial.
+- [x] Retirar as rotas `/conteudos/` e `/conteudos/[slug]/`, a coleção `posts` e o artigo em revisão.
+- [x] Ajustar `src/content.config.ts`, consultas da home, `src/pages/sitemap.xml.ts`, `scripts/verify-build.mjs`, testes e documentação para a estrutura sem blog.
 
 ### 3. Incluir SaaS próprios em Projetos
 

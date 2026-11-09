@@ -17,7 +17,6 @@ export const GET: APIRoute = async ({ site }) => {
     for (const [collection, prefix] of [
       ['services', 'solucoes'],
       ['projects', 'projetos'],
-      ['posts', 'conteudos'],
     ] as const) {
       const entries = await getPublished(collection);
       if (entries.length && collection !== 'services') urls.push(`/${prefix}/`);

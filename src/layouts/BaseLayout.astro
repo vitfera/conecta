@@ -9,9 +9,8 @@ interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
-  type?: 'website' | 'article';
 }
-const { title, description = site.description, noindex = false, type = 'website' } = Astro.props;
+const { title, description = site.description, noindex = false } = Astro.props;
 const pageTitle = `${title} | ${site.name}`;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
 const indexable = Boolean(Astro.site) && !noindex;
@@ -48,7 +47,7 @@ const organization = {
     <link rel="icon" type="image/png" href={favicon.src} />
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:type" content={type} />
+    <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
