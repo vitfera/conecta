@@ -32,3 +32,50 @@ test('cases institucionais publicados continuam exigindo aprovação e revisão'
     true,
   );
 });
+
+const recognition = {
+  title: 'Reconhecimento por inovação',
+  recipient: 'Município responsável pelo projeto',
+  description:
+    'Reconhecimento recebido pelo município com o projeto, sem atribuir o prêmio à prestadora.',
+  sourceUrl: 'https://example.org/reconhecimento-do-projeto',
+};
+
+test('permite contar a história com reconhecimento atribuído e fonte pública', () => {
+  const result = projectSchema.safeParse({
+    ...project,
+    storyTitle: 'Uma plataforma que conecta a cultura local',
+    order: 1,
+    recognition,
+    verifiedDeliveries: ['Implantação confirmada pelo titular.'],
+    contractStatus: 'concluido-com-evidencia',
+    publish: true,
+    publicationStatus: 'aprovado',
+    reviewedAt: '2026-11-09',
+  });
+  assert.equal(result.success, true);
+  if (result.success) assert.equal(result.data.recognition?.recipient, recognition.recipient);
+});
+
+test('reconhecimento exige identificar quem o recebeu', () => {
+  const { recipient: _, ...withoutRecipient } = recognition;
+  assert.equal(
+    projectSchema.safeParse({ ...project, recognition: withoutRecipient }).success,
+    false,
+  );
+});
+
+test('reconhecimento exige uma fonte pública HTTP em vez de URL executável', () => {
+  for (const sourceUrl of ['', 'javascript:alert(1)', 'file:///tmp/premio.pdf'])
+    assert.equal(
+      projectSchema.safeParse({ ...project, recognition: { ...recognition, sourceUrl } }).success,
+      false,
+    );
+});
+
+test('projeto concluído exige ao menos uma entrega confirmada', () => {
+  assert.equal(
+    projectSchema.safeParse({ ...project, contractStatus: 'concluido-com-evidencia' }).success,
+    false,
+  );
+});

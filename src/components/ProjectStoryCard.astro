@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import ProjectCover from './ProjectCover.astro';
+interface Props {
+  project: CollectionEntry<'projects'>;
+  compact?: boolean;
+  headingLevel?: 'h2' | 'h3';
+}
+const { project, compact = false, headingLevel: Heading = 'h2' } = Astro.props;
+---
+
+<a
+  class:list={['project-story-card', { 'is-compact': compact }]}
+  href={`/projetos/${project.id}/`}
+  data-project={project.id}
+>
+  <div class="project-story-media">
+    <ProjectCover id={project.id} alt={`Tela inicial do ${project.data.title}.`} />
+  </div>
+  <div class="project-story-copy">
+    <p class="project-story-name">{project.data.title}</p>
+    <Heading>{project.data.storyTitle ?? project.data.title}</Heading>
+    {project.data.recognition && (
+      <span class="project-award-mark">
+        <Icon name="recognition" size={17} />
+        Projeto reconhecido
+      </span>
+    )}
+    <p class="project-story-summary">{project.data.description}</p>
+    <span class="project-story-link">
+      Conheça o projeto <Icon size={20} />
+    </span>
+  </div>
+</a>

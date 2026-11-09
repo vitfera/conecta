@@ -1,5 +1,6 @@
 @import url('./pages.css');
 @import url('./products.css');
+@import url('./projects.css');
 
 :root {
   --blue: #003675;
@@ -646,16 +647,6 @@ main:focus {
 }
 .home-projects {
   background: var(--paper);
-}
-.projects-preview-description {
-  max-width: 690px;
-  color: var(--muted);
-  font-size: 0.95rem;
-  margin-bottom: 0;
-}
-.home-projects .project-card h3 {
-  font-size: 1.5rem;
-  margin: 22px 0 18px;
 }
 .contact-cta {
   background: #edf3fa;

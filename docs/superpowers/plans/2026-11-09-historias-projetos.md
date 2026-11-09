@@ -18,15 +18,15 @@
 
 Arquivos: `src/lib/project-schema.ts`, `tests/project-schema.test.ts`, `src/content/projects/campo-mourao-mapas-culturais.md`, `src/content/projects/cianorte-mapas-culturais.md`, `src/components/ProjectCover.astro`, `src/components/ProjectStoryCard.astro`, `src/assets/projetos/`, `src/pages/projetos/index.astro`, `src/pages/projetos/[slug].astro`, `src/pages/index.astro`, `src/styles/projects.css` e `src/styles/global.css`.
 
-- [ ] Acrescentar testes para reconhecimento com beneficiário e fonte HTTP obrigatórios e para conclusão com entrega confirmada; executar `node --test tests/project-schema.test.ts` e confirmar as falhas antes de alterar o esquema.
-- [ ] Adicionar `storyTitle` opcional, `order` inteiro positivo com padrão 100 e `recognition` opcional (`title`, `recipient`, `description`, `sourceUrl` HTTP). Preservar os campos editoriais existentes. Rejeitar conclusão sem `verifiedDeliveries`.
-- [ ] Publicar as duas histórias com `publish: true`, `publicationStatus: aprovado` e `reviewedAt: 2026-11-09`, conforme confirmação e aprovação do titular. Cadastrar as entregas informadas, sem inventar métricas.
-- [ ] Capturar as primeiras telas públicas de `https://mapas.campomourao.pr.gov.br/` e `https://cultura.cianorte.pr.gov.br/`; inspecionar as imagens antes de incluí-las em `src/assets/projetos/`.
-- [ ] Implementar `ProjectCover` com imagens locais por slug, otimização e alternativa decorativa sem imagem quebrada. Implementar `ProjectStoryCard` com título narrativo, resumo, imagem e chamada para conhecer o projeto.
-- [ ] Usar os cards no catálogo e na home, ordenados por `order`; retirar o componente de filtros e a apresentação pública de ano/localidade.
-- [ ] Substituir a ficha contratual no detalhe por texto narrativo, capa, links e reconhecimento atribuído ao município. Manter o estado vazio quando não há publicação.
-- [ ] Executar `npm test`, `ASTRO_TELEMETRY_DISABLED=1 npm run check`, `ASTRO_TELEMETRY_DISABLED=1 npm run build`, `npm run verify` e `git diff --check`. Resultado esperado: testes e tipos aprovados, 21 páginas estáticas com os dois detalhes, links locais válidos.
-- [ ] Registrar o commit de implementação após as verificações.
+- [x] Acrescentar testes para reconhecimento com beneficiário e fonte HTTP obrigatórios e para conclusão com entrega confirmada; executar `node --test tests/project-schema.test.ts` e confirmar as falhas antes de alterar o esquema.
+- [x] Adicionar `storyTitle` opcional, `order` inteiro positivo com padrão 100 e `recognition` opcional (`title`, `recipient`, `description`, `sourceUrl` HTTP). Preservar os campos editoriais existentes. Rejeitar conclusão sem `verifiedDeliveries`.
+- [x] Publicar as duas histórias com `publish: true`, `publicationStatus: aprovado` e `reviewedAt: 2026-11-09`, conforme confirmação e aprovação do titular. Cadastrar as entregas informadas, sem inventar métricas.
+- [x] Capturar as primeiras telas públicas de `https://mapas.campomourao.pr.gov.br/` e `https://cultura.cianorte.pr.gov.br/`; inspecionar as imagens antes de incluí-las em `src/assets/projetos/`.
+- [x] Implementar `ProjectCover` com imagens locais por slug, otimização e alternativa decorativa sem imagem quebrada. Implementar `ProjectStoryCard` com título narrativo, resumo, imagem e chamada para conhecer o projeto.
+- [x] Usar os cards no catálogo e na home, ordenados por `order`; retirar o componente de filtros e a apresentação pública de ano/localidade.
+- [x] Substituir a ficha contratual no detalhe por texto narrativo, capa, links e reconhecimento atribuído ao município. Manter o estado vazio quando não há publicação.
+- [x] Executar `npm test`, `ASTRO_TELEMETRY_DISABLED=1 npm run check`, `ASTRO_TELEMETRY_DISABLED=1 npm run build`, `npm run verify` e `git diff --check`. Resultado esperado: testes e tipos aprovados, 21 páginas estáticas com os dois detalhes, links locais válidos.
+- [x] Registrar o commit de implementação após as verificações.
 
 ## 3. Validação e documentação
 

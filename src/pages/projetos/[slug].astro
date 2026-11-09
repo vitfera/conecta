@@ -1,11 +1,12 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHeading from '../../components/PageHeading.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
-import { getPublished } from '../../lib/content';
+import ProjectCover from '../../components/ProjectCover.astro';
+import Icon from '../../components/Icon.astro';
+import { getPublishedProjects, getPublishedProducts } from '../../lib/content';
 export async function getStaticPaths() {
-  return (await getPublished('projects')).map((project) => ({
+  return (await getPublishedProjects()).map((project) => ({
     params: { slug: project.id },
     props: { project },
   }));
@@ -15,73 +16,77 @@ interface Props {
 }
 const { project } = Astro.props;
 const { Content } = await render(project);
-const status = {
-  'contrato-firmado': 'Contrato firmado',
-  'em-execucao': 'Em execução',
-  'concluido-com-evidencia': 'Concluído, com evidência de entrega',
-};
+const { recognition, externalLinks } = project.data;
+const showMapasServices = (await getPublishedProducts()).some(({ id }) => id === 'mapas-culturais');
 ---
 
 <BaseLayout title={project.data.title} description={project.data.description}>
-  <PageHeading
-    eyebrow={`${project.data.sector.toLocaleUpperCase('pt-BR')} · ${project.data.year}`}
-    title={project.data.title}
-    description={project.data.description}
-  />
+  <section class="project-story-heading">
+    <div class="container">
+      <a class="text-link project-back" href="/projetos/">
+        <Icon size={17} /> Todas as histórias
+      </a>
+      <div class="project-hero-grid">
+        <div>
+          <p class="eyebrow">
+            <span class="orange-dash"></span>
+            {project.data.title}
+          </p>
+          <h1>{project.data.storyTitle ?? project.data.title}</h1>
+          <p class="project-story-intro">{project.data.description}</p>
+        </div>
+        <figure class="project-hero-media">
+          <ProjectCover
+            id={project.id}
+            alt={`Tela inicial do ${project.data.title}.`}
+            loading="eager"
+          />
+          <figcaption>Um olhar sobre a plataforma em funcionamento.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
   <section class="section">
-    <div class="container detail-grid">
+    <div class="container project-story-body">
       <article class="prose">
         <Content />
-        {project.data.verifiedDeliveries.length > 0 && (
-          <>
-            <h2>Entregas confirmadas</h2>
-            <ul>
-              {project.data.verifiedDeliveries.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-          </>
-        )}
-        {project.data.verifiedResults.length > 0 && (
-          <>
-            <h2>Resultados confirmados</h2>
-            <ul>
-              {project.data.verifiedResults.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-          </>
-        )}
-        {project.data.externalLinks.length > 0 && (
-          <>
-            <h2>Saiba mais</h2>
-            <ul>
-              {project.data.externalLinks.map((link) => (
-                <li>
-                  <a href={link.url} rel="external noopener noreferrer">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
       </article>
-      <aside class="project-facts">
-        <h2>Sobre a atuação</h2>
-        <dl>
-          <dt>Contratante</dt>
-          <dd>{project.data.client}</dd>
-          <dt>Vínculo</dt>
-          <dd>{project.data.relationship}</dd>
-          <dt>Localidade</dt>
-          <dd>{project.data.location}</dd>
-          <dt>Natureza</dt>
-          <dd>{project.data.nature}</dd>
-          <dt>Situação contratual</dt>
-          <dd>{status[project.data.contractStatus]}</dd>
-        </dl>
-      </aside>
+      {recognition && (
+        <aside
+          class="project-recognition"
+          aria-labelledby="recognition-title"
+          data-project-recognition
+        >
+          <span class="icon-box">
+            <Icon name="recognition" size={30} />
+          </span>
+          <div>
+            <p class="eyebrow">{recognition.recipient}</p>
+            <h2 id="recognition-title">{recognition.title}</h2>
+            <p>{recognition.description}</p>
+            <a
+              class="text-link"
+              href={recognition.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Sobre o reconhecimento <Icon name="diagonal" size={17} />
+            </a>
+          </div>
+        </aside>
+      )}
+      <div class="project-story-next">
+        {externalLinks.map((link) => (
+          <a class="button" href={link.url} target="_blank" rel="noopener noreferrer">
+            {link.label} <Icon name="diagonal" size={18} />
+          </a>
+        ))}
+        {showMapasServices && (
+          <a class="text-link" href="/produtos/mapas-culturais/">
+            Conheça nossos serviços com Mapas Culturais <Icon size={18} />
+          </a>
+        )}
+      </div>
     </div>
   </section>
   <ContactCTA />

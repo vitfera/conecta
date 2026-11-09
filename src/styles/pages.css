@@ -348,122 +348,6 @@
   font-size: 0.95rem;
   color: var(--muted);
 }
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-}
-.project-card {
-  border: 1px solid var(--line);
-  padding: 35px;
-  border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  background: white;
-  transition:
-    border-color 0.2s,
-    transform 0.2s;
-}
-.project-card:hover {
-  border-color: #9bb5d1;
-  transform: translateY(-3px);
-}
-.project-card h2 {
-  font-size: 1.8rem;
-  line-height: 1.2;
-  margin: 22px 0 18px;
-}
-.project-card > p {
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-.project-meta {
-  font-size: 0.69rem;
-  letter-spacing: 0.08em;
-  color: var(--blue);
-  font-weight: 600;
-}
-.project-meta > span {
-  color: #a9b7c6;
-  margin-inline: 10px;
-}
-.project-card-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  border-top: 1px solid var(--line);
-  padding-top: 19px;
-  margin-top: auto;
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-.project-card-bottom svg {
-  color: var(--blue);
-}
-.project-facts {
-  padding: 35px;
-  background: var(--paper);
-}
-.project-facts h2 {
-  font-size: 1.3rem;
-  margin-bottom: 28px;
-}
-.project-facts dl {
-  margin: 0;
-}
-.project-facts dt {
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--blue);
-  margin-top: 22px;
-}
-.project-facts dd {
-  margin: 7px 0 0;
-  font-size: 0.9rem;
-  line-height: 1.65;
-}
-.catalog-filters {
-  display: flex;
-  gap: 20px;
-  align-items: end;
-  flex-wrap: wrap;
-  padding-bottom: 15px;
-}
-.catalog-filters[hidden] {
-  display: none;
-}
-.catalog-filters label {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  flex: 1 1 180px;
-  font-size: 0.8rem;
-  color: var(--blue);
-  font-weight: 600;
-}
-.catalog-filters select {
-  min-height: 46px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: white;
-  padding: 9px;
-  color: var(--ink);
-  width: 100%;
-}
-.filter-reset {
-  border: 0;
-  background: none;
-  cursor: pointer;
-}
-.filter-results {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-bottom: 25px;
-}
-.project-card[hidden] {
-  display: none;
-}
 .article-body {
   max-width: 780px;
 }
@@ -794,18 +678,6 @@
   .empty-state > p {
     font-size: 0.9rem;
   }
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-  .project-card {
-    padding: 27px;
-  }
-  .project-card h2 {
-    font-size: 1.6rem;
-  }
-  .project-facts {
-    padding: 28px;
-  }
   .platform-card {
     padding: 28px;
   }
@@ -849,8 +721,5 @@
   }
   .error-code {
     font-size: 5rem;
-  }
-  .catalog-filters {
-    gap: 16px;
   }
 }

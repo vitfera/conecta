@@ -9,3 +9,9 @@ export async function getPublished<C extends CollectionKey>(collection: C) {
 export async function getPublishedProducts() {
   return sortProducts(await getPublished('products'));
 }
+
+export async function getPublishedProjects() {
+  return (await getPublished('projects')).sort(
+    (a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title, 'pt-BR'),
+  );
+}

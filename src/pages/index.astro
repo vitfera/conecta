@@ -5,14 +5,12 @@ import ConnectionVisual from '../components/ConnectionVisual.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-import ContentCard from '../components/ContentCard.astro';
+import ProjectStoryCard from '../components/ProjectStoryCard.astro';
 import FeaturedProduct from '../components/FeaturedProduct.astro';
 import ProductCard from '../components/ProductCard.astro';
-import { getPublished, getPublishedProducts } from '../lib/content';
+import { getPublished, getPublishedProducts, getPublishedProjects } from '../lib/content';
 const services = (await getPublished('services')).sort((a, b) => a.data.order - b.data.order);
-const projects = (await getPublished('projects'))
-  .sort((a, b) => b.data.year - a.data.year)
-  .slice(0, 2);
+const projects = (await getPublishedProjects()).slice(0, 2);
 const products = await getPublishedProducts();
 const featured = products.find(({ data }) => data.featured);
 const otherProducts = products.filter((product) => product.id !== featured?.id).slice(0, 4);
@@ -227,30 +225,17 @@ const steps = [
             <p class="eyebrow">
               <span class="orange-dash"></span>PROJETOS
             </p>
-            <h2 id="projects-title">Experiências com contexto.</h2>
+            <h2 id="projects-title">Histórias de projetos, conexões na prática.</h2>
           </div>
           <a class="text-link" href="/projetos/">
             Explore projetos <Icon size={18} />
           </a>
         </div>
-        {projects.length ? (
-          <div class="project-grid">
-            {projects.map((project) => (
-              <ContentCard
-                href={`/projetos/${project.id}/`}
-                title={project.data.title}
-                description={project.data.description}
-                category={project.data.sector}
-                footnote={`${project.data.location} · ${project.data.year}`}
-              />
-            ))}
-          </div>
-        ) : (
-          <p class="projects-preview-description">
-            Nosso portfólio está em preparação. Cada caso será apresentado com seu escopo, vínculo e
-            entregas confirmadas.
-          </p>
-        )}
+        <div class="home-project-story-grid">
+          {projects.map((project) => (
+            <ProjectStoryCard project={project} compact headingLevel="h3" />
+          ))}
+        </div>
       </div>
     </section>
   )}
