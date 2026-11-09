@@ -137,3 +137,7 @@ Foto: proporção **3:4**, dimensão recomendada **900 × 1200 px**, nome **`vic
 - [x] Executar as verificações pertinentes e registrar um commit por etapa, conforme a orientação inicial do titular.
 
 Menu desktop registrado no commit `90d6f51`; foto e apresentação da equipe no commit `f74a58c`. A etapa final registra a validação: 20 testes aprovados, Astro sem erros, 19 páginas e 514 links/assets verificados, 18 rotas em seis larguras e revisão independente sem achados relevantes. Relatório em [verificação](../../verification.md). Prévia local mantida ativa.
+
+## Histórias de projetos — concluído
+
+O titular confirmou as implantações de Campo Mourão e Cianorte e aprovou a opção de histórias de projetos, com foco no contexto e na contribuição da Conecta. Os dois casos agora têm capas reais, cards compartilhados com a home e detalhes narrativos, sem ficha técnica pública ou filtros. Campo Mourão recebe destaque pelo reconhecimento ao município e ao projeto. A rodada passou por 24 testes, Astro check, build de 21 páginas, 577 links/assets, conferência de 20 rotas em seis larguras e revisão independente. Execução e cenários em [plano das histórias](2026-11-09-historias-projetos.md).

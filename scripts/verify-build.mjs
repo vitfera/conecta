@@ -36,6 +36,7 @@ const files = await filesIn(root);
 const pages = files.filter((file) => file.endsWith('.html'));
 const unpublished = [];
 const publishedProducts = [];
+const publishedProjects = [];
 for (const collection of ['projects', 'products', 'services']) {
   for (const source of (await filesIn(`src/content/${collection}`)).filter((file) =>
     file.endsWith('.md'),
@@ -56,6 +57,11 @@ for (const collection of ['projects', 'products', 'services']) {
     );
     if (collection === 'products' && approved)
       publishedProducts.push(relative('src/content/products', source).replace(/\.md$/, ''));
+    if (collection === 'projects' && approved)
+      publishedProjects.push({
+        id: relative('src/content/projects', source).replace(/\.md$/, ''),
+        recognition: /^recognition:\s*$/m.test(frontmatter),
+      });
     if (!approved) {
       unpublished.push({
         title: field('title'),
@@ -106,6 +112,10 @@ for (const file of pages) {
       !/<dt[^>]*>\s*(Contratante|Situação contratual|Ano de contratação)\s*<\/dt>/.test(html),
       `${label}: metadados contratuais em um produto`,
     );
+  }
+  if (label.startsWith('projetos/')) {
+    assert.ok(!/<dl(?:\s|>)/.test(html), `${label}: ficha técnica na história do projeto`);
+    assert.ok(!html.includes('data-project-filters'), `${label}: filtros na seção de histórias`);
   }
   if (
     publishedProducts.includes('mapas-culturais') &&
@@ -172,6 +182,34 @@ for (const file of pages) {
 
 const robots = await readFile(join(root, 'robots.txt'), 'utf8');
 const sitemap = await readFile(join(root, 'sitemap.xml'), 'utf8');
+const projectIndex = await readFile(join(root, 'projetos/index.html'), 'utf8');
+for (const project of publishedProjects) {
+  const detail = join(root, 'projetos', project.id, 'index.html');
+  assert.ok(existsSync(detail), `Projeto sem história: ${project.id}`);
+  assert.ok(
+    projectIndex.includes(`data-project="${project.id}"`),
+    `Projeto sem card no catálogo: ${project.id}`,
+  );
+  const story = await readFile(detail, 'utf8');
+  assert.equal(
+    story.includes('data-project-recognition'),
+    project.recognition,
+    `Reconhecimento divergente do conteúdo editorial: ${project.id}`,
+  );
+  if (site)
+    assert.ok(
+      sitemap.includes(`/projetos/${project.id}/`),
+      `Projeto fora do sitemap: ${project.id}`,
+    );
+}
+if (!publishedProjects.length) {
+  assert.equal(
+    value(projectIndex, 'robots'),
+    'noindex, nofollow',
+    'Catálogo vazio precisa de noindex',
+  );
+  assert.ok(!sitemap.includes('/projetos/'), 'Seção vazia de projetos no sitemap');
+}
 for (const id of publishedProducts) {
   assert.ok(existsSync(join(root, 'produtos', id, 'index.html')), `Produto sem página: ${id}`);
   if (site) assert.ok(sitemap.includes(`/produtos/${id}/`), `Produto fora do sitemap: ${id}`);

@@ -18,6 +18,10 @@ Astro com saída estática, TypeScript estrito e CSS responsivo. Componentes com
 
 Projetos sem liberação não aparecem em HTML, rotas, sitemap ou dados estruturados. Os catálogos exibem estados vazios úteis. Experiência do responsável técnico aparece separada dos contratos da empresa. Mapas Culturais é identificado como software livre sobre o qual a empresa presta serviços. O catálogo de Produtos o apresenta em primeiro destaque, seguido de Plataforma imobiliária, Pesquisas e indicadores, Rota Fácil e Ingressos digitais para eventos, cada um com detalhe próprio. As entradas de produto não utilizam campos de contratação e são compartilhadas entre home, catálogo e detalhes.
 
+## Histórias de projetos
+
+O titular aprovou a apresentação narrativa de Campo Mourão e Cianorte, com contexto, participação da Conecta e capas das plataformas públicas. Catálogo, home e detalhes priorizam as histórias; a ficha técnica de localidade, período, vínculo e contrato não aparece na interface. O reconhecimento de Campo Mourão é atribuído ao município e ao projeto, com fonte pública. A [direção das histórias](2026-11-09-historias-projetos-design.md) detalha esta rodada.
+
 ## Contato, privacidade e SEO
 
 Contato comercial definido pelo titular: WhatsApp **+55 (62) 98275-5571**, por botões para `https://wa.me/5562982755571`. Os links abrem o serviço externo em nova aba, sem incorporar scripts do WhatsApp. A privacidade descreve esse funcionamento; o site não possui formulário ou rastreadores.

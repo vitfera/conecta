@@ -32,8 +32,12 @@ Arquivos: `src/lib/project-schema.ts`, `tests/project-schema.test.ts`, `src/cont
 
 Arquivos: `scripts/verify-build.mjs`, `README.md`, `docs/verification.md` e este plano.
 
-- [ ] Estender a verificação do build para cobrir projetos publicados no sitemap, ausência de ficha técnica e atribuição do reconhecimento.
-- [ ] Conferir 20 rotas em 1440, 1024, 901, 900, 375 e 320 pixels; testar imagens carregadas, ordem dos dois projetos, reconhecimento, teclado, menu móvel e navegação sem JavaScript.
-- [ ] Em uma cópia temporária, retirar os projetos da publicação e confirmar estado vazio, ausência dos detalhes e dos links na home e no sitemap; conferir também os dois projetos com domínio configurado.
-- [ ] Solicitar revisão independente do diff e corrigir eventuais problemas confirmados.
-- [ ] Atualizar o relatório com os resultados efetivamente observados, orientar a manutenção dos textos e imagens no README e registrar o commit final. Preservar a prévia local ativa.
+- [x] Estender a verificação do build para cobrir projetos publicados no sitemap, ausência de ficha técnica e atribuição do reconhecimento.
+- [x] Conferir 20 rotas em 1440, 1024, 901, 900, 375 e 320 pixels; testar imagens carregadas, ordem dos dois projetos, reconhecimento, teclado, menu móvel e navegação sem JavaScript.
+- [x] Em uma cópia temporária, retirar os projetos da publicação e confirmar estado vazio, ausência dos detalhes e dos links na home e no sitemap; conferir também os dois projetos com domínio configurado.
+- [x] Solicitar revisão independente do diff e corrigir eventuais problemas confirmados.
+- [x] Atualizar o relatório com os resultados efetivamente observados, orientar a manutenção dos textos e imagens no README e registrar o commit final. Preservar a prévia local ativa.
+
+## Resultado
+
+Planejamento registrado em `652a1c2` e implementação em `80bdb62`. Validação final: 24 testes aprovados, Astro sem erros, 21 páginas e 577 links/assets; 20 rotas em seis larguras, navegação sem JavaScript e revisão independente sem achados relevantes. Os cinco cenários temporários de domínio, publicação e capas passaram. A prévia foi reiniciada para descartar o estado antigo do Astro e permanece ativa no endereço original.
