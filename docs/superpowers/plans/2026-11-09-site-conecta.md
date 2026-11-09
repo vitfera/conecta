@@ -8,7 +8,7 @@
 
 **Tecnologias:** Astro, TypeScript, CSS, testes nativos Node e GitHub Actions.
 
-**Atualização de escopo:** as etapas 1 a 4 registram a primeira versão implementada. As decisões da próxima etapa, anotadas ao final deste documento, têm precedência sobre o briefing original nos pontos alterados pelo titular. Os ajustes de WhatsApp, retirada de Conteúdos e turismo foram implementados após autorização do titular. A inclusão dos SaaS continua aguardando informações.
+**Atualização de escopo:** as etapas 1 a 4 registram a primeira versão implementada. As decisões da próxima etapa, anotadas ao final deste documento, têm precedência sobre o briefing original nos pontos alterados pelo titular. Os ajustes de WhatsApp, retirada de Conteúdos e turismo foram implementados após autorização do titular. O catálogo de Produtos reúne o Mapas Culturais em destaque e quatro sistemas complementares indicados pelo titular.
 
 ## Etapa 1 — proteção do material e definição
 
@@ -61,7 +61,7 @@ Verificações e limites registrados em [docs/verification.md](../../verificatio
 
 ## Ajustes solicitados pelo titular e pendências
 
-Anotações de 9 de novembro de 2026. Execução autorizada nesta conversa para WhatsApp, retirada de Conteúdos e turismo; SaaS permanecem para uma próxima rodada.
+Anotações de 9 de novembro de 2026. Execução autorizada nesta conversa para contato, navegação, turismo e catálogo de Produtos. A organização atual prioriza Mapas Culturais, conforme a orientação do titular.
 
 ### 1. WhatsApp como contato comercial
 
@@ -78,11 +78,16 @@ O titular não pretende publicar notícias ou manter um blog; essa página não 
 - [x] Retirar as rotas `/conteudos/` e `/conteudos/[slug]/`, a coleção `posts` e o artigo em revisão.
 - [x] Ajustar `src/content.config.ts`, consultas da home, `src/pages/sitemap.xml.ts`, `scripts/verify-build.mjs`, testes e documentação para a estrutura sem blog.
 
-### 3. Incluir SaaS próprios em Projetos
+### 3. Catálogo de Produtos
 
-- [ ] Preparar o catálogo de projetos para apresentar também os SaaS que o titular já possui, além das atuações institucionais.
-- [ ] Identificar adequadamente soluções próprias, autoria, disponibilidade e links, distinguindo-as dos projetos executados para contratantes.
-- [ ] Cadastrar os SaaS depois que o titular enviar a relação e os detalhes de cada um. **Aguardando essas informações, que serão fornecidas posteriormente.**
+- [x] Reunir Mapas Culturais, Plataforma imobiliária, Pesquisas e indicadores, Rota Fácil e Ingressos digitais para eventos em Produtos.
+- [x] Dar destaque de carro-chefe ao Mapas Culturais na home, em Soluções e no catálogo, identificando os serviços da Conecta sobre o software livre.
+- [x] Incluir Produtos no menu principal e criar uma página de detalhe para cada item.
+- [x] Usar descrições sustentadas pelos três repositórios locais e pela descrição do titular para ingressos, sem enfatizar modelo de contratação.
+- [x] Preservar Projetos para cases e atuações institucionais e não inventar dados contratuais para os produtos.
+- [x] Apresentar a Plataforma imobiliária como “Apresentação sob consulta”, no card e no detalhe, conforme o pedido do titular.
+
+O levantamento e os critérios desta etapa estão no [plano do catálogo](2026-11-09-portfolio-solucoes.md).
 
 ### 4. Dar presença explícita ao turismo
 
@@ -97,7 +102,7 @@ Na ilustração da home com a frase **“Ideias que se conectam”**, o titular 
 
 - [x] Conferir os botões de WhatsApp em desktop e celular e a ausência de referências à seção Conteúdos na navegação e no build.
 - [x] Validar a apresentação de turismo em telas grandes e pequenas.
-- [ ] Validar os dados dos SaaS quando forem fornecidos, na próxima rodada de Projetos.
+- [x] Validar as informações dos produtos nas fontes disponíveis e na descrição fornecida pelo titular.
 - [x] Executar `npm test`, `npm run check`, `npm run build`, `npm run verify` e `git diff --check` após as alterações de código.
 - [x] Fazer um commit ao concluir cada etapa de implementação, conforme a orientação inicial do titular.
 

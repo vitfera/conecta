@@ -1,0 +1,92 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import Icon from '../../components/Icon.astro';
+import { getPublished, getPublishedProducts } from '../../lib/content';
+import { productStatus } from '../../lib/products';
+export async function getStaticPaths() {
+  return (await getPublishedProducts()).map((product) => ({
+    params: { slug: product.id },
+    props: { product },
+  }));
+}
+interface Props {
+  product: CollectionEntry<'products'>;
+}
+const { product } = Astro.props;
+const { data } = product;
+const { Content } = await render(product);
+const services = (await getPublished('services')).filter((service) =>
+  data.relatedServices.includes(service.id as (typeof data.relatedServices)[number]),
+);
+---
+
+<BaseLayout title={data.title} description={data.description}>
+  <section class="page-heading service-heading">
+    <div class="container">
+      <a class="breadcrumb" href="/produtos/">
+        Produtos <span aria-hidden="true">/</span>
+        <span>{data.title}</span>
+      </a>
+      <div class="service-title">
+        <span class="icon-box">
+          <Icon name={data.icon} size={30} />
+        </span>
+        <h1>{data.title}</h1>
+      </div>
+      <p class="page-description">{data.description}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container detail-grid">
+      <article class="prose">
+        <Content />
+        <h2>O que a solução reúne</h2>
+        <ul class="product-capability-list">
+          {data.capabilities.map((capability) => (
+            <li>
+              <Icon name="check" size={19} />
+              <span>{capability}</span>
+            </li>
+          ))}
+        </ul>
+        {data.kind === 'platform-service' && (
+          <div class="editorial-note">
+            <strong>Sobre a plataforma</strong>
+            <p>{data.attribution}</p>
+          </div>
+        )}
+        <div class="related-services">
+          <h2>Como a Conecta pode apoiar</h2>
+          <ul>
+            {services.map((service) => (
+              <li>
+                <a href={`/solucoes/${service.id}/`}>
+                  {service.data.title}
+                  <Icon name="diagonal" size={17} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </article>
+      <aside class="product-facts">
+        <p class="eyebrow">SOBRE O PRODUTO</p>
+        <dl>
+          <dt>Área de atuação</dt>
+          <dd>{data.sector}</dd>
+          <dt>Apresentação</dt>
+          <dd>{productStatus(data)}</dd>
+        </dl>
+        <div class="audience">
+          <h2>Para quem</h2>
+          <p>{data.audience}</p>
+        </div>
+        <WhatsAppButton label="Converse sobre o produto" />
+      </aside>
+    </div>
+  </section>
+  <ContactCTA />
+</BaseLayout>

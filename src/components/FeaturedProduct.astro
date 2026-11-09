@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
+interface Props {
+  product: CollectionEntry<'products'>;
+}
+const { product } = Astro.props;
+const { data } = product;
+---
+
+<article class="featured-product" data-featured-product={product.id}>
+  <div class="featured-product-copy">
+    <p class="eyebrow">
+      <span class="orange-dash"></span>NOSSA PRINCIPAL SOLUÇÃO
+    </p>
+    <h2>{data.title}</h2>
+    <p class="featured-description">{data.description}</p>
+    <div class="hero-actions">
+      <a class="button" href={`/produtos/${product.id}/`}>
+        Conheça o {data.title}
+        <Icon size={18} />
+      </a>
+      <WhatsAppButton class="button-outline" />
+    </div>
+    {data.kind === 'platform-service' && <p class="product-attribution">{data.attribution}</p>}
+  </div>
+  <div class="featured-capabilities">
+    <p class="eyebrow">DA IMPLANTAÇÃO AO ACOMPANHAMENTO</p>
+    <ul>
+      {data.capabilities.slice(0, 4).map((capability) => (
+        <li>
+          <span class="icon-box">
+            <Icon name="check" size={22} />
+          </span>
+          <span>{capability}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</article>

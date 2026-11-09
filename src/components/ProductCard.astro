@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import { productStatus } from '../lib/products';
+interface Props {
+  product: CollectionEntry<'products'>;
+  headingLevel?: 'h2' | 'h3';
+}
+const { product, headingLevel: Heading = 'h2' } = Astro.props;
+const { data } = product;
+---
+
+<a class="product-card" href={`/produtos/${product.id}/`} data-product={product.id}>
+  <div class="product-card-top">
+    <span class="icon-box">
+      <Icon name={data.icon} size={29} />
+    </span>
+    <span class="product-sector">{data.sector}</span>
+  </div>
+  <Heading>{data.title}</Heading>
+  <p>{data.description}</p>
+  <div class="product-card-bottom">
+    <span>{productStatus(data)}</span>
+    <span class="product-card-link">
+      Conheça <Icon name="diagonal" size={18} />
+    </span>
+  </div>
+</a>

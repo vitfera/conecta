@@ -6,7 +6,7 @@ Implementação do briefing e da especificação técnica fornecidos pelo titula
 
 ## Experiência
 
-Site institucional em português brasileiro, com navegação entre Início, Quem Somos, Soluções, Projetos e Contato. Seis páginas de soluções, página secundária de plataformas, privacidade e 404 completam a estrutura. A home apresenta o posicionamento aprovado, as frentes de atuação, a abordagem e os caminhos para conhecer a empresa ou iniciar uma conversa. A seção de notícias e artigos foi retirada por decisão do titular.
+Site institucional em português brasileiro, com navegação entre Início, Quem Somos, Soluções, Produtos, Projetos e Contato. Seis páginas de soluções, página secundária de plataformas, privacidade e 404 completam a estrutura. A home apresenta o posicionamento aprovado, o Mapas Culturais como carro-chefe, as frentes de atuação e os caminhos para conhecer os produtos ou iniciar uma conversa. A seção de notícias e artigos foi retirada por decisão do titular.
 
 Gestão, tecnologia, cultura e turismo têm presença equilibrada na apresentação da atuação. A ilustração “Ideias que se conectam” representa os quatro temas, e turismo também aparece nos textos da home, de Quem Somos e de soluções aplicáveis. A logomarca e seu slogan aprovado permanecem fiéis à referência.
 
@@ -16,7 +16,7 @@ Direção visual: composição editorial contemporânea, azul institucional como
 
 Astro com saída estática, TypeScript estrito e CSS responsivo. Componentes compartilhados para navegação, rodapé, títulos, cards e contato. Coleções Markdown `services`, `projects` e `products`, com schemas Zod e consulta centralizada que exige publicação e revisão editorial. Páginas individuais são geradas somente para entradas liberadas.
 
-Projetos sem liberação não aparecem em HTML, rotas, sitemap ou dados estruturados. Os catálogos exibem estados vazios úteis. Experiência do responsável técnico aparece separada dos contratos da empresa. Mapas Culturais é identificado como software livre sobre o qual a empresa presta serviços.
+Projetos sem liberação não aparecem em HTML, rotas, sitemap ou dados estruturados. Os catálogos exibem estados vazios úteis. Experiência do responsável técnico aparece separada dos contratos da empresa. Mapas Culturais é identificado como software livre sobre o qual a empresa presta serviços. O catálogo de Produtos o apresenta em primeiro destaque, seguido de Plataforma imobiliária, Pesquisas e indicadores, Rota Fácil e Ingressos digitais para eventos, cada um com detalhe próprio. As entradas de produto não utilizam campos de contratação e são compartilhadas entre home, catálogo e detalhes.
 
 ## Contato, privacidade e SEO
 

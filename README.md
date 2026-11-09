@@ -37,7 +37,7 @@ Os testes verificam a política editorial. `check` valida tipos e componentes. `
 - `src/pages/`: home, páginas institucionais, catálogos, detalhes e endpoints estáticos de SEO.
 - `src/components/`, `src/layouts/` e `src/styles/`: elementos e identidade visual compartilhados.
 - `src/content/`: serviços, projetos e plataformas em Markdown.
-- `src/content.config.ts`: schemas de conteúdo.
+- `src/content.config.ts`: definição das coleções; os schemas testáveis ficam em `src/lib/`.
 - `src/lib/`: consultas e regras de publicação.
 - `src/data/site.ts`: identificação, contato e navegação.
 - `src/assets/conecta-logo.png`: cópia fiel da marca rasterizada aprovada; o Astro entrega versões otimizadas. Não existe SVG aprovado neste projeto.
@@ -59,6 +59,14 @@ reviewedAt: 2026-11-09
 Omitir esses campos mantém a entrada oculta. Uma revisão com data futura também não publica a entrada. As listas, a home, as páginas individuais e o sitemap usam a mesma regra. Para retirar uma entrada, defina `publish: false` e publique um novo build.
 
 Os seis serviços e a apresentação dos serviços sobre Mapas Culturais seguem o briefing fornecido. O projeto de preparação permanece em revisão e não é incluído no site. Antes de liberar um projeto, confira contratante, vínculo, escopo, direitos de divulgação e evidência de cada entrega e resultado. Um contrato firmado não comprova conclusão. Experiências individuais do responsável técnico são apresentadas separadamente. O site não possui seção de notícias ou blog.
+
+## Produtos
+
+O catálogo `/produtos/` reúne cinco itens: **Mapas Culturais** em primeiro destaque, Plataforma imobiliária, Pesquisas e indicadores, Rota Fácil e Ingressos digitais para eventos. Produtos tem acesso pelo menu principal e cada item possui detalhe em `/produtos/[slug]/`. A home e Soluções destacam o Mapas e apontam para esse catálogo; Projetos é reservado aos cases institucionais.
+
+As entradas em `src/content/products/` incluem público, funcionalidades, situação de apresentação e referências às frentes de serviço. O formato `platform-service` exige atribuição à plataforma original; `application` descreve os demais sistemas. A interface apresenta a finalidade de cada produto, com contato pelo WhatsApp e sem afirmar disponibilidade imediata de demonstrações públicas.
+
+A Plataforma imobiliária usa “Apresentação sob consulta” no card e no detalhe. Os textos dos três sistemas locais foram levantados sem copiar código ou dados de outros repositórios. A descrição de ingressos foi fornecida pelo titular. Consulte o [levantamento e o plano do catálogo](docs/superpowers/plans/2026-11-09-portfolio-solucoes.md).
 
 ## Contato e domínio
 

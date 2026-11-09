@@ -5,7 +5,10 @@ import ServiceCard from '../../components/ServiceCard.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
 import Icon from '../../components/Icon.astro';
 import { getPublished } from '../../lib/content';
+import { getPublishedProducts } from '../../lib/content';
+import FeaturedProduct from '../../components/FeaturedProduct.astro';
 const services = (await getPublished('services')).sort((a, b) => a.data.order - b.data.order);
+const featured = (await getPublishedProducts()).find(({ data }) => data.featured);
 ---
 
 <BaseLayout
@@ -17,6 +20,13 @@ const services = (await getPublished('services')).sort((a, b) => a.data.order - 
     title="O seu desafio é o ponto de partida."
     description="Seis frentes de atuação que se complementam, da gestão pública aos projetos de cultura e turismo. Combinamos conhecimento técnico e visão de gestão para desenhar o caminho de cada projeto."
   />
+  {featured && (
+    <section class="section flagship-section" aria-label="Mapas Culturais em destaque">
+      <div class="container">
+        <FeaturedProduct product={featured} />
+      </div>
+    </section>
+  )}
   <section class="section">
     <div class="container">
       <div class="service-grid">

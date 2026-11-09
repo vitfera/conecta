@@ -4,7 +4,7 @@ export const site = {
   name: 'Conecta Soluções',
   tagline: 'Gestão · Cultura · Tecnologia',
   description:
-    'Soluções digitais e consultoria para gestão pública, organizações e projetos de cultura e turismo em todo o Brasil.',
+    'Implantação de Mapas Culturais, gestão de editais e soluções digitais para organizações, cultura, turismo e gestão pública em todo o Brasil.',
   legalName: 'Victor F Souza Gestão, Cultura e Tecnologia Ltda.',
   cnpj: '53.134.753/0001-56',
   location: 'Aparecida de Goiânia, Goiás',
@@ -17,6 +17,7 @@ export const navigation = [
   { href: '/', label: 'Início' },
   { href: '/quem-somos/', label: 'Quem somos' },
   { href: '/solucoes/', label: 'Soluções' },
+  { href: '/produtos/', label: 'Produtos' },
   { href: '/projetos/', label: 'Projetos' },
   { href: '/contato/', label: 'Contato' },
 ];

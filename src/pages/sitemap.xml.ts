@@ -14,6 +14,7 @@ export const GET: APIRoute = async ({ site }) => {
   if (site) {
     urls.push('/', '/quem-somos/', '/solucoes/', '/contato/', '/politica-de-privacidade/');
     if ((await getPublished('products')).length) urls.push('/produtos/');
+    urls.push(...(await getPublished('products')).map((product) => `/produtos/${product.id}/`));
     for (const [collection, prefix] of [
       ['services', 'solucoes'],
       ['projects', 'projetos'],

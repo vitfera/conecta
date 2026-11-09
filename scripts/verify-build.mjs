@@ -35,6 +35,7 @@ async function filesIn(directory) {
 const files = await filesIn(root);
 const pages = files.filter((file) => file.endsWith('.html'));
 const unpublished = [];
+const publishedProducts = [];
 for (const collection of ['projects', 'products', 'services']) {
   for (const source of (await filesIn(`src/content/${collection}`)).filter((file) =>
     file.endsWith('.md'),
@@ -47,12 +48,15 @@ for (const collection of ['projects', 'products', 'services']) {
         ?.trim()
         .replace(/^['"]|['"]$/g, '');
     const reviewed = new Date(field('reviewedAt') ?? '');
-    if (
+    const approved = !(
       field('publish') !== 'true' ||
       field('publicationStatus') !== 'aprovado' ||
       !Number.isFinite(reviewed.getTime()) ||
       reviewed > new Date()
-    ) {
+    );
+    if (collection === 'products' && approved)
+      publishedProducts.push(relative('src/content/products', source).replace(/\.md$/, ''));
+    if (!approved) {
       unpublished.push({
         title: field('title'),
         id: relative(`src/content/${collection}`, source).replace(/\.md$/, ''),
@@ -93,6 +97,26 @@ for (const file of pages) {
   assert.ok(!html.includes('/conteudos/'), `${label}: link para a seção retirada`);
   assert.ok(!html.includes('mailto:'), `${label}: contato antigo por e-mail`);
   assert.ok(
+    !/\bSaaS\b/i.test(html),
+    `${label}: modelo de contratação destacado no conteúdo público`,
+  );
+  assert.ok(!/sympla/i.test(html), `${label}: referência comercial não autorizada`);
+  if (label.startsWith('produtos/') && label !== 'produtos/index.html') {
+    assert.ok(
+      !/<dt[^>]*>\s*(Contratante|Situação contratual|Ano de contratação)\s*<\/dt>/.test(html),
+      `${label}: metadados contratuais em um produto`,
+    );
+  }
+  if (
+    publishedProducts.includes('mapas-culturais') &&
+    ['index.html', 'produtos/index.html', 'solucoes/index.html'].includes(label)
+  ) {
+    assert.ok(
+      html.includes('data-featured-product="mapas-culturais"'),
+      `${label}: falta destaque para o Mapas Culturais`,
+    );
+  }
+  assert.ok(
     html.includes('href="https://wa.me/5562982755571"'),
     `${label}: botão do WhatsApp ausente`,
   );
@@ -108,12 +132,11 @@ for (const file of pages) {
       );
     }
     if (draft.prefix === 'produtos') {
-      for (const [card] of html.matchAll(/<article class="platform-card">.*?<\/article>/gs)) {
-        assert.ok(
-          !draft.title || !card.includes(`<h2>${draft.title}</h2>`),
-          `${label}: plataforma sem liberação exposta`,
-        );
-      }
+      assert.ok(
+        !html.includes(`data-product="${draft.id}"`) &&
+          !html.includes(`data-featured-product="${draft.id}"`),
+        `${label}: produto sem liberação exposto`,
+      );
     }
   }
   if (!site) {
@@ -149,6 +172,10 @@ for (const file of pages) {
 
 const robots = await readFile(join(root, 'robots.txt'), 'utf8');
 const sitemap = await readFile(join(root, 'sitemap.xml'), 'utf8');
+for (const id of publishedProducts) {
+  assert.ok(existsSync(join(root, 'produtos', id, 'index.html')), `Produto sem página: ${id}`);
+  if (site) assert.ok(sitemap.includes(`/produtos/${id}/`), `Produto fora do sitemap: ${id}`);
+}
 assert.ok(
   !files.some((file) => file.startsWith('conteudos/') || file.includes('/conteudos/')),
   'Rota de Conteúdos ainda gerada',

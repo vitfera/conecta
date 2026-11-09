@@ -1,34 +1,45 @@
 # Verificação do site
 
-Verificado em 9 de novembro de 2026, após os ajustes de contato, navegação e turismo. A prévia local permanece em `http://127.0.0.1:4321/` para acompanhamento.
+Verificado em 9 de novembro de 2026, após a criação do catálogo de Produtos. A prévia local permanece em `http://127.0.0.1:4321/`; o catálogo está em `/produtos/`.
 
 ## Comandos reproduzíveis
 
-- `npm test`: nove testes da política editorial e das datas de revisão.
+- `npm test`: 20 testes de publicação, datas, schemas de produtos e cases, atribuição de software livre e prioridade do carro-chefe.
 - `npm run check`: tipos e componentes Astro sem erros, avisos ou sugestões.
-- `npm run build`: 14 páginas estáticas, com imagens da marca otimizadas.
-- `npm run verify`: 340 links e assets, rotas, metadados únicos, ausência de rascunhos, contato por WhatsApp, retirada de Conteúdos e prévia sem indexação.
+- `npm run build`: 19 páginas estáticas, incluindo cinco detalhes de produto e imagens otimizadas.
+- `npm run verify`: 514 links e assets, metadados únicos, ausência de rascunhos, WhatsApp, retirada de Conteúdos, destaque do Mapas Culturais e prévia sem indexação.
 - `git diff --check`: verificação de espaços e conflitos.
 
 ## Navegador
 
-Testes executados no Chrome instalado, usando a biblioteca Playwright existente e uma sessão temporária sem alterar o perfil do usuário.
+Testes no Chrome instalado, com a biblioteca Playwright existente e um perfil temporário.
 
-- 13 rotas navegáveis em 1440, 900, 375 e 320 pixels, sem estouro horizontal.
-- Abertura do menu mobile e navegação até as páginas internas.
-- Menu e catálogo de soluções funcionando com JavaScript desabilitado.
+- 18 rotas navegáveis em 1440, 1024, 901, 900, 375 e 320 pixels, sem estouro horizontal.
+- Produtos presente no menu, cinco páginas de detalhe e Mapas Culturais como destaque antes dos quatro sistemas complementares.
+- Plataforma imobiliária com “Apresentação sob consulta” no card e no detalhe, incluindo conferência em 375 e 320 pixels.
+- Menu mobile, acesso aos produtos e catálogo de serviços funcionando sem JavaScript.
 - Link de pular para o conteúdo e transferência do foco por teclado.
-- Botão de contato para `https://wa.me/5562982755571`, com telefone **+55 (62) 98275-5571** e abertura em nova aba.
-- Nenhum link de e-mail ou da seção Conteúdos no build. A antiga rota `/conteudos/` retorna 404.
-- 404 para endereço inexistente e para o projeto sem liberação editorial.
-- Capturas desktop e mobile inspecionadas. Gestão, Tecnologia, Cultura e Turismo presentes na ilustração, sem sobreposição entre etiquetas ou sobre o texto central nas quatro larguras.
+- Link de WhatsApp com telefone confirmado e abertura em nova aba.
+- 404 para a antiga seção Conteúdos, endereço inexistente e projeto sem liberação.
+- Capturas desktop e mobile inspecionadas. Marca original e presença de turismo preservadas.
 
-## Build com domínio configurado
+A atualização automática manteve um estado antigo de estilos e coleção durante a mudança. O servidor local foi reiniciado e a navegação foi repetida com sucesso no mesmo endereço.
 
-Uma cópia em diretório temporário foi usada para testar `SITE_URL` com uma origem de teste, sem modificar a prévia do usuário. O build com 14 páginas passou pela inspeção, incluindo canonical, robots, sitemap e ausência da rota retirada de Conteúdos.
+## Cenários editoriais isolados
+
+Uma cópia em diretório temporário validou, sem alterar a prévia do titular:
+
+- Domínio configurado, canonical, robots e as cinco URLs de produto no sitemap.
+- Produtos gerados somente em `/produtos/`; os sistemas não viraram cases institucionais.
+- Retirada do produto de ingressos: detalhe e links removidos do build.
+- Retirada do Mapas Culturais: ausência de destaque e links para detalhe não publicado, preservando o funcionamento da home.
+- Todos os produtos em rascunho: estado vazio, noindex e ausência de detalhes e de entrada do catálogo no sitemap.
+- Revisão editorial nula: build rejeitado pelo schema.
+
+Os dados e as cópias desses cenários ficaram somente em `/tmp`. O conteúdo público não utiliza modelo de contratação, comparação comercial proibida, dados de usuário ou código dos repositórios consultados.
 
 ## Revisão e limites
 
-A revisão independente desta rodada não encontrou bloqueadores relevantes. A logomarca original e a proteção editorial foram preservadas. Projetos SaaS continuam aguardando as informações do titular.
+A revisão independente não encontrou bloqueadores relevantes. Os textos de imobiliária, pesquisas e Rota Fácil foram sustentados por documentação e código locais. O texto do sistema de ingressos veio da descrição do titular. Endereços públicos de demonstração não foram informados, e a apresentação não promete disponibilidade imediata dos sistemas.
 
-A publicação está desativada. SSH, rsync remoto, HTTPS e diretivas do Apache precisam de validação no cPanel quando domínio, infraestrutura e credenciais forem configurados. A verificação local de acessibilidade não equivale a uma auditoria completa de conformidade WCAG.
+A publicação externa permanece desativada. SSH, rsync remoto, HTTPS e diretivas do Apache dependem da configuração da hospedagem. A validação local de acessibilidade não equivale a uma auditoria completa de conformidade WCAG.

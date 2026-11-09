@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeading from '../../components/PageHeading.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import FeaturedProduct from '../../components/FeaturedProduct.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import EmptyState from '../../components/EmptyState.astro';
+import { getPublishedProducts } from '../../lib/content';
+const products = await getPublishedProducts();
+const featured = products.find(({ data }) => data.featured);
+const others = products.filter((product) => product.id !== featured?.id);
+---
+
+<BaseLayout
+  title="Produtos"
+  description="Mapas Culturais em destaque, além de sistemas para gestão imobiliária, pesquisas, viagens e ingressos digitais. Conheça os produtos e serviços da Conecta."
+  noindex={products.length === 0}
+>
+  <PageHeading
+    eyebrow="PRODUTOS"
+    title="Tecnologia para diferentes desafios."
+    description="O Mapas Culturais é nossa principal frente de atuação. Conheça também sistemas que conectam informação, atendimento e operação em diferentes setores."
+  />
+  <section class="section">
+    <div class="container">
+      {featured && <FeaturedProduct product={featured} />}
+      {others.length > 0 && (
+        <div class:list={['other-products', { 'has-featured': Boolean(featured) }]}>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">
+                <span class="orange-dash"></span>OUTROS PRODUTOS
+              </p>
+              <h2>Soluções para o seu contexto.</h2>
+            </div>
+            <p>Conheça o que cada sistema reúne e converse com a Conecta sobre sua aplicação.</p>
+          </div>
+          <div class="product-grid">
+            {others.map((product) => (
+              <ProductCard product={product} />
+            ))}
+          </div>
+        </div>
+      )}
+      {products.length === 0 && (
+        <EmptyState
+          icon="code"
+          title="Estamos preparando esta seleção."
+          description="Em breve, apresentaremos os produtos e serviços disponíveis. Converse com a equipe para entender as possibilidades para o seu projeto."
+        />
+      )}
+    </div>
+  </section>
+  <ContactCTA />
+</BaseLayout>
