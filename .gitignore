@@ -1,0 +1,23 @@
+# Pacote de referência local; nunca versionar.
+/conecta-solucoes/
+
+# Dependências e arquivos gerados.
+/node_modules/
+/dist/
+/.astro/
+/coverage/
+/test-results/
+/playwright-report/
+/.worktrees/
+
+# Configuração local e credenciais.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Sistema e ferramentas.
+.DS_Store
+*.log
+.vscode/
