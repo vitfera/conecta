@@ -4,21 +4,228 @@ import Icon from '../components/Icon.astro';
 import ConnectionVisual from '../components/ConnectionVisual.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ContactCTA from '../components/ContactCTA.astro';
+import ContentCard from '../components/ContentCard.astro';
 import { getPublished } from '../lib/content';
 const services = (await getPublished('services')).sort((a, b) => a.data.order - b.data.order);
+const projects = (await getPublished('projects'))
+  .sort((a, b) => b.data.year - a.data.year)
+  .slice(0, 2);
+const posts = (await getPublished('posts'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
 const steps = [
-  { title: 'Escutar e entender', description: 'Conhecemos o contexto, as pessoas e o desafio que precisa ser resolvido.' },
-  { title: 'Planejar o caminho', description: 'Definimos o escopo, as prioridades e a solução adequada ao projeto.' },
-  { title: 'Construir e implantar', description: 'Transformamos o planejamento em processos, ferramentas e entregas.' },
-  { title: 'Acompanhar e evoluir', description: 'Apoiamos a equipe na operação e na melhoria contínua da solução.' },
+  {
+    title: 'Escutar e entender',
+    description: 'Conhecemos o contexto, as pessoas e o desafio que precisa ser resolvido.',
+  },
+  {
+    title: 'Planejar o caminho',
+    description: 'Definimos o escopo, as prioridades e a solução adequada ao projeto.',
+  },
+  {
+    title: 'Construir e implantar',
+    description: 'Transformamos o planejamento em processos, ferramentas e entregas.',
+  },
+  {
+    title: 'Acompanhar e evoluir',
+    description: 'Apoiamos a equipe na operação e na melhoria contínua da solução.',
+  },
 ];
 ---
+
 <BaseLayout title="Gestão, cultura e tecnologia">
-  <section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="eyebrow"><span class="orange-dash"></span>GESTÃO · CULTURA · TECNOLOGIA</p><h1>Conectamos ideias, tecnologia e gestão para <span>transformar projetos em soluções.</span></h1><p class="hero-description">Desenvolvemos soluções digitais e oferecemos consultoria especializada para organizações, projetos e políticas públicas em todo o Brasil.</p><div class="hero-actions"><a class="button" href="/contato/">Fale com a Conecta <Icon name="diagonal" size={19} /></a><a class="text-link" href="/solucoes/">Conheça nossas soluções <Icon size={18} /></a></div><p class="hero-location"><Icon name="location" size={15} />De Goiás, com atuação em todo o Brasil.</p></div><ConnectionVisual /></div></section>
-  <div class="context-strip"><div class="container context-inner"><p>Conhecimento técnico. Visão de gestão.<br /><strong>Soluções para diferentes contextos.</strong></p><div class="context-sectors"><span>Gestão pública</span><span>Cultura e fomento</span><span>Organizações e instituições</span></div></div></div>
-  <section class="section solutions-section" aria-labelledby="solutions-title"><div class="container"><div class="section-heading"><div><p class="eyebrow"><span class="orange-dash"></span>O QUE FAZEMOS</p><h2 id="solutions-title">Diferentes desafios.<br />Uma atuação integrada.</h2></div><p>Conectamos tecnologia, processos e conhecimento para apoiar seu projeto, do planejamento à operação.</p></div><div class="service-grid">{services.map(service => <ServiceCard service={service} />)}</div></div></section>
-  <section class="section approach-section" aria-labelledby="approach-title"><div class="container approach-grid"><div><p class="eyebrow"><span class="orange-dash"></span>A CONEXÃO FAZ A DIFERENÇA</p><h2 id="approach-title">Tecnologia com<br /><span>contexto e propósito.</span></h2><p>Uma boa solução precisa fazer sentido para quem a utiliza. Por isso, aproximamos o conhecimento técnico da realidade de cada instituição.</p><a class="text-link" href="/quem-somos/">Conheça a Conecta <Icon size={19} /></a></div><div class="approach-points"><div class="approach-point"><Icon name="check" /><div><h3>Entendimento do seu contexto</h3><p>Leitura dos processos, das políticas públicas e das necessidades de quem está na operação.</p></div></div><div class="approach-point"><Icon name="check" /><div><h3>Da estratégia à implementação</h3><p>Consultoria e capacidade técnica reunidas para acompanhar o projeto na prática.</p></div></div><div class="approach-point"><Icon name="check" /><div><h3>Conhecimento compartilhado</h3><p>Orientação, formação e suporte para que as equipes se apropriem das soluções.</p></div></div></div></div></section>
-  <section class="section" aria-labelledby="process-title"><div class="container"><div class="section-heading"><div><p class="eyebrow"><span class="orange-dash"></span>COMO TRABALHAMOS</p><h2 id="process-title">Cada projeto tem um contexto.<br />O nosso trabalho começa por ele.</h2></div></div><div class="steps">{steps.map((step, index) => <div class="step"><span class="step-number">0{index + 1}</span><h3>{step.title}</h3><p>{step.description}</p></div>)}</div></div></section>
-  <section class="section home-explore" aria-label="Explore a atuação e o conhecimento"><div class="container explore-grid"><div class="explore-panel"><p class="eyebrow">PROJETOS</p><h2>Experiências com contexto.</h2><p>Nosso portfólio está em preparação. Cada caso será apresentado com seu escopo, vínculo e entregas confirmadas.</p><a class="text-link" href="/projetos/">Explore projetos <Icon size={18} /></a></div><div class="explore-panel"><p class="eyebrow">CONHECIMENTO</p><h2>Ideias para seguir conectando.</h2><p>Um espaço em preparação para compartilhar reflexões e orientações sobre gestão, cultura e tecnologia.</p><a class="text-link" href="/conteudos/">Acompanhe os conteúdos <Icon size={18} /></a></div></div></section>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">
+          <span class="orange-dash"></span>GESTÃO · CULTURA · TECNOLOGIA
+        </p>
+        <h1>
+          Conectamos ideias, tecnologia e gestão para <span>transformar projetos em soluções.</span>
+        </h1>
+        <p class="hero-description">
+          Desenvolvemos soluções digitais e oferecemos consultoria especializada para organizações,
+          projetos e políticas públicas em todo o Brasil.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="/contato/">
+            Fale com a Conecta <Icon name="diagonal" size={19} />
+          </a>
+          <a class="text-link" href="/solucoes/">
+            Conheça nossas soluções <Icon size={18} />
+          </a>
+        </div>
+        <p class="hero-location">
+          <Icon name="location" size={15} />
+          De Goiás, com atuação em todo o Brasil.
+        </p>
+      </div>
+      <ConnectionVisual />
+    </div>
+  </section>
+  <div class="context-strip">
+    <div class="container context-inner">
+      <p>
+        Conhecimento técnico. Visão de gestão.
+        <br />
+        <strong>Soluções para diferentes contextos.</strong>
+      </p>
+      <div class="context-sectors">
+        <span>Gestão pública</span>
+        <span>Cultura e fomento</span>
+        <span>Organizações e instituições</span>
+      </div>
+    </div>
+  </div>
+  <section class="section solutions-section" aria-labelledby="solutions-title">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">
+            <span class="orange-dash"></span>O QUE FAZEMOS
+          </p>
+          <h2 id="solutions-title">
+            Diferentes desafios.
+            <br />
+            Uma atuação integrada.
+          </h2>
+        </div>
+        <p>
+          Conectamos tecnologia, processos e conhecimento para apoiar seu projeto, do planejamento à
+          operação.
+        </p>
+      </div>
+      <div class="service-grid">
+        {services.map((service) => (
+          <ServiceCard service={service} />
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section approach-section" aria-labelledby="approach-title">
+    <div class="container approach-grid">
+      <div>
+        <p class="eyebrow">
+          <span class="orange-dash"></span>A CONEXÃO FAZ A DIFERENÇA
+        </p>
+        <h2 id="approach-title">
+          Tecnologia com
+          <br />
+          <span>contexto e propósito.</span>
+        </h2>
+        <p>
+          Uma boa solução precisa fazer sentido para quem a utiliza. Por isso, aproximamos o
+          conhecimento técnico da realidade de cada instituição.
+        </p>
+        <a class="text-link" href="/quem-somos/">
+          Conheça a Conecta <Icon size={19} />
+        </a>
+      </div>
+      <div class="approach-points">
+        <div class="approach-point">
+          <Icon name="check" />
+          <div>
+            <h3>Entendimento do seu contexto</h3>
+            <p>
+              Leitura dos processos, das políticas públicas e das necessidades de quem está na
+              operação.
+            </p>
+          </div>
+        </div>
+        <div class="approach-point">
+          <Icon name="check" />
+          <div>
+            <h3>Da estratégia à implementação</h3>
+            <p>Consultoria e capacidade técnica reunidas para acompanhar o projeto na prática.</p>
+          </div>
+        </div>
+        <div class="approach-point">
+          <Icon name="check" />
+          <div>
+            <h3>Conhecimento compartilhado</h3>
+            <p>Orientação, formação e suporte para que as equipes se apropriem das soluções.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="process-title">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">
+            <span class="orange-dash"></span>COMO TRABALHAMOS
+          </p>
+          <h2 id="process-title">
+            Cada projeto tem um contexto.
+            <br />O nosso trabalho começa por ele.
+          </h2>
+        </div>
+      </div>
+      <div class="steps">
+        {steps.map((step, index) => (
+          <div class="step">
+            <span class="step-number">0{index + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section home-explore" aria-label="Explore a atuação e o conhecimento">
+    <div class="container explore-grid">
+      <div class="explore-panel">
+        <p class="eyebrow">PROJETOS</p>
+        <h2>Experiências com contexto.</h2>
+        {projects.length ? (
+          <div class="home-content-list">
+            {projects.map((project) => (
+              <ContentCard
+                href={`/projetos/${project.id}/`}
+                title={project.data.title}
+                description={project.data.description}
+                category={project.data.sector}
+                footnote={`${project.data.location} · ${project.data.year}`}
+              />
+            ))}
+          </div>
+        ) : (
+          <p>
+            Nosso portfólio está em preparação. Cada caso será apresentado com seu escopo, vínculo e
+            entregas confirmadas.
+          </p>
+        )}
+        <a class="text-link" href="/projetos/">
+          Explore projetos <Icon size={18} />
+        </a>
+      </div>
+      <div class="explore-panel">
+        <p class="eyebrow">CONHECIMENTO</p>
+        <h2>Ideias para seguir conectando.</h2>
+        {posts.length ? (
+          <div class="home-content-list">
+            {posts.map((post) => (
+              <ContentCard
+                href={`/conteudos/${post.id}/`}
+                title={post.data.title}
+                description={post.data.description}
+                category={post.data.category}
+                footnote={post.data.date.toLocaleDateString('pt-BR', { timeZone: 'UTC' })}
+              />
+            ))}
+          </div>
+        ) : (
+          <p>
+            Um espaço em preparação para compartilhar reflexões e orientações sobre gestão, cultura
+            e tecnologia.
+          </p>
+        )}
+        <a class="text-link" href="/conteudos/">
+          Acompanhe os conteúdos <Icon size={18} />
+        </a>
+      </div>
+    </div>
+  </section>
   <ContactCTA />
 </BaseLayout>

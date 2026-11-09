@@ -7,10 +7,62 @@ import ProjectFilters from '../../components/ProjectFilters.astro';
 import Icon from '../../components/Icon.astro';
 import { getPublished } from '../../lib/content';
 const projects = (await getPublished('projects')).sort((a, b) => b.data.year - a.data.year);
-const values = (key: 'sector' | 'nature' | 'relationship') => [...new Set(projects.map(project => project.data[key]))].sort();
+const values = (key: 'sector' | 'nature' | 'relationship') =>
+  [...new Set(projects.map((project) => project.data[key]))].sort();
 ---
-<BaseLayout title="Projetos" description="Conheça a atuação da Conecta Soluções em projetos, com identificação de escopo, vínculo e entregas confirmadas." noindex={projects.length === 0}>
-  <PageHeading eyebrow="PROJETOS" title="Cada projeto, uma conexão com a realidade." description="Experiências em tecnologia, gestão e cultura, apresentadas com o contexto e a natureza da nossa participação." />
-  <section class="section"><div class="container">{projects.length ? <>{projects.length > 1 && <ProjectFilters sectors={values('sector')} natures={values('nature')} relationships={values('relationship')} />}<div class="project-grid">{projects.map(project => <a class="project-card" href={`/projetos/${project.id}/`} data-project data-sector={project.data.sector} data-nature={project.data.nature} data-relationship={project.data.relationship}><span class="project-meta">{project.data.sector} <span aria-hidden="true">/</span> {project.data.year}</span><h2>{project.data.title}</h2><p>{project.data.description}</p><div class="project-card-bottom"><span>{project.data.location}</span><Icon name="diagonal" size={20} /></div></a>)}</div></> : <EmptyState icon="process" title="Nosso portfólio está em preparação." description="Estamos organizando os estudos de caso para apresentar cada atuação com informações verificadas. Enquanto isso, converse com a equipe para conhecer nossa forma de trabalhar." />}</div></section>
+
+<BaseLayout
+  title="Projetos"
+  description="Conheça a atuação da Conecta Soluções em projetos, com identificação de escopo, vínculo e entregas confirmadas."
+  noindex={projects.length === 0}
+>
+  <PageHeading
+    eyebrow="PROJETOS"
+    title="Cada projeto, uma conexão com a realidade."
+    description="Experiências em tecnologia, gestão e cultura, apresentadas com o contexto e a natureza da nossa participação."
+  />
+  <section class="section">
+    <div class="container">
+      {projects.length ? (
+        <>
+          {projects.length > 1 && (
+            <ProjectFilters
+              sectors={values('sector')}
+              natures={values('nature')}
+              relationships={values('relationship')}
+            />
+          )}
+          <div class="project-grid">
+            {projects.map((project) => (
+              <a
+                class="project-card"
+                href={`/projetos/${project.id}/`}
+                data-project
+                data-sector={project.data.sector}
+                data-nature={project.data.nature}
+                data-relationship={project.data.relationship}
+              >
+                <span class="project-meta">
+                  {project.data.sector} <span aria-hidden="true">/</span> {project.data.year}
+                </span>
+                <h2>{project.data.title}</h2>
+                <p>{project.data.description}</p>
+                <div class="project-card-bottom">
+                  <span>{project.data.location}</span>
+                  <Icon name="diagonal" size={20} />
+                </div>
+              </a>
+            ))}
+          </div>
+        </>
+      ) : (
+        <EmptyState
+          icon="process"
+          title="Nosso portfólio está em preparação."
+          description="Estamos organizando os estudos de caso para apresentar cada atuação com informações verificadas. Enquanto isso, converse com a equipe para conhecer nossa forma de trabalhar."
+        />
+      )}
+    </div>
+  </section>
   <ContactCTA />
 </BaseLayout>

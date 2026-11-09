@@ -1,0 +1,101 @@
+name: Verificar e publicar site estático
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: conecta-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  ASTRO_TELEMETRY_DISABLED: 1
+
+jobs:
+  build:
+    name: Testes e build
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run check
+      - run: npm run build
+      - run: npm run verify
+      - name: Guardar somente o site compilado
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: conecta-dist-${{ github.sha }}
+          path: dist/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
+
+  deploy:
+    name: Publicar no cPanel
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    concurrency:
+      group: conecta-cpanel-production
+      cancel-in-progress: false
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
+      CPANEL_HOST: ${{ secrets.CPANEL_HOST }}
+      CPANEL_PORT: ${{ secrets.CPANEL_PORT }}
+      CPANEL_USER: ${{ secrets.CPANEL_USER }}
+      CPANEL_PATH: ${{ secrets.CPANEL_PATH }}
+      CPANEL_SSH_KEY: ${{ secrets.CPANEL_SSH_KEY }}
+      CPANEL_KNOWN_HOSTS: ${{ secrets.CPANEL_KNOWN_HOSTS }}
+    steps:
+      - name: Recuperar o build verificado
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6
+        with:
+          name: conecta-dist-${{ github.sha }}
+          path: dist/
+      - name: Validar configuração e sincronizar somente dist
+        shell: bash
+        run: |
+          set -euo pipefail
+          : "${SITE_URL:?Defina SITE_URL antes de habilitar o deploy}"
+          : "${CPANEL_HOST:?Host não configurado}"
+          : "${CPANEL_USER:?Usuário não configurado}"
+          : "${CPANEL_PATH:?Diretório remoto não configurado}"
+          : "${CPANEL_SSH_KEY:?Chave SSH não configurada}"
+          : "${CPANEL_KNOWN_HOSTS:?Chave pública validada do servidor não configurada}"
+          CPANEL_PORT="${CPANEL_PORT:-22}"
+          [[ "$CPANEL_HOST" =~ ^[a-zA-Z0-9][a-zA-Z0-9.-]*$ ]]
+          [[ "$CPANEL_USER" =~ ^[a-zA-Z0-9_][a-zA-Z0-9_-]*$ ]]
+          [[ "$CPANEL_PORT" =~ ^[0-9]{1,5}$ ]]
+          (( 10#$CPANEL_PORT > 0 && 10#$CPANEL_PORT < 65536 ))
+          [[ "$CPANEL_PATH" =~ ^/home[0-9]*/[a-zA-Z0-9_-]+/public_html(/[a-zA-Z0-9_-]+)*$ ]]
+          test -f dist/index.html && test -f dist/.htaccess
+          known_hosts="$RUNNER_TEMP/conecta_known_hosts"
+          printf '%s\n' "$CPANEL_KNOWN_HOSTS" > "$known_hosts"
+          chmod 600 "$known_hosts"
+          eval "$(ssh-agent -s)" > /dev/null
+          trap 'ssh-agent -k > /dev/null' EXIT
+          printf '%s\n' "$CPANEL_SSH_KEY" | ssh-add - > /dev/null 2>&1
+          ssh_args=(-p "$CPANEL_PORT" -o BatchMode=yes -o StrictHostKeyChecking=yes -o "UserKnownHostsFile=$known_hosts")
+          # O titular deve criar este marcador no diretório exclusivo do site.
+          # Isso impede sincronização destrutiva em uma pasta genérica da conta.
+          ssh "${ssh_args[@]}" "$CPANEL_USER@$CPANEL_HOST" "test -f '$CPANEL_PATH/.conecta-static-site'"
+          rsync --archive --compress --delay-updates --delete-delay \
+            --exclude='/.conecta-static-site' --exclude='/.well-known/' --exclude='/cgi-bin/' \
+            -e "ssh -p $CPANEL_PORT -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$known_hosts" \
+            dist/ "$CPANEL_USER@$CPANEL_HOST:$CPANEL_PATH/"
+          printf 'Publicado o build do commit %s.\n' "$GITHUB_SHA"

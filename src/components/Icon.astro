@@ -1,5 +1,9 @@
 ---
-interface Props { name?: string; size?: number; class?: string; }
+interface Props {
+  name?: string;
+  size?: number;
+  class?: string;
+}
 const { name = 'arrow', size = 24, class: className } = Astro.props;
 const paths: Record<string, string> = {
   arrow: 'M5 12h14m-6-6 6 6-6 6',
@@ -16,4 +20,18 @@ const paths: Record<string, string> = {
   plus: 'M12 5v14M5 12h14',
 };
 ---
-<svg class={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={paths[name] ?? paths.arrow} /></svg>
+
+<svg
+  class={className}
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  <path d={paths[name] ?? paths.arrow} />
+</svg>

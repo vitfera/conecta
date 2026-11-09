@@ -2,4 +2,33 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 ---
-<BaseLayout title="Página não encontrada" description="Este caminho não foi encontrado. Continue pela página inicial ou conheça as soluções da Conecta." noindex><section class="section not-found"><div class="container"><p class="error-code">404</p><p class="eyebrow">VAMOS RECONECTAR O CAMINHO</p><h1>Esta página<br />não foi encontrada.</h1><p>O endereço pode ter mudado. Você pode continuar pela página inicial ou explorar nossas soluções.</p><div class="hero-actions"><a class="button" href="/">Voltar ao início <Icon size={18} /></a><a class="text-link" href="/solucoes/">Conheça as soluções <Icon name="diagonal" size={18} /></a></div></div></section></BaseLayout>
+
+<BaseLayout
+  title="Página não encontrada"
+  description="Este caminho não foi encontrado. Continue pela página inicial ou conheça as soluções da Conecta."
+  noindex
+>
+  <section class="section not-found">
+    <div class="container">
+      <p class="error-code">404</p>
+      <p class="eyebrow">VAMOS RECONECTAR O CAMINHO</p>
+      <h1>
+        Esta página
+        <br />
+        não foi encontrada.
+      </h1>
+      <p>
+        O endereço pode ter mudado. Você pode continuar pela página inicial ou explorar nossas
+        soluções.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="/">
+          Voltar ao início <Icon size={18} />
+        </a>
+        <a class="text-link" href="/solucoes/">
+          Conheça as soluções <Icon name="diagonal" size={18} />
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

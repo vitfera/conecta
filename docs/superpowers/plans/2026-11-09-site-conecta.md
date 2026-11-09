@@ -44,11 +44,15 @@ Arquivos: `src/layouts/BaseLayout.astro`, `src/components/*.astro`, `src/styles/
 
 Arquivos: `.github/workflows/build-and-deploy.yml`, `scripts/verify-build.mjs`, `public/.htaccess`, `README.md`, `docs/deploy.md`, `src/pages/robots.txt.ts`, `src/pages/sitemap.xml.ts`.
 
-- [ ] Validar build sem domínio (noindex), com domínio (canonical/sitemap reais) e exclusão dos rascunhos.
-- [ ] Implementar verificação do HTML gerado: rotas, links internos, títulos/descrições únicos e ausência de material interno.
-- [ ] Criar CI com `npm ci`, testes, tipos, build e inspeção de saída.
-- [ ] Preparar deploy por SSH/rsync, sem remoção indiscriminada, host autenticado e destino configurável; sem executar publicação.
-- [ ] Documentar desenvolvimento, revisão editorial, variáveis, publicação e restauração.
-- [ ] Testar a prévia em desktop e celular, teclado e fallback sem JS; corrigir falhas observadas.
-- [ ] Reexecutar `npm test`, `npm run check`, `npm run build`, `npm run verify` e `git diff --check`.
-- [ ] Commit: `ci: verify static site and prepare secure cPanel deployment`.
+- [x] Validar build sem domínio (noindex), com domínio (canonical/sitemap reais) e exclusão dos rascunhos.
+- [x] Implementar verificação do HTML gerado: rotas, links internos, títulos/descrições únicos e ausência de material interno.
+- [x] Criar CI com `npm ci`, testes, tipos, build e inspeção de saída.
+- [x] Preparar deploy por SSH/rsync, sem remoção indiscriminada, host autenticado e destino configurável; sem executar publicação.
+- [x] Documentar desenvolvimento, revisão editorial, variáveis, publicação e restauração.
+- [x] Testar a prévia em desktop e celular, teclado e fallback sem JS; corrigir falhas observadas.
+- [x] Reexecutar `npm test`, `npm run check`, `npm run build`, `npm run verify` e `git diff --check`.
+- [x] Commit: `ci: verify static site and prepare secure cPanel deployment`.
+
+## Resultado de validação
+
+Verificações e limites registrados em [docs/verification.md](../../verification.md). Prévia local mantida ativa por solicitação do titular; publicação externa não executada.

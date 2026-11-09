@@ -1,0 +1,8 @@
+conecta-solucoes/
+node_modules/
+dist/
+.astro/
+.gstack/
+package-lock.json
+test-results/
+playwright-report/

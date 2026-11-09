@@ -7,8 +7,17 @@ if (existsSync('.env')) loadEnvFile('.env');
 const site = process.env.SITE_URL?.trim();
 if (site) {
   const url = new URL(site);
-  if (url.protocol !== 'https:' || url.pathname !== '/' || url.search || url.hash || url.username || url.password) {
-    throw new Error('SITE_URL deve ser a origem HTTPS do domínio oficial, sem subpasta ou credenciais.');
+  if (
+    url.protocol !== 'https:' ||
+    url.pathname !== '/' ||
+    url.search ||
+    url.hash ||
+    url.username ||
+    url.password
+  ) {
+    throw new Error(
+      'SITE_URL deve ser a origem HTTPS do domínio oficial, sem subpasta ou credenciais.',
+    );
   }
 }
 
@@ -17,5 +26,6 @@ export default defineConfig({
   site: site || undefined,
   trailingSlash: 'always',
   build: { format: 'directory' },
+  devToolbar: { enabled: false },
   vite: { build: { sourcemap: false } },
 });

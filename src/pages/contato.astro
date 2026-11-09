@@ -5,7 +5,86 @@ import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 const contactHref = `${site.emailHref}?subject=${encodeURIComponent('Vamos conversar sobre um projeto — Conecta Soluções')}`;
 ---
-<BaseLayout title="Contato" description="Fale com a Conecta Soluções sobre seu projeto. Atendimento em todo o Brasil, com sede em Aparecida de Goiânia, Goiás.">
-  <PageHeading eyebrow="VAMOS CONVERSAR" title="Qual conexão o seu projeto precisa?" description="Uma ideia no começo, um processo que precisa evoluir ou uma solução para colocar em operação. Conte o seu desafio." />
-  <section class="section"><div class="container contact-grid"><div><p class="eyebrow">CONTATO DIRETO</p><h2>O primeiro passo<br />é uma conversa.</h2><p class="contact-intro">Escreva para a equipe e compartilhe um pouco do contexto. Vamos entender a sua necessidade e os próximos passos.</p><a class="contact-email" href={contactHref}>{site.email}<Icon name="diagonal" size={24} /></a><a class="button" href={contactHref}><Icon name="mail" size={19} />Enviar um e-mail</a><p class="contact-hint">O link abre o aplicativo de e-mail do seu dispositivo. Você também pode copiar o endereço acima.</p><div class="contact-location"><Icon name="location" size={24} /><div><strong>{site.location}</strong><p>Atuação nacional, presencial ou remota,<br />de acordo com o projeto.</p></div></div></div><aside class="conversation-guide"><span class="icon-box"><Icon name="communication" size={29} /></span><h2>Para começar,<br />conte um pouco sobre:</h2><ol><li><span>01</span><div><strong>Seu contexto</strong><p>Qual é a sua instituição e o desafio que está enfrentando?</p></div></li><li><span>02</span><div><strong>O que precisa acontecer</strong><p>Que processo, projeto ou solução você quer colocar em prática?</p></div></li><li><span>03</span><div><strong>O momento do projeto</strong><p>Existe uma necessidade inicial, um prazo ou uma operação em andamento?</p></div></li></ol><p class="guide-note">Não precisa ter tudo definido. Podemos organizar o caminho juntos.</p></aside></div></section>
+
+<BaseLayout
+  title="Contato"
+  description="Fale com a Conecta Soluções sobre seu projeto. Atendimento em todo o Brasil, com sede em Aparecida de Goiânia, Goiás."
+>
+  <PageHeading
+    eyebrow="VAMOS CONVERSAR"
+    title="Qual conexão o seu projeto precisa?"
+    description="Uma ideia no começo, um processo que precisa evoluir ou uma solução para colocar em operação. Conte o seu desafio."
+  />
+  <section class="section">
+    <div class="container contact-grid">
+      <div>
+        <p class="eyebrow">CONTATO DIRETO</p>
+        <h2>
+          O primeiro passo
+          <br />é uma conversa.
+        </h2>
+        <p class="contact-intro">
+          Escreva para a equipe e compartilhe um pouco do contexto. Vamos entender a sua necessidade
+          e os próximos passos.
+        </p>
+        <a class="contact-email" href={contactHref}>
+          {site.email}
+          <Icon name="diagonal" size={24} />
+        </a>
+        <a class="button" href={contactHref}>
+          <Icon name="mail" size={19} />
+          Enviar um e-mail
+        </a>
+        <p class="contact-hint">
+          O link abre o aplicativo de e-mail do seu dispositivo. Você também pode copiar o endereço
+          acima.
+        </p>
+        <div class="contact-location">
+          <Icon name="location" size={24} />
+          <div>
+            <strong>{site.location}</strong>
+            <p>
+              Atuação nacional, presencial ou remota,
+              <br />
+              de acordo com o projeto.
+            </p>
+          </div>
+        </div>
+      </div>
+      <aside class="conversation-guide">
+        <span class="icon-box">
+          <Icon name="communication" size={29} />
+        </span>
+        <h2>
+          Para começar,
+          <br />
+          conte um pouco sobre:
+        </h2>
+        <ol>
+          <li>
+            <span>01</span>
+            <div>
+              <strong>Seu contexto</strong>
+              <p>Qual é a sua instituição e o desafio que está enfrentando?</p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <strong>O que precisa acontecer</strong>
+              <p>Que processo, projeto ou solução você quer colocar em prática?</p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <strong>O momento do projeto</strong>
+              <p>Existe uma necessidade inicial, um prazo ou uma operação em andamento?</p>
+            </div>
+          </li>
+        </ol>
+        <p class="guide-note">Não precisa ter tudo definido. Podemos organizar o caminho juntos.</p>
+      </aside>
+    </div>
+  </section>
 </BaseLayout>

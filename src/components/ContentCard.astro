@@ -1,0 +1,21 @@
+---
+import Icon from './Icon.astro';
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  category: string;
+  footnote: string;
+}
+const { title, description, href, category, footnote } = Astro.props;
+---
+
+<a class="project-card" href={href}>
+  <span class="project-meta">{category}</span>
+  <h2>{title}</h2>
+  <p>{description}</p>
+  <div class="project-card-bottom">
+    <span>{footnote}</span>
+    <Icon name="diagonal" size={20} />
+  </div>
+</a>

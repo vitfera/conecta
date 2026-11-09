@@ -5,14 +5,84 @@ import PageHeading from '../../components/PageHeading.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
 import { getPublished } from '../../lib/content';
 export async function getStaticPaths() {
-  return (await getPublished('projects')).map(project => ({ params: { slug: project.id }, props: { project } }));
+  return (await getPublished('projects')).map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
 }
-interface Props { project: CollectionEntry<'projects'>; }
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
 const { project } = Astro.props;
 const { Content } = await render(project);
-const status = { 'contrato-firmado': 'Contrato firmado', 'em-execucao': 'Em execução', 'concluido-com-evidencia': 'Concluído, com evidência de entrega' };
+const status = {
+  'contrato-firmado': 'Contrato firmado',
+  'em-execucao': 'Em execução',
+  'concluido-com-evidencia': 'Concluído, com evidência de entrega',
+};
 ---
+
 <BaseLayout title={project.data.title} description={project.data.description}>
-  <PageHeading eyebrow={`${project.data.sector.toLocaleUpperCase('pt-BR')} · ${project.data.year}`} title={project.data.title} description={project.data.description} />
-  <section class="section"><div class="container detail-grid"><article class="prose"><Content />{project.data.verifiedDeliveries.length > 0 && <><h2>Entregas confirmadas</h2><ul>{project.data.verifiedDeliveries.map(item => <li>{item}</li>)}</ul></>}{project.data.verifiedResults.length > 0 && <><h2>Resultados confirmados</h2><ul>{project.data.verifiedResults.map(item => <li>{item}</li>)}</ul></>}{project.data.externalLinks.length > 0 && <><h2>Saiba mais</h2><ul>{project.data.externalLinks.map(link => <li><a href={link.url} rel="external noopener noreferrer">{link.label}</a></li>)}</ul></>}</article><aside class="project-facts"><h2>Sobre a atuação</h2><dl><dt>Contratante</dt><dd>{project.data.client}</dd><dt>Vínculo</dt><dd>{project.data.relationship}</dd><dt>Localidade</dt><dd>{project.data.location}</dd><dt>Natureza</dt><dd>{project.data.nature}</dd><dt>Situação contratual</dt><dd>{status[project.data.contractStatus]}</dd></dl></aside></div></section><ContactCTA />
+  <PageHeading
+    eyebrow={`${project.data.sector.toLocaleUpperCase('pt-BR')} · ${project.data.year}`}
+    title={project.data.title}
+    description={project.data.description}
+  />
+  <section class="section">
+    <div class="container detail-grid">
+      <article class="prose">
+        <Content />
+        {project.data.verifiedDeliveries.length > 0 && (
+          <>
+            <h2>Entregas confirmadas</h2>
+            <ul>
+              {project.data.verifiedDeliveries.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </>
+        )}
+        {project.data.verifiedResults.length > 0 && (
+          <>
+            <h2>Resultados confirmados</h2>
+            <ul>
+              {project.data.verifiedResults.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </>
+        )}
+        {project.data.externalLinks.length > 0 && (
+          <>
+            <h2>Saiba mais</h2>
+            <ul>
+              {project.data.externalLinks.map((link) => (
+                <li>
+                  <a href={link.url} rel="external noopener noreferrer">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </article>
+      <aside class="project-facts">
+        <h2>Sobre a atuação</h2>
+        <dl>
+          <dt>Contratante</dt>
+          <dd>{project.data.client}</dd>
+          <dt>Vínculo</dt>
+          <dd>{project.data.relationship}</dd>
+          <dt>Localidade</dt>
+          <dd>{project.data.location}</dd>
+          <dt>Natureza</dt>
+          <dd>{project.data.nature}</dd>
+          <dt>Situação contratual</dt>
+          <dd>{status[project.data.contractStatus]}</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+  <ContactCTA />
 </BaseLayout>
