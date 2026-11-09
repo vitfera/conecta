@@ -7,7 +7,7 @@ Verificado em 9 de novembro de 2026, após a criação do catálogo de Produtos 
 - `npm test`: 20 testes de publicação, datas, schemas de produtos e cases, atribuição de software livre e prioridade do carro-chefe.
 - `npm run check`: tipos e componentes Astro sem erros, avisos ou sugestões.
 - `npm run build`: 19 páginas estáticas, incluindo cinco detalhes de produto e imagens otimizadas.
-- `npm run verify`: 514 links e assets, metadados únicos, ausência de rascunhos, WhatsApp, retirada de Conteúdos, destaque do Mapas Culturais e prévia sem indexação.
+- `npm run verify`: 515 links e assets, incluindo a foto real, metadados únicos, ausência de rascunhos, WhatsApp, retirada de Conteúdos, destaque do Mapas Culturais e prévia sem indexação.
 - `git diff --check`: verificação de espaços e conflitos.
 
 ## Navegador
@@ -45,7 +45,7 @@ Os dados e as cópias desses cenários ficaram somente em `/tmp`. O conteúdo p�
 
 Uma cópia temporária validou a inclusão de `src/assets/equipe/victor-ferreira.jpg` sem editar o componente e sem reiniciar o servidor. A imagem passou a aparecer no lugar das iniciais, com texto alternativo, versões otimizadas e proporção 3:4. O build dessa cópia verificou 19 páginas e 515 links e assets.
 
-A retirada do arquivo restaurou as iniciais, sem imagem quebrada. O cenário utilizou um asset existente somente na cópia de teste; a foto real ainda será fornecida pelo titular. No projeto, o caminho e as dimensões recomendadas estão documentados em [orientação da foto](../src/assets/equipe/README.md).
+A retirada do arquivo restaurou as iniciais, sem imagem quebrada. O cenário utilizou um asset existente somente na cópia de teste. Posteriormente, o titular adicionou a foto real, com 977 × 1302 pixels, no caminho definido. A imagem foi detectada automaticamente, otimizada pelo build e conferida no navegador em 1440, 768, 375 e 320 pixels, preservando a proporção 3:4 e sem estouro horizontal. No projeto, o caminho e as dimensões recomendadas estão documentados em [orientação da foto](../src/assets/equipe/README.md).
 
 ## Revisão e limites
 

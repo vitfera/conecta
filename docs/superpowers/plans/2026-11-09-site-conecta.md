@@ -129,7 +129,7 @@ Solicitações de 9 de novembro de 2026, com execução autorizada pelo titular 
 - [x] Preservar a distinção entre a trajetória profissional de Victor e as atuações da empresa; incluir apenas nomes, funções e informações da equipe que forem fornecidos.
 - [x] Conferir legibilidade, hierarquia e organização do conjunto em desktop e celular.
 
-Foto: proporção **3:4**, dimensão recomendada **900 × 1200 px**, nome **`victor-ferreira.jpg`**, pasta **`src/assets/equipe/`**. Instruções em [README da foto](../../../src/assets/equipe/README.md). O componente reserva o espaço enquanto o arquivo real não está disponível; a foto será inserida pelo titular posteriormente.
+Foto: proporção **3:4**, dimensão recomendada **900 × 1200 px**, nome **`victor-ferreira.jpg`**, pasta **`src/assets/equipe/`**. Instruções em [README da foto](../../../src/assets/equipe/README.md). O titular adicionou a foto real com 977 × 1302 pixels; o componente detectou o arquivo automaticamente, substituindo as iniciais.
 
 ### Entrega e validação
 
