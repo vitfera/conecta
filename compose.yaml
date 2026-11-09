@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        SITE_URL: ${SITE_URL-https://conecta.victor.ferreira.nom.br}
+    ports:
+      - '${APP_PORT:-3019}:8080'
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=32m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: '10m'
+        max-file: '3'

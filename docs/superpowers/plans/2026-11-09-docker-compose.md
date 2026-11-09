@@ -13,26 +13,30 @@
 - [x] Confirmar ausência de Pagefind, busca e documentos públicos PDF; preservar as imagens e todas as páginas existentes.
 - [x] Confirmar que a regra editorial oculta rascunhos tanto em desenvolvimento quanto no build. A homologação não precisa de servidor de desenvolvimento ou HMR.
 - [x] Verificar a porta local 3019 e a conectividade TCP com `192.168.3.85:3019`, sem modificar a VM. A confirmação de disponibilidade por bind na VM será documentada separadamente.
-- [ ] Registrar o commit do plano.
+- [x] Registrar o commit do plano.
 
 ## Contêineres e operação
 
-Arquivos: `Dockerfile`, `compose.yaml`, `.dockerignore`, `.env.example`, `.nvmrc`, `docker/nginx.conf` e `docs/docker.md`.
+Arquivos: `Dockerfile`, `compose.yaml`, `.dockerignore`, `.env.example`, `.nvmrc`, `docker/nginx.conf`, `docker/build-libvips.sh`, `scripts/verify-docker.mjs` e `docs/docker.md`.
 
-- [ ] Usar `npm ci`, executar testes, tipos, build e verificação na imagem de build; preservar o manifesto e o lockfile enquanto não houver falha que justifique alteração.
-- [ ] Executar Nginx como UID/GID 101, com healthcheck HTTP, logs em stdout/stderr, 404 real, arquivos ocultos protegidos e cabeçalhos equivalentes ao Apache.
-- [ ] Configurar Compose com `${APP_PORT:-3019}:8080`, reinício controlado, filesystem somente leitura, `/tmp` temporário e nenhuma montagem do código ou credenciais.
-- [ ] Aplicar uma lista explícita de inclusão no contexto: manifesto, lockfile, configuração Astro/TS, fontes/assets, arquivos públicos, testes, verificação e configuração Nginx. Excluir Git, `.env`, pacote privado, dependências locais, backups e exportações.
-- [ ] Preservar `SITE_URL` no build para canonical, sitemap e URL institucional. Manter homologação fora da indexação por cabeçalho HTTP; sem URL institucional configurada, preservar o bloqueio existente.
-- [ ] Executar `docker compose config --quiet`, build com saída completa, inicialização com `--wait`, healthcheck, inspeção do usuário e arquivos, navegação, imagens, 404 e porta alternativa.
-- [ ] Testar dependências nativas e Nginx em CPU emulada sem AVX/AVX2; registrar comandos, saídas e falhas antes de alterar dependências ou configuração.
-- [ ] Registrar o commit de implementação validada.
+- [x] Usar `npm ci`, executar testes, tipos, build e verificação na imagem de build; preservar o manifesto e o lockfile enquanto não houver falha que justifique alteração.
+- [x] Executar Nginx como UID/GID 101, com healthcheck HTTP, logs em stdout/stderr, 404 real, arquivos ocultos protegidos e cabeçalhos equivalentes ao Apache.
+- [x] Configurar Compose com `${APP_PORT:-3019}:8080`, reinício controlado, filesystem somente leitura, `/tmp` temporário e nenhuma montagem do código ou credenciais.
+- [x] Aplicar uma lista explícita de inclusão no contexto: manifesto, lockfile, configuração Astro/TS, fontes/assets, arquivos públicos, testes, verificação e configuração Nginx. Excluir Git, `.env`, pacote privado, dependências locais, backups e exportações.
+- [x] Preservar `SITE_URL` no build para canonical, sitemap e URL institucional. Manter homologação fora da indexação por cabeçalho HTTP; sem URL institucional configurada, preservar o bloqueio existente.
+- [x] Executar `docker compose config --quiet`, build com saída completa, inicialização com `--wait`, healthcheck, inspeção do usuário e arquivos, navegação, imagens, 404 e porta alternativa.
+- [x] Testar dependências nativas e Nginx em CPU emulada sem AVX/AVX2; registrar comandos, saídas e falhas antes de alterar dependências ou configuração.
+- [x] Registrar o commit de implementação validada.
 
 ## Documentação e encerramento
 
-- [ ] Documentar domínio de homologação ainda não informado, origem `http://192.168.3.85:3019`, terminação HTTPS no Cloudflare e conectividade do conector.
+- [ ] Documentar o domínio de homologação confirmado `conecta.victor.ferreira.nom.br`, origem `http://192.168.3.85:3019`, terminação HTTPS no Cloudflare e conectividade do conector.
 - [ ] Explicar por que não há configuração de host do Astro ou teste de HMR nesse modo estático; não expor o servidor de desenvolvimento como homologação.
 - [ ] Documentar controle de acesso via Cloudflare Access e rede de origem, sem configurar serviços externos nesta rodada. A prévia de rascunhos não é habilitada implicitamente.
 - [ ] Registrar testes locais efetivos e os limites da confirmação na VM, com comandos de diagnóstico e códigos de saída.
 - [ ] Solicitar revisão independente, corrigir achados confirmados e atualizar README.
 - [ ] Fazer o commit final, preservar o checkout e a prévia local para acompanhamento.
+
+## Ajuste de CPU confirmado
+
+O binding Linux precompilado do Sharp 0.35.5 sinalizou SIGILL em qemu64. O binding WebAssembly da mesma versão não carregou porque o perfil não suporta Wasm SIMD. A implementação final compila libvips 8.18.7 e o binding Sharp 0.35.5 para x86-64 básico, com checksum do release e ferramentas npm fixadas, preservando as versões existentes das dependências. O build Astro com cache de imagens limpo passou em `qemu64,-avx,-avx2`: 21 páginas, 577 links/assets, otimização das imagens obrigatória, código de saída 0. O Nginx final também passou pela validação HTTP emulada.
