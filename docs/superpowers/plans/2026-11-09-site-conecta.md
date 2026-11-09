@@ -13,32 +13,32 @@
 - [x] Ler todos os documentos e inspecionar a marca.
 - [x] Criar `.gitignore` com `/conecta-solucoes/`, configurações locais e artefatos.
 - [x] Registrar decisões em `docs/superpowers/specs/2026-11-09-site-conecta-design.md` e este plano.
-- [ ] Executar `git check-ignore conecta-solucoes/README.md` e conferir os arquivos preparados.
-- [ ] Commit: `chore: define project scope and exclude local reference package`.
+- [x] Executar `git check-ignore conecta-solucoes/README.md` e conferir os arquivos preparados.
+- [x] Commit: `chore: define project scope and exclude local reference package`.
 
 ## Etapa 2 — base técnica e controle editorial
 
 Arquivos: `package.json`, `package-lock.json`, `astro.config.mjs`, `tsconfig.json`, `.env.example`, `src/content.config.ts`, `src/lib/publication.ts`, `src/data/site.ts`, `tests/publication.test.ts`, `src/content/{services,projects,posts,products}/*.md`.
 
-- [ ] Instalar Astro e as dependências de validação, com versões registradas no lockfile.
-- [ ] Escrever e executar testes que rejeitam rascunhos e publicação sem revisão; observar falha antes de implementar `isPublishable`.
-- [ ] Implementar a política editorial e schemas: `publish: true` exige `publicationStatus: aprovado` e data de revisão; projetos preservam contratante, vínculo, status e resultados comprovados.
-- [ ] Cadastrar seis serviços conforme o catálogo; manter projetos, artigo inicial e produto em revisão ocultos.
-- [ ] Definir e-mail confirmado, menus e URL de produção configurável, sem domínio inventado.
-- [ ] Verificar com `npm test` e `npx astro sync`.
-- [ ] Commit: `feat: set up Astro and validated editorial collections`.
+- [x] Instalar Astro e as dependências de validação, com versões registradas no lockfile.
+- [x] Escrever e executar testes que rejeitam rascunhos e publicação sem revisão; observar falha antes de implementar `isPublishable`.
+- [x] Implementar a política editorial e schemas: `publish: true` exige `publicationStatus: aprovado` e data de revisão; projetos preservam contratante, vínculo, status e resultados comprovados.
+- [x] Cadastrar seis serviços conforme o catálogo; manter projetos, artigo inicial e produto em revisão ocultos.
+- [x] Definir e-mail confirmado, menus e URL de produção configurável, sem domínio inventado.
+- [x] Verificar com `npm test` e `npx astro sync`.
+- [x] Commit: `feat: set up Astro and validated editorial collections`.
 
 ## Etapa 3 — identidade, navegação e páginas
 
 Arquivos: `src/layouts/BaseLayout.astro`, `src/components/*.astro`, `src/styles/*.css`, `src/pages/**/*.astro`, `src/assets/conecta-logo.png`, `public/branding/`.
 
-- [ ] Incorporar somente a marca aprovada, em proporção original; otimizar durante o build.
-- [ ] Implementar layout, SEO, cabeçalho com menu sem dependência de JavaScript, rodapé, componentes e estilos responsivos.
-- [ ] Implementar home com frase aprovada, seis soluções, diferenciais, etapas de trabalho e contato.
-- [ ] Implementar Quem Somos, catálogo e seis detalhes de soluções, plataformas, projetos, conteúdos, contato, privacidade e 404.
-- [ ] Usar a consulta editorial central em listas e `getStaticPaths`; estados vazios não expõem nomes de cases em revisão.
-- [ ] Verificar `npm run check` e `npm run build`.
-- [ ] Commit: `feat: build responsive Conecta institutional website`.
+- [x] Incorporar somente a marca aprovada, em proporção original; otimizar durante o build.
+- [x] Implementar layout, SEO, cabeçalho com menu sem dependência de JavaScript, rodapé, componentes e estilos responsivos.
+- [x] Implementar home com frase aprovada, seis soluções, diferenciais, etapas de trabalho e contato.
+- [x] Implementar Quem Somos, catálogo e seis detalhes de soluções, plataformas, projetos, conteúdos, contato, privacidade e 404.
+- [x] Usar a consulta editorial central em listas e `getStaticPaths`; estados vazios não expõem nomes de cases em revisão.
+- [x] Verificar `npm run check` e `npm run build`.
+- [x] Commit: `feat: build responsive Conecta institutional website`.
 
 ## Etapa 4 — entrega, validação e cPanel
 

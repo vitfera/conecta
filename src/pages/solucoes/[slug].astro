@@ -1,0 +1,19 @@
+---
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import Icon from '../../components/Icon.astro';
+import { getPublished } from '../../lib/content';
+export async function getStaticPaths() {
+  return (await getPublished('services')).map(service => ({ params: { slug: service.id }, props: { service } }));
+}
+interface Props { service: CollectionEntry<'services'>; }
+const { service } = Astro.props;
+const { Content } = await render(service);
+---
+<BaseLayout title={service.data.title} description={service.data.description}>
+  <section class="page-heading service-heading"><div class="container"><a class="breadcrumb" href="/solucoes/">Soluções <span aria-hidden="true">/</span> <span>{service.data.shortTitle}</span></a><div class="service-title"><span class="icon-box"><Icon name={service.data.icon} size={30} /></span><h1>{service.data.title}</h1></div><p class="page-description">{service.data.description}</p></div></section>
+  <section class="section"><div class="container detail-grid"><article class="prose"><Content /></article><aside class="service-aside"><p class="eyebrow">COMO PODEMOS APOIAR</p><ul class="offering-list">{service.data.offerings.map(offering => <li><Icon name="check" size={19} /><span>{offering}</span></li>)}</ul><div class="audience"><h2>Para quem</h2><p>{service.data.audience}</p></div><a class="button" href="/contato/">Converse sobre seu projeto <Icon name="diagonal" size={18} /></a></aside></div></section>
+  <ContactCTA />
+</BaseLayout>

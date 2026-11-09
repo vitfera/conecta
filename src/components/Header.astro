@@ -1,0 +1,23 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { navigation } from '../data/site';
+const current = Astro.url.pathname;
+const active = (href: string) => href === '/' ? current === '/' : current.startsWith(href);
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <Logo />
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      {navigation.map(({ href, label }) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}
+    </nav>
+    <a class="button button-small header-contact" href="/contato/">Vamos conversar <Icon name="diagonal" size={17} /></a>
+    <details class="mobile-menu">
+      <summary aria-label="Abrir ou fechar menu de navegação"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></summary>
+      <nav aria-label="Navegação mobile">
+        {navigation.map(({ href, label }) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}<Icon size={17} /></a>)}
+        <a href="/contato/" aria-current={current === '/contato/' ? 'page' : undefined}>Contato<Icon name="diagonal" size={17} /></a>
+      </nav>
+    </details>
+  </div>
+</header>

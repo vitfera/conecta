@@ -1,0 +1,8 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/conecta-logo.png';
+interface Props { class?: string; }
+---
+<a href="/" class:list={['brand', Astro.props.class]} aria-label="Conecta Soluções — início">
+  <Image src={logo} width={190} widths={[190, 380, 570]} sizes="190px" format="webp" alt="Conecta Soluções — Gestão, Cultura e Tecnologia" loading="eager" />
+</a>

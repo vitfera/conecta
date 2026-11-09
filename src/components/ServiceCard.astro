@@ -1,0 +1,11 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+interface Props { service: CollectionEntry<'services'>; }
+const { service } = Astro.props;
+const { data } = service;
+---
+<a class="service-card" href={`/solucoes/${service.id}/`}>
+  <div class="service-card-top"><span class="icon-box"><Icon name={data.icon} size={29} /></span><span class="card-number">0{data.order}</span></div>
+  <h3>{data.shortTitle}</h3><p>{data.description}</p><span class="card-link">Conheça a solução <Icon size={18} /></span>
+</a>

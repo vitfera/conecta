@@ -1,0 +1,12 @@
+---
+import Icon from './Icon.astro';
+---
+<div class="connection-visual" aria-hidden="true">
+  <div class="visual-grid"></div>
+  <svg class="connection-lines" viewBox="0 0 500 500" fill="none"><circle cx="250" cy="250" r="157" stroke="#c8d5e7" stroke-dasharray="3 8" /><circle cx="250" cy="250" r="214" stroke="#e0e7f0" /><path d="M112 126 250 250 398 198M250 250l-103 142" stroke="#004BA1" stroke-width="1.5" /><circle cx="112" cy="126" r="5" fill="#FE7301" /><circle cx="398" cy="198" r="5" fill="#FE7301" /><circle cx="147" cy="392" r="5" fill="#FE7301" /></svg>
+  <div class="visual-core"><span class="core-spark"><Icon name="plus" size={25} /></span><span>Ideias que<br /><strong>se conectam.</strong></span></div>
+  <div class="visual-label label-management"><span class="visual-icon"><Icon name="process" /></span><div><span class="visual-caption">PROCESSOS E PESSOAS</span><strong>Gestão</strong></div></div>
+  <div class="visual-label label-culture"><span class="visual-icon"><Icon name="culture" /></span><div><span class="visual-caption">CONTEXTO E PROPÓSITO</span><strong>Cultura</strong></div></div>
+  <div class="visual-label label-tech"><span class="visual-icon"><Icon name="code" /></span><div><span class="visual-caption">SOLUÇÕES DIGITAIS</span><strong>Tecnologia</strong></div></div>
+  <span class="visual-note"><span></span> Conhecimentos diferentes. Uma atuação integrada.</span>
+</div>

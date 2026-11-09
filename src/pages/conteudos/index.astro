@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeading from '../../components/PageHeading.astro';
+import EmptyState from '../../components/EmptyState.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import Icon from '../../components/Icon.astro';
+import { getPublished } from '../../lib/content';
+const posts = (await getPublished('posts')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<BaseLayout title="Conteúdos" description="Reflexões, guias e orientações da Conecta sobre tecnologia, gestão, políticas públicas e cultura." noindex={posts.length === 0}>
+  <PageHeading eyebrow="CONHECIMENTO" title="Conhecimento também é conexão." description="Um espaço para compartilhar ideias, perguntas e aprendizados sobre gestão, cultura e tecnologia." />
+  <section class="section"><div class="container">{posts.length ? <div class="project-grid">{posts.map(post => <a class="project-card" href={`/conteudos/${post.id}/`}><span class="project-meta">{post.data.category}</span><h2>{post.data.title}</h2><p>{post.data.description}</p><div class="project-card-bottom"><time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('pt-BR', { timeZone: 'UTC' })}</time><Icon size={20} /></div></a>)}</div> : <EmptyState icon="support" title="Novas ideias estão a caminho." description="Estamos preparando nossos primeiros conteúdos. Em breve, este espaço reunirá reflexões e orientações práticas para quem trabalha com projetos, políticas públicas e soluções digitais." />}</div></section><ContactCTA />
+</BaseLayout>

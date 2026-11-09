@@ -1,0 +1,41 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+import logo from '../assets/conecta-logo.png';
+import { getImage } from 'astro:assets';
+import '../styles/global.css';
+interface Props { title: string; description?: string; noindex?: boolean; type?: 'website' | 'article'; }
+const { title, description = site.description, noindex = false, type = 'website' } = Astro.props;
+const pageTitle = `${title} | ${site.name}`;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const indexable = Boolean(Astro.site) && !noindex;
+const image = await getImage({ src: logo, width: 1200, format: 'png' });
+const imageUrl = Astro.site ? new URL(image.src, Astro.site).href : undefined;
+const organization = {
+  '@context': 'https://schema.org', '@type': 'Organization', name: site.name,
+  legalName: site.legalName, taxID: site.cnpj, email: site.email,
+  ...(Astro.site ? { url: Astro.site.href, logo: imageUrl } : {}),
+  address: { '@type': 'PostalAddress', addressLocality: 'Aparecida de Goiânia', addressRegion: 'GO', addressCountry: 'BR' },
+  areaServed: { '@type': 'Country', name: 'Brasil' },
+};
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title><meta name="description" content={description} />
+    <meta name="robots" content={indexable ? 'index, follow' : 'noindex, nofollow'} /><meta name="theme-color" content="#003675" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:locale" content="pt_BR" /><meta property="og:type" content={type} /><meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={pageTitle} /><meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {imageUrl && <><meta property="og:image" content={imageUrl} /><meta property="og:image:alt" content="Conecta Soluções — Gestão, Cultura e Tecnologia" /></>}
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" set:html={JSON.stringify(organization).replace(/</g, '\\u003c')} />
+  </head>
+  <body>
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+    <Header /><main id="conteudo" tabindex="-1"><slot /></main><Footer />
+  </body>
+</html>

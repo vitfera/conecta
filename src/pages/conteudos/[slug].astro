@@ -1,0 +1,14 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeading from '../../components/PageHeading.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { getPublished } from '../../lib/content';
+export async function getStaticPaths() {
+  return (await getPublished('posts')).map(post => ({ params: { slug: post.id }, props: { post } }));
+}
+interface Props { post: CollectionEntry<'posts'>; }
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<BaseLayout title={post.data.title} description={post.data.description} type="article"><PageHeading eyebrow={post.data.category.toLocaleUpperCase('pt-BR')} title={post.data.title} description={post.data.description}><time class="article-date" datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('pt-BR', { dateStyle: 'long', timeZone: 'UTC' })}</time></PageHeading><section class="section"><article class="container prose article-body"><Content /><a href="/conteudos/">Todos os conteúdos</a></article></section><ContactCTA /></BaseLayout>
