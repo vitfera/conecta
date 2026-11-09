@@ -1,6 +1,6 @@
 ---
 import Logo from './Logo.astro';
-import Icon from './Icon.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
 import { site, navigation } from '../data/site';
 ---
 
@@ -27,10 +27,8 @@ import { site, navigation } from '../data/site';
     </div>
     <div class="footer-contact">
       <h2>Vamos conversar</h2>
-      <a class="email-link" href={site.emailHref}>
-        {site.email}
-        <Icon name="diagonal" size={17} />
-      </a>
+      <WhatsAppButton label="WhatsApp" class="button-small footer-whatsapp" />
+      <p class="footer-phone">{site.phone}</p>
       <p>
         {site.location}
         <br />

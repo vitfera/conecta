@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import Icon from './Icon.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
 import { navigation } from '../data/site';
 const current = Astro.url.pathname;
 const active = (href: string) => (href === '/' ? current === '/' : current.startsWith(href));
@@ -16,9 +17,7 @@ const active = (href: string) => (href === '/' ? current === '/' : current.start
         </a>
       ))}
     </nav>
-    <a class="button button-small header-contact" href="/contato/">
-      Vamos conversar <Icon name="diagonal" size={17} />
-    </a>
+    <WhatsAppButton class="button-small header-contact" />
     <details class="mobile-menu">
       <summary aria-label="Abrir ou fechar menu de navegação">
         <span>Menu</span>

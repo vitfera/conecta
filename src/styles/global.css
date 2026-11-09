@@ -711,17 +711,16 @@ main:focus {
   font-size: 0.78rem;
   color: var(--muted);
 }
-.footer-main a:hover {
+.footer-main nav a:hover {
   color: var(--blue-mid);
 }
-.email-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.81rem;
-  font-weight: 600;
-  margin-bottom: 22px;
-  overflow-wrap: anywhere;
+.footer-whatsapp {
+  margin-bottom: 12px;
+}
+.footer-contact .footer-phone {
+  margin-bottom: 17px;
+  font-size: 0.85rem;
+  color: var(--ink);
 }
 .footer-bottom {
   border-top: 1px solid var(--line);
@@ -904,9 +903,6 @@ main:focus {
   .footer-main {
     grid-template-columns: 1.1fr 0.8fr 1.2fr;
     gap: 28px;
-  }
-  .email-link {
-    font-size: 0.72rem;
   }
   .footer-bottom {
     align-items: start;
@@ -1100,16 +1096,6 @@ main:focus {
   }
   .footer-brand p {
     margin-bottom: 0;
-  }
-  .footer-contact .email-link {
-    font-size: 0.7rem;
-    gap: 6px;
-    display: flex;
-    align-items: start;
-    word-break: break-word;
-  }
-  .footer-contact .email-link svg {
-    flex-shrink: 0;
   }
   .footer-main h2 {
     margin-bottom: 20px;

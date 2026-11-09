@@ -447,7 +447,7 @@
   max-width: 470px;
   margin-top: 25px;
 }
-.contact-email {
+.contact-phone {
   display: flex;
   width: fit-content;
   align-items: center;
@@ -458,13 +458,6 @@
   color: var(--blue);
   margin: 30px 0 27px;
   overflow-wrap: anywhere;
-}
-.contact-email svg {
-  flex-shrink: 0;
-}
-.contact-email:hover {
-  text-decoration: underline;
-  text-underline-offset: 7px;
 }
 .contact-hint {
   max-width: 390px;
@@ -575,7 +568,7 @@
   .about-statement {
     padding: 50px 33px;
   }
-  .contact-email {
+  .contact-phone {
     font-size: 1.2rem;
   }
   .profile-grid {
@@ -626,7 +619,7 @@
   .contact-grid h2 {
     font-size: 2rem;
   }
-  .contact-email {
+  .contact-phone {
     font-size: 1.05rem;
     gap: 12px;
   }
@@ -758,7 +751,7 @@
   .status-tag {
     font-size: 0.62rem;
   }
-  .contact-email {
+  .contact-phone {
     font-size: clamp(0.95rem, 4.5vw, 1.4rem);
     gap: 12px;
   }

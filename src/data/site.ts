@@ -1,3 +1,5 @@
+const whatsappNumber = '5562982755571';
+
 export const site = {
   name: 'Conecta Soluções',
   tagline: 'Gestão · Cultura · Tecnologia',
@@ -6,8 +8,9 @@ export const site = {
   legalName: 'Victor F Souza Gestão, Cultura e Tecnologia Ltda.',
   cnpj: '53.134.753/0001-56',
   location: 'Aparecida de Goiânia, Goiás',
-  email: 'victor@victorferreira.com.br',
-  emailHref: 'mailto:victor@victorferreira.com.br',
+  phone: '+55 (62) 98275-5571',
+  phoneNumber: `+${whatsappNumber}`,
+  whatsappHref: `https://wa.me/${whatsappNumber}`,
 };
 
 export const navigation = [

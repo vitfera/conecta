@@ -2,8 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeading from '../components/PageHeading.astro';
 import Icon from '../components/Icon.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 import { site } from '../data/site';
-const contactHref = `${site.emailHref}?subject=${encodeURIComponent('Vamos conversar sobre um projeto — Conecta Soluções')}`;
 ---
 
 <BaseLayout
@@ -27,17 +27,11 @@ const contactHref = `${site.emailHref}?subject=${encodeURIComponent('Vamos conve
           Escreva para a equipe e compartilhe um pouco do contexto. Vamos entender a sua necessidade
           e os próximos passos.
         </p>
-        <a class="contact-email" href={contactHref}>
-          {site.email}
-          <Icon name="diagonal" size={24} />
-        </a>
-        <a class="button" href={contactHref}>
-          <Icon name="mail" size={19} />
-          Enviar um e-mail
-        </a>
+        <p class="contact-phone">{site.phone}</p>
+        <WhatsAppButton label="Conversar pelo WhatsApp" />
         <p class="contact-hint">
-          O link abre o aplicativo de e-mail do seu dispositivo. Você também pode copiar o endereço
-          acima.
+          O botão abre o WhatsApp em uma nova aba. Você também pode salvar o número acima nos seus
+          contatos.
         </p>
         <div class="contact-location">
           <Icon name="location" size={24} />

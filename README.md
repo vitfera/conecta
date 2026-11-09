@@ -62,7 +62,7 @@ Os seis serviços e a apresentação dos serviços sobre Mapas Culturais seguem 
 
 ## Contato e domínio
 
-O e-mail confirmado é `victor@victorferreira.com.br`; fica em `src/data/site.ts`. O site usa contato direto por e-mail, sem formulário, cookies de rastreamento ou dependência de um serviço de envio.
+O contato comercial é o WhatsApp **+55 (62) 98275-5571**, configurado em `src/data/site.ts`. Os botões abrem `https://wa.me/5562982755571` em uma nova aba. O site não incorpora o WhatsApp, nem utiliza formulário ou cookies de rastreamento; a conversa acontece no serviço externo.
 
 O domínio definitivo ainda precisa ser informado. Copie `.env.example` para `.env` e preencha `SITE_URL` com a origem HTTPS real, por exemplo no formato `https://DOMINIO-OFICIAL`. Sem essa variável, a prévia usa `noindex`, o robots bloqueia indexação e não são gerados canonical nem URLs fictícias no sitemap. Com a variável definida, execute novamente o build e a verificação.
 

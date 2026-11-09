@@ -24,7 +24,7 @@ const organization = {
   name: site.name,
   legalName: site.legalName,
   taxID: site.cnpj,
-  email: site.email,
+  telephone: site.phoneNumber,
   ...(Astro.site ? { url: Astro.site.href, logo: imageUrl } : {}),
   address: {
     '@type': 'PostalAddress',

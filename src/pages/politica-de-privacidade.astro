@@ -19,7 +19,11 @@ import { site } from '../data/site';
       <h2>Quem é responsável pelo site</h2>
       <p>
         {site.legalName}, nome fantasia {site.name}, CNPJ {site.cnpj}, com sede em {site.location}.
-        Para tratar de privacidade, escreva para <a href={site.emailHref}>{site.email}</a>.
+        Para tratar de privacidade, entre em contato pelo
+        <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer">
+          WhatsApp {site.phone}
+        </a>
+        .
       </p>
       <h2>Navegação, cookies e rastreamento</h2>
       <p>
@@ -34,9 +38,11 @@ import { site } from '../data/site';
       </p>
       <h2>Quando você entra em contato</h2>
       <p>
-        Os links de e-mail abrem o aplicativo escolhido no seu dispositivo. O envio ocorre pelo
-        serviço de e-mail que você utiliza. Recebemos os dados que você decidir compartilhar, como
-        nome, endereço de e-mail, instituição e informações sobre sua demanda.
+        Os botões de contato direcionam para o WhatsApp, um serviço externo ao site. A conversa
+        ocorre no aplicativo ou na versão web desse serviço, conforme o dispositivo utilizado.
+        Recebemos os dados que você decidir compartilhar, como nome, número de telefone, instituição
+        e informações sobre sua demanda. O uso do WhatsApp está sujeito aos termos e à política de
+        privacidade do próprio serviço.
       </p>
       <p>
         Essas informações são utilizadas para responder à solicitação e dar andamento à conversa ou
@@ -45,10 +51,10 @@ import { site } from '../data/site';
       </p>
       <h2>Guarda e acesso às informações</h2>
       <p>
-        As mensagens são tratadas no serviço de e-mail utilizado pela empresa. O tempo de guarda
+        As mensagens são tratadas no canal de WhatsApp utilizado pela empresa. O tempo de guarda
         considera a necessidade de atendimento, o andamento da relação profissional e as obrigações
-        aplicáveis. Solicitações sobre acesso, correção ou exclusão podem ser enviadas ao e-mail de
-        contato.
+        aplicáveis. Solicitações sobre acesso, correção ou exclusão podem ser enviadas pelo WhatsApp
+        de contato.
       </p>
       <h2>Links para outros sites</h2>
       <p>

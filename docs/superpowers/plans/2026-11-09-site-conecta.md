@@ -8,7 +8,7 @@
 
 **Tecnologias:** Astro, TypeScript, CSS, testes nativos Node e GitHub Actions.
 
-**Atualização de escopo:** as etapas 1 a 4 registram a primeira versão implementada. As decisões da próxima etapa, anotadas ao final deste documento, têm precedência sobre o briefing original nos pontos alterados pelo titular. Por solicitação, essas mudanças ficam apenas planejadas nesta rodada.
+**Atualização de escopo:** as etapas 1 a 4 registram a primeira versão implementada. As decisões da próxima etapa, anotadas ao final deste documento, têm precedência sobre o briefing original nos pontos alterados pelo titular. O titular autorizou a execução dos ajustes de WhatsApp, retirada de Conteúdos e turismo. A inclusão dos SaaS continua aguardando informações.
 
 ## Etapa 1 — proteção do material e definição
 
@@ -61,14 +61,14 @@ Verificações e limites registrados em [docs/verification.md](../../verificatio
 
 ## Próxima etapa — ajustes solicitados pelo titular
 
-Anotações de 9 de novembro de 2026. **Execução posterior; o site atual permanece como está.**
+Anotações de 9 de novembro de 2026. Execução autorizada nesta conversa para WhatsApp, retirada de Conteúdos e turismo; SaaS permanecem para uma próxima rodada.
 
 ### 1. WhatsApp como contato comercial
 
-- [ ] Substituir o contato comercial por e-mail por um botão de WhatsApp para **+55 (62) 98275-5571**, informado pelo titular.
-- [ ] Usar o endereço `https://wa.me/5562982755571` nos botões de contato.
-- [ ] Revisar `src/data/site.ts`, `src/components/Header.astro`, `src/components/Footer.astro`, `src/components/ContactCTA.astro`, `src/pages/index.astro` e `src/pages/contato.astro` para manter os caminhos de contato consistentes.
-- [ ] Atualizar `src/pages/politica-de-privacidade.astro`, metadados e documentação para refletir o contato via WhatsApp e a abertura de um serviço externo.
+- [x] Substituir o contato comercial por e-mail por um botão de WhatsApp para **+55 (62) 98275-5571**, informado pelo titular.
+- [x] Usar o endereço `https://wa.me/5562982755571` nos botões de contato.
+- [x] Revisar `src/data/site.ts`, `src/components/Header.astro`, `src/components/Footer.astro`, `src/components/ContactCTA.astro`, `src/pages/index.astro` e `src/pages/contato.astro` para manter os caminhos de contato consistentes.
+- [x] Atualizar `src/pages/politica-de-privacidade.astro`, metadados e documentação para refletir o contato via WhatsApp e a abertura de um serviço externo.
 
 ### 2. Retirar Conteúdos do escopo
 
