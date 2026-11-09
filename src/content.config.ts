@@ -1,28 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
-import { editorialDate } from './lib/editorial-schema';
-
-const editorial = {
-  publish: z.boolean().default(false),
-  publicationStatus: z.enum(['aprovado', 'pendente-de-revisao']).default('pendente-de-revisao'),
-  reviewedAt: editorialDate.optional(),
-};
-
-const common = z
-  .object({
-    title: z.string().min(3),
-    description: z.string().min(20).max(220),
-    ...editorial,
-  })
-  .superRefine((data, ctx) => {
-    if (data.publish && (data.publicationStatus !== 'aprovado' || !data.reviewedAt)) {
-      ctx.addIssue({
-        code: 'custom',
-        message: 'Publicação exige aprovação editorial e data de revisão.',
-      });
-    }
-  });
+import { commonEntrySchema as common } from './lib/editorial-schema';
 
 const services = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/services' }),

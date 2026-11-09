@@ -13,7 +13,7 @@
 - [x] Receber a descrição do titular: venda de ingressos para eventos, geração direta na aplicação para o usuário e uso digital que dispensa papel.
 - [x] Definir nomes descritivos: Plataforma imobiliária, Pesquisas e indicadores, Rota Fácil e Ingressos digitais para eventos.
 - [x] Preservar a informação de que a nova versão imobiliária está em evolução; sua documentação informa que ainda não foi liberada.
-- [ ] Registrar este plano e o levantamento em commit.
+- [x] Registrar este plano e o levantamento em commit.
 
 ### Informações sustentadas pelas fontes
 
@@ -30,14 +30,14 @@ Não copiar documentos internos, código dos outros projetos, dados de usuários
 
 Arquivos: `src/lib/editorial-schema.ts`, `src/lib/project-schema.ts`, `src/lib/projects.ts`, `tests/projects.test.ts`.
 
-- [ ] Extrair o schema editorial comum e o schema institucional existente para módulos testáveis, preservando a política de publicação.
-- [ ] Executar testes que demonstrem a ausência de suporte a soluções sem contratante/ano, antes da ampliação do schema.
-- [ ] Implementar união discriminada por `kind`: `solution` e `engagement`.
-- [ ] Para soluções, exigir setor, natureza, público, funcionalidades, ordem, situação de apresentação e frentes de serviço relacionadas; rejeitar campos contratuais.
-- [ ] Para atuações institucionais, manter contratante, vínculo, localidade, ano e situação contratual, com resultados e entregas somente quando comprovados.
-- [ ] Testar publicação sem revisão, separação dos formatos e metadados sem valores fictícios.
-- [ ] Centralizar ordenação e apresentação dos metadados dos cards.
-- [ ] Executar `npm test` e `npm run check`; registrar a base em commit.
+- [x] Extrair o schema editorial comum e o schema institucional existente para módulos testáveis, preservando a política de publicação.
+- [x] Executar testes que demonstrem a ausência de suporte a soluções sem contratante/ano, antes da ampliação do schema.
+- [x] Implementar união discriminada por `kind`: `solution` e `engagement`.
+- [x] Para soluções, exigir setor, natureza, público, funcionalidades, ordem, situação de apresentação e frentes de serviço relacionadas; rejeitar campos contratuais.
+- [x] Para atuações institucionais, manter contratante, vínculo, localidade, ano e situação contratual, com resultados e entregas somente quando comprovados.
+- [x] Testar publicação sem revisão, separação dos formatos e metadados sem valores fictícios.
+- [x] Centralizar ordenação e apresentação dos metadados dos cards.
+- [x] Executar `npm test` e `npm run check`; registrar a base em commit.
 
 ## 3. Conteúdo, páginas e integração
 
