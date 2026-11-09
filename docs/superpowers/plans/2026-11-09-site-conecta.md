@@ -110,14 +110,14 @@ Na ilustração da home com a frase **“Ideias que se conectam”**, o titular 
 
 WhatsApp e retirada de Conteúdos registrados nos commits `23a8642` e `8ff00ef`; turismo e revisão final compõem a etapa seguinte. Build com 14 páginas e 340 links/assets verificados, nove testes aprovados e prévia local mantida ativa. As 13 rotas navegáveis foram verificadas em quatro larguras, incluindo a legibilidade dos quatro temas da ilustração. Domínio configurado validado em uma cópia temporária. Detalhes em [verificação](../../verification.md).
 
-## Próxima rodada — navegação e apresentação da equipe
+## Navegação e apresentação da equipe
 
 Solicitações de 9 de novembro de 2026, com execução autorizada pelo titular nesta conversa.
 
 ### Menu desktop visível durante a rolagem
 
 - [x] Manter o cabeçalho e o menu desktop visíveis no topo enquanto o visitante rola a página.
-- [x] Ajustar `src/components/Header.astro` e `src/styles/global.css` para preservar alinhamento, fundo e sobreposição correta do cabeçalho.
+- [x] Ajustar o posicionamento em `src/styles/global.css` para preservar alinhamento, fundo e sobreposição correta do cabeçalho.
 - [x] Conferir que o menu não cubra títulos, destinos de links internos ou elementos com foco por teclado, e que não provoque saltos no layout.
 - [x] Validar a rolagem em diferentes larguras de desktop e conferir a transição para o menu mobile.
 
@@ -131,7 +131,9 @@ Solicitações de 9 de novembro de 2026, com execução autorizada pelo titular 
 
 Foto: proporção **3:4**, dimensão recomendada **900 × 1200 px**, nome **`victor-ferreira.jpg`**, pasta **`src/assets/equipe/`**. Instruções em [README da foto](../../../src/assets/equipe/README.md). O componente reserva o espaço enquanto o arquivo real não está disponível; a foto será inserida pelo titular posteriormente.
 
-### Entrega da próxima rodada
+### Entrega e validação
 
-- [ ] Validar a navegação durante a rolagem, acessibilidade do cabeçalho e apresentação do perfil e da equipe.
-- [ ] Executar as verificações pertinentes e registrar um commit por etapa, conforme a orientação inicial do titular.
+- [x] Validar a navegação durante a rolagem, acessibilidade do cabeçalho e apresentação do perfil e da equipe.
+- [x] Executar as verificações pertinentes e registrar um commit por etapa, conforme a orientação inicial do titular.
+
+Menu desktop registrado no commit `90d6f51`; foto e apresentação da equipe no commit `f74a58c`. A etapa final registra a validação: 20 testes aprovados, Astro sem erros, 19 páginas e 514 links/assets verificados, 18 rotas em seis larguras e revisão independente sem achados relevantes. Relatório em [verificação](../../verification.md). Prévia local mantida ativa.

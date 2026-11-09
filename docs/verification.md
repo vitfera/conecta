@@ -1,6 +1,6 @@
 # Verificação do site
 
-Verificado em 9 de novembro de 2026, após a criação do catálogo de Produtos. A prévia local permanece em `http://127.0.0.1:4321/`; o catálogo está em `/produtos/`.
+Verificado em 9 de novembro de 2026, após a criação do catálogo de Produtos e os ajustes de navegação e equipe. A prévia local permanece em `http://127.0.0.1:4321/`; a apresentação da equipe está em `/quem-somos/#equipe`.
 
 ## Comandos reproduzíveis
 
@@ -19,6 +19,9 @@ Testes no Chrome instalado, com a biblioteca Playwright existente e um perfil te
 - Plataforma imobiliária com “Apresentação sob consulta” no card e no detalhe, incluindo conferência em 375 e 320 pixels.
 - Menu mobile, acesso aos produtos e catálogo de serviços funcionando sem JavaScript.
 - Link de pular para o conteúdo e transferência do foco por teclado.
+- Cabeçalho desktop visível durante a rolagem em 1440, 1024 e 901 pixels; menu mobile com rolagem normal em 900, 375 e 320 pixels.
+- Altura do cabeçalho e da página preservadas durante a rolagem; títulos, links internos e elementos com foco permanecem abaixo do cabeçalho desktop.
+- Área do retrato em proporção 3:4 e texto da equipe conferidos em 1440, 1024, 901, 900, 768, 375 e 320 pixels, sem estouro horizontal.
 - Link de WhatsApp com telefone confirmado e abertura em nova aba.
 - 404 para a antiga seção Conteúdos, endereço inexistente e projeto sem liberação.
 - Capturas desktop e mobile inspecionadas. Marca original e presença de turismo preservadas.
@@ -37,6 +40,12 @@ Uma cópia em diretório temporário validou, sem alterar a prévia do titular:
 - Revisão editorial nula: build rejeitado pelo schema.
 
 Os dados e as cópias desses cenários ficaram somente em `/tmp`. O conteúdo público não utiliza modelo de contratação, comparação comercial proibida, dados de usuário ou código dos repositórios consultados.
+
+## Foto de Victor Ferreira
+
+Uma cópia temporária validou a inclusão de `src/assets/equipe/victor-ferreira.jpg` sem editar o componente e sem reiniciar o servidor. A imagem passou a aparecer no lugar das iniciais, com texto alternativo, versões otimizadas e proporção 3:4. O build dessa cópia verificou 19 páginas e 515 links e assets.
+
+A retirada do arquivo restaurou as iniciais, sem imagem quebrada. O cenário utilizou um asset existente somente na cópia de teste; a foto real ainda será fornecida pelo titular. No projeto, o caminho e as dimensões recomendadas estão documentados em [orientação da foto](../src/assets/equipe/README.md).
 
 ## Revisão e limites
 
