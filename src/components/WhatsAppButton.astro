@@ -10,12 +10,15 @@ const { label = 'Fale pelo WhatsApp', class: className } = Astro.props;
 ---
 
 <a
-  class:list={['button', className]}
+  class:list={['button', 'whatsapp-button', className]}
   href={site.whatsappHref}
   target="_blank"
   rel="noopener noreferrer"
   aria-label={`${label} (abre em nova aba)`}
 >
+  <span class="social-icon">
+    <Icon name="whatsapp" size={19} />
+  </span>
   {label}
-  <Icon name="diagonal" size={19} />
+  <Icon name="diagonal" size={19} class="button-arrow" />
 </a>

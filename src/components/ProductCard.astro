@@ -10,7 +10,12 @@ const { product, headingLevel: Heading = 'h2' } = Astro.props;
 const { data } = product;
 ---
 
-<a class="product-card" href={`/produtos/${product.id}/`} data-product={product.id}>
+<a
+  class="product-card"
+  href={`/produtos/${product.id}/`}
+  data-product={product.id}
+  data-interactive-card
+>
   <div class="product-card-top">
     <span class="icon-box">
       <Icon name={data.icon} size={29} />

@@ -8,7 +8,7 @@ const { service } = Astro.props;
 const { data } = service;
 ---
 
-<a class="service-card" href={`/solucoes/${service.id}/`}>
+<a class="service-card" href={`/solucoes/${service.id}/`} data-interactive-card>
   <div class="service-card-top">
     <span class="icon-box">
       <Icon name={data.icon} size={29} />

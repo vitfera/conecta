@@ -14,6 +14,7 @@ const { project, compact = false, headingLevel: Heading = 'h2' } = Astro.props;
   class:list={['project-story-card', { 'is-compact': compact }]}
   href={`/projetos/${project.id}/`}
   data-project={project.id}
+  data-interactive-card
 >
   <div class="project-story-media">
     <ProjectCover id={project.id} alt={`Tela inicial do ${project.data.title}.`} />
