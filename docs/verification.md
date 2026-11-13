@@ -2,6 +2,26 @@
 
 A execução em Docker tem relatório próprio em [validação Docker](docker-validation.md), com build Linux, CPU emulada sem AVX/AVX2, healthcheck, portas, navegação e contexto de build. Este documento mantém o histórico das verificações do site.
 
+## Atmosfera e movimento — 13 de novembro de 2026
+
+Alteração mantida localmente sem commit durante a avaliação visual. Após aprovar os efeitos gerais e o refinamento do banner, o titular autorizou os commits locais por etapa. Fundos geométricos em azul e laranja, parallax limitado, contornos/sombras e brilho dos cards pelo cursor, barra de progresso acima do header e interações do menu e WhatsApp. Nenhuma dependência adicionada. O conteúdo e os destinos dos links foram preservados.
+
+- `npm test`: 24 testes aprovados; `npm run check`: 47 arquivos, sem erros, avisos ou sugestões.
+- `npm run build` e `npm run verify`: 21 páginas e 577 links/assets; imagens otimizadas e regras editoriais preservadas. O módulo de interação é incluído no HTML estático.
+- Chrome local: progresso em 0%, 50% e 100%; parallax ao rolar; brilho/inclinação dos cards e retorno ao repouso; foco visível por teclado; hover do menu e WhatsApp.
+- Dez páginas representativas no desktop, incluindo catálogos, detalhes, contato e Quem Somos, com imagens decodificadas e sem overflow horizontal. Header sem sobreposição em 1024, 1280 e 1440 pixels.
+- Seis páginas principais em celular de 375 pixels; menu abre e navega para Produtos, imagens carregam e barra alcança 100%. Os fundos permanecem estáticos em dispositivos de toque.
+- `prefers-reduced-motion: reduce`, inclusive alterado durante a sessão: sem parallax ou inclinação, mantendo o progresso da leitura. Navegação dos cards confirmada com JavaScript desativado; nesse cenário a barra é ocultada.
+- Sem erros de página, console ou respostas HTTP de erro durante a rodada. Capturas desktop, cards, Quem Somos e celular inspecionadas.
+- Build estático servido temporariamente na porta 4322: barra e efeitos do card funcionando; histórico restaura a rolagem e a barra acompanha a posição final; redimensionamento recalcula o progresso; página sem área rolável mantém zero. A leitura inicial do teste ocorria durante a restauração suave do navegador e foi corrigida para aguardar a posição original, sem alteração no site.
+- Revisão independente de CSS e eventos sem problemas acionáveis.
+
+O titular confirmou que apenas o WhatsApp será utilizado, sem outros perfis sociais. A validação desta alteração é local; não foi publicada na VM nem no domínio de homologação.
+
+O refinamento posterior do banner da home acrescentou uma base orgânica azul, degradês mais presentes, arcos laranja e órbitas com pontos. As camadas respondem ao cursor sem animação automática contínua. A rodada final no Chrome passou em vinte larguras de 320 a 1440 px, com o mouse nas duas bordas, sem overflow ou sobreposição das quatro áreas. Para preservar a folga em telas compactas, as etiquetas permanecem fixas até 1200 px e a base azul conserva seu movimento independente. Movimento reduzido, capturas desktop/celular, `check`, build de 21 páginas e verificação de 577 links/assets conferidos. A revisão identificou a sobreposição nas primeiras versões e confirmou a correção da causa; a prévia foi reiniciada após o HMR reter temporariamente um erro de importação ao criar o arquivo de estilos.
+
+## Histórico anterior
+
 Verificado em 9 de novembro de 2026, após a implementação das histórias de Campo Mourão e Cianorte. A prévia local permanece em `http://127.0.0.1:4321/`; as histórias estão em `/projetos/`.
 
 ## Comandos reproduzíveis

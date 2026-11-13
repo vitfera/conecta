@@ -3,15 +3,48 @@ import Icon from './Icon.astro';
 ---
 
 <div class="connection-visual" aria-hidden="true">
+  <div class="visual-halo"></div>
   <div class="visual-grid"></div>
   <svg class="connection-lines" viewBox="0 0 500 500" fill="none">
-    <circle cx="250" cy="250" r="157" stroke="#c8d5e7" stroke-dasharray="3 8" />
-    <circle cx="250" cy="250" r="214" stroke="#e0e7f0" />
+    <circle
+      cx="250"
+      cy="250"
+      r="157"
+      stroke="#b5d8ff"
+      stroke-opacity="0.45"
+      stroke-dasharray="3 8"
+    />
+    <circle cx="250" cy="250" r="214" stroke="#b5d8ff" stroke-opacity="0.3" />
+    <path
+      d="M250 36a214 214 0 0 1 196 128"
+      stroke="#fe7301"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
+    <path
+      d="M54 336a214 214 0 0 0 143 122"
+      stroke="#8ec7ff"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
     <path
       d="M120 110 250 250 380 110M120 390 250 250 380 390"
-      stroke="#004BA1"
+      stroke="#b5d8ff"
+      stroke-opacity="0.65"
       stroke-width="1.5"
     />
+    <g stroke="#fe7301" stroke-opacity="0.4">
+      <circle cx="120" cy="110" r="12" />
+      <circle cx="380" cy="110" r="12" />
+      <circle cx="120" cy="390" r="12" />
+      <circle cx="380" cy="390" r="12" />
+    </g>
+    <g fill="#a7d0ff">
+      <circle cx="250" cy="36" r="4" />
+      <circle cx="54" cy="336" r="4" />
+      <circle cx="452" cy="315" r="3" />
+    </g>
+    <path d="M405 226h12m-6-6v12M82 236h10m-5-5v10" stroke="#fe994b" stroke-width="2" />
     <circle cx="120" cy="110" r="5" fill="#FE7301" />
     <circle cx="380" cy="110" r="5" fill="#FE7301" />
     <circle cx="120" cy="390" r="5" fill="#FE7301" />

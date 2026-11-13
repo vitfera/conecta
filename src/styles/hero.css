@@ -1,0 +1,204 @@
+/* The home banner uses stronger color and depth than the supporting sections. */
+main > .hero {
+  background:
+    radial-gradient(ellipse at 95% 15%, #c6dcfa 0, transparent 48%),
+    linear-gradient(110deg, #fffaf5, #fff 38%, #edf4ff 78%, #deebfc);
+}
+main > .hero::before {
+  width: 950px;
+  top: -470px;
+  right: -260px;
+  border-color: #004ba11a;
+  background:
+    radial-gradient(circle, transparent 55%, #004ba11c 55.1%, transparent 55.4%),
+    radial-gradient(ellipse at center, #004ba114, transparent 65%);
+}
+main > .hero::after {
+  width: 500px;
+  bottom: -300px;
+  left: -150px;
+  background:
+    linear-gradient(145deg, #fe730126, transparent 65%),
+    repeating-linear-gradient(135deg, transparent 0 23px, #fe730119 24px 25px);
+}
+.hero .connection-visual::before,
+.hero .connection-visual::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+.hero .connection-visual::before {
+  z-index: -2;
+  inset: 1% -6% 7%;
+  border: 1px solid #fff7;
+  border-radius: 43% 57% 58% 42% / 52% 42% 58% 48%;
+  background:
+    radial-gradient(ellipse at 76% 20%, #1b70c9, transparent 58%),
+    radial-gradient(ellipse at 8% 90%, #124d90, transparent 70%),
+    linear-gradient(135deg, var(--blue), var(--navy));
+  box-shadow:
+    24px 35px 80px #00367524,
+    inset 0 0 70px #004ba14d;
+  transform: translate3d(
+      calc(var(--ambient-x, 0px) * -0.65),
+      calc(var(--ambient-pointer-y, 0px) * -0.65),
+      0
+    )
+    rotate(-9deg);
+  transition: transform 350ms ease-out;
+}
+.hero .connection-visual::after {
+  z-index: -1;
+  width: 105%;
+  aspect-ratio: 1;
+  top: -4%;
+  left: -5%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 205deg,
+    transparent 0 58%,
+    #fe7301 62%,
+    #ffa85f 78%,
+    transparent 82%
+  );
+  mask-image: radial-gradient(circle, transparent 65%, #000 65.3% 67%, transparent 67.3%);
+  transform: translate3d(var(--ambient-x, 0px), var(--ambient-pointer-y, 0px), 0) rotate(-14deg);
+  transition: transform 350ms ease-out;
+}
+.hero .visual-grid {
+  inset: 5% -5% 8%;
+  background-image: radial-gradient(#c4deff65 0.9px, transparent 1px);
+  background-size: 19px 19px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 70%);
+}
+.hero .visual-halo {
+  position: absolute;
+  inset: 12%;
+  border: 1px solid #b5d8ff2e;
+  border-radius: 50%;
+  background: radial-gradient(circle, #71b8ff38, transparent 70%);
+  box-shadow:
+    0 0 0 18px #8bbfff08,
+    0 0 0 40px #8bbfff05;
+}
+.hero .connection-lines {
+  filter: drop-shadow(0 0 5px #92caff24);
+}
+.hero .visual-core {
+  border: 1px solid #c1ddff7a;
+  background: linear-gradient(145deg, #1165b9, #003675 75%);
+  box-shadow:
+    0 0 0 11px #c4deff12,
+    0 0 0 25px #c4deff08,
+    0 18px 50px #001a4670;
+}
+.hero .core-spark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #ffab6a66;
+  border-radius: 50%;
+  background: #fe73011a;
+  color: #ffad6c;
+}
+.hero .visual-label {
+  border-color: #c4d9f3;
+  background: linear-gradient(135deg, #fff, #f2f7ff);
+  box-shadow:
+    0 4px 8px #001b4d0a,
+    0 15px 35px #001b4d26;
+  transform: translate3d(
+    calc(var(--ambient-x, 0px) * var(--label-depth, 0.5)),
+    calc(var(--ambient-pointer-y, 0px) * var(--label-depth, 0.5)),
+    0
+  );
+  transition:
+    transform 350ms ease-out,
+    box-shadow 250ms ease;
+}
+.hero .label-tourism,
+.hero .label-tech {
+  --label-depth: -0.65;
+}
+.hero .label-tourism .visual-icon,
+.hero .label-culture .visual-icon {
+  color: var(--orange-dark);
+  background: #fff0e3;
+}
+.hero .visual-note {
+  bottom: -8px;
+  color: #465f7b;
+}
+@media (hover: hover) and (pointer: fine) {
+  .hero .visual-label:hover {
+    transform: translate3d(
+        calc(var(--ambient-x, 0px) * var(--label-depth, 0.5)),
+        calc(var(--ambient-pointer-y, 0px) * var(--label-depth, 0.5) - 5px),
+        0
+      )
+      rotate(-1deg);
+    box-shadow: 0 20px 45px #001b4d3d;
+  }
+}
+@media (max-width: 1200px) {
+  .hero .visual-label,
+  .hero .visual-label:hover {
+    transform: none;
+  }
+}
+@media (max-width: 900px) {
+  .hero .connection-visual::before {
+    inset-inline: -2%;
+  }
+  .hero .visual-note {
+    font-size: 0.46rem;
+  }
+}
+@media (max-width: 640px) {
+  main > .hero {
+    padding-bottom: 47px;
+    background:
+      radial-gradient(ellipse at 95% 90%, #c6dcfa 0, transparent 45%),
+      linear-gradient(165deg, #fffaf5, #fff 45%, #e9f2ff);
+  }
+  main > .hero::before {
+    width: 620px;
+    top: auto;
+    bottom: -180px;
+    right: -330px;
+  }
+  main > .hero::after {
+    left: -300px;
+    bottom: -340px;
+  }
+  .hero .hero-grid {
+    gap: 42px;
+  }
+  .hero .connection-visual {
+    width: 100%;
+  }
+  .hero .connection-visual::before {
+    inset: 0 -1% 7%;
+    box-shadow: 10px 18px 40px #00367520;
+  }
+  .hero .visual-label {
+    padding: 12px;
+    gap: 9px;
+  }
+  .hero .visual-note {
+    font-size: 0.46rem;
+  }
+}
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .hero .connection-visual::before {
+    transform: rotate(-9deg);
+  }
+  .hero .connection-visual::after {
+    transform: rotate(-14deg);
+  }
+  .hero .visual-label,
+  .hero .visual-label:hover {
+    transform: none;
+  }
+}
