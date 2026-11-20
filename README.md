@@ -73,7 +73,7 @@ reviewedAt: 2026-11-09
 
 Omitir esses campos mantém a entrada oculta. Uma revisão com data futura também não publica a entrada. As listas, a home, as páginas individuais e o sitemap usam a mesma regra. Para retirar uma entrada, defina `publish: false` e publique um novo build.
 
-Os seis serviços e a apresentação dos serviços sobre Mapas Culturais seguem o briefing fornecido. As histórias de Campo Mourão e Cianorte foram aprovadas pelo titular, que confirmou as implantações e o uso das plataformas. Antes de liberar outros projetos, confira vínculo, escopo, direitos de divulgação e evidência de cada entrega e resultado. Um contrato firmado não comprova conclusão. Experiências individuais do responsável técnico são apresentadas separadamente. O site não possui seção de notícias ou blog.
+Os seis serviços e a apresentação dos serviços sobre Mapas Culturais seguem o briefing fornecido. O portfólio foi conciliado com o roteiro editorial de 20/11/2026. Campo Mourão mantém a implantação atestada; Cianorte descreve escopo contratado, aguardando comprovação documental de conclusão. Antes de liberar outros projetos, confira vínculo, escopo, direitos de divulgação e evidência de cada entrega e resultado. Um contrato firmado não comprova conclusão. Experiências individuais do responsável técnico são apresentadas separadamente. O site não possui seção de notícias ou blog.
 
 ## Produtos
 
@@ -85,11 +85,13 @@ A Plataforma imobiliária usa “Apresentação sob consulta” no card e no det
 
 ## Histórias de projetos
 
-O catálogo `/projetos/` apresenta **Mapa Campo Mourão Cultural** e **Mapas Culturais em Cianorte**, com foco no contexto e na participação da Conecta. A home usa os mesmos cards e a mesma ordem. As páginas públicas não exibem ficha técnica de localidade, período ou contrato.
+O catálogo `/projetos/` apresenta onze histórias em uma listagem contínua, com seis contratações diretas e cinco prestações via instituições classificadas no conteúdo editorial. Os textos identificam a participação sem cabeçalhos ou etiquetas contratuais na interface. A home usa os mesmos cards e destaca Vozes Periféricas e o Portal da Cultura de Aparecida. As páginas não exibem ficha técnica de localidade, período ou contrato. As URLs anteriores de Campo Mourão e Cianorte foram preservadas.
 
-Edite as histórias em `src/content/projects/`. O campo `storyTitle` define o título narrativo e `order` controla a ordem. Dados de vínculo e situação continuam no conteúdo editorial; um projeto concluído exige uma entrega confirmada. O bloco opcional `recognition` exige `title`, `recipient`, `description` e `sourceUrl` HTTP. O reconhecimento de Campo Mourão é atribuído ao município com seu projeto.
+Edite as histórias em `src/content/projects/`. O campo `storyTitle` define o título narrativo e `order` controla a ordem. O campo existente `relationship` usa `contrato-direto` ou `via-instituicao-parceira`; `client` registra a instituição com a qual existe o vínculo. Vínculo e situação permanecem no conteúdo editorial; um projeto concluído exige uma entrega confirmada. O bloco opcional `recognition` exige `title`, `recipient`, `description` e `sourceUrl` HTTP. O reconhecimento de Campo Mourão é atribuído ao município com seu projeto.
 
-As capas ficam em `src/assets/projetos/`, com o slug da história e extensão `.png`. As [orientações das capas](src/assets/projetos/README.md) registram dimensões e fontes. O Astro otimiza as imagens; quando uma capa não existe, uma composição decorativa preserva o card. Consulte o [plano das histórias](docs/superpowers/plans/2026-11-09-historias-projetos.md).
+As capas ficam em `src/assets/projetos/`, com o slug da história e extensão `.png`. As [orientações das capas](src/assets/projetos/README.md) registram dimensões e fontes. O Astro otimiza as imagens; quando uma capa não existe, uma composição decorativa preserva o card. A legenda de plataforma em funcionamento aparece somente para uma capa real aprovada. Consulte o [plano das histórias](docs/superpowers/plans/2026-11-09-historias-projetos.md) e a [auditoria atual do portfólio](docs/auditoria-portfolio-2026-11-20.md).
+
+O Prêmio Nacional Vozes Periféricas foi contratado pela OEI e usa a plataforma **Mapa da Cultura, do Ministério da Cultura**, conforme correção do titular. A apresentação é institucional e não divulga produtos do contrato. Oito experiências profissionais do responsável técnico ficam separadas em `/quem-somos/#trajetoria`, sem serem convertidas em contratos ou clientes diretos da Conecta. Propostas e outras frentes sem validação não viraram cases.
 
 ## Contato e domínio
 

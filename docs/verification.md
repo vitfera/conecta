@@ -2,6 +2,14 @@
 
 A execução em Docker tem relatório próprio em [validação Docker](docker-validation.md), com build Linux, CPU emulada sem AVX/AVX2, healthcheck, portas, navegação e contexto de build. Este documento mantém o histórico das verificações do site.
 
+## Atualização do portfólio — 20 de novembro de 2026
+
+Conciliação registrada na [auditoria do portfólio](auditoria-portfolio-2026-11-20.md): dois cases atualizados, nove incluídos e oito experiências profissionais detalhadas separadamente em Quem Somos. O catálogo mantém a apresentação narrativa anterior, sem agrupamentos de contratação. A correção do titular sobre o Mapa da Cultura do MinC no Prêmio Vozes Periféricas foi aplicada.
+
+`npm test` aprovou 24 testes; `npm run check` conferiu 47 arquivos sem diagnósticos. O build gerou 30 páginas e o verify validou 812 links/assets, sem valores, CPFs, PDFs ou material de referência no resultado. Os onze cases, a trajetória, as URLs anteriores e a navegação sem JavaScript foram conferidos no Chrome; desktop em 1440 px e celular em 375/320 px, sem overflow ou erros de página/console.
+
+Cinco cenários isolados validaram domínio/canonical/sitemap, retirada dos destaques, retirada da implantação de Campo Mourão, retirada de Uruaçu LPG e todos os projetos em rascunho. Os registros retirados não deixaram rotas, cards ou referências indevidas. A revisão encontrou uma referência cruzada ao título de Uruaçu LPG na história PNAB; foi corrigida e a retirada isolada passou. Links públicos já existentes responderam HTTP 200. A verificação é local, sem deploy externo.
+
 ## Atmosfera e movimento — 13 de novembro de 2026
 
 Alteração mantida localmente sem commit durante a avaliação visual. Após aprovar os efeitos gerais e o refinamento do banner, o titular autorizou os commits locais por etapa. Fundos geométricos em azul e laranja, parallax limitado, contornos/sombras e brilho dos cards pelo cursor, barra de progresso acima do header e interações do menu e WhatsApp. Nenhuma dependência adicionada. O conteúdo e os destinos dos links foram preservados.
