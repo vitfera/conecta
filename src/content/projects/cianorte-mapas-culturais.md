@@ -1,35 +1,35 @@
 ---
 title: Mapas Culturais em Cianorte
-storyTitle: Uma plataforma em funcionamento, uma equipe preparada.
-description: Implantação do Mapas Culturais e capacitação de gestores em Cianorte, conectando a ferramenta às pessoas que a utilizam na rotina da gestão cultural.
-order: 2
+storyTitle: Tecnologia e formação para a gestão cultural.
+description: Contratação para instalação da plataforma Mapas Culturais e treinamento de gestores municipais em Cianorte, aproximando tecnologia e rotina da gestão cultural.
+order: 5
 client: Município de Cianorte/PR
-relationship: Contrato direto com o município
+relationship: contrato-direto
 year: 2026
 sector: Cultura
 nature: Implantação e formação
 location: Cianorte, Paraná
-contractStatus: concluido-com-evidencia
-verifiedDeliveries:
-  - Implantação da plataforma e capacitação de gestores, confirmadas pelo titular.
-  - Plataforma em funcionamento e em uso, conforme confirmação do titular.
+contractStatus: contrato-firmado
+verifiedDeliveries: []
 verifiedResults: []
 externalLinks:
   - label: Visite o Mapa Cultural Cianorte
     url: https://cultura.cianorte.pr.gov.br/
 publish: true
 publicationStatus: aprovado
-reviewedAt: 2026-11-09
+reviewedAt: 2026-11-20
 ---
 
 ## Tecnologia que passa pelas pessoas
 
-Colocar uma plataforma em funcionamento também envolve preparar quem vai utilizá-la. Em Cianorte, a implantação do Mapas Culturais foi acompanhada da capacitação de gestores, aproximando a ferramenta da rotina de trabalho da equipe.
+Colocar uma plataforma em funcionamento também envolve preparar quem vai utilizá-la. Em Cianorte, a Conecta Soluções foi contratada pelo Município de Cianorte para disponibilização da plataforma Mapas Culturais e treinamento de gestores municipais.
 
-O Mapa Cultural Cianorte oferece um ambiente para reunir agentes, espaços, eventos e oportunidades culturais. Sua utilização conecta o mapeamento da cultura local aos processos de gestão e de participação.
+O projeto reúne infraestrutura tecnológica e capacitação técnica para apoiar a adoção do sistema como ferramenta de gestão e mapeamento cultural.
 
-## A participação da Conecta
+## O escopo contratado
 
-A Conecta reuniu a implantação da plataforma e a formação dos gestores para apoiar o uso da ferramenta no dia a dia. O trabalho combinou a preparação do ambiente digital com a orientação das pessoas responsáveis por sua utilização.
+A contratação contempla a preparação do ambiente digital e a orientação das pessoas responsáveis por sua utilização. A apresentação descreve esse escopo sem tratar a formalização do contrato como comprovação de entrega final ou de encerramento dos serviços.
 
-O Mapas Culturais é um software livre do ecossistema cultural. A Conecta contribui com os serviços de implantação e capacitação que aproximam a plataforma das necessidades de cada projeto.
+O Mapa Cultural Cianorte oferece um ambiente público para reunir agentes, espaços, eventos e oportunidades culturais. Seu endereço permanece disponível para consulta.
+
+O Mapas Culturais é software livre do ecossistema cultural. A Conecta contribui com serviços de implantação e capacitação sobre a plataforma.

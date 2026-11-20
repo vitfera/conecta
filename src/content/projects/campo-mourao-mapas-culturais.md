@@ -2,17 +2,17 @@
 title: Mapa Campo Mourão Cultural
 storyTitle: A cultura local ganha um ponto de encontro.
 description: Artistas, espaços, projetos e oportunidades culturais reunidos em um mesmo ambiente, com a participação da Conecta na implantação do Mapa Campo Mourão Cultural.
-order: 1
+order: 3
 client: Município de Campo Mourão/PR
-relationship: Contrato direto com o município
+relationship: contrato-direto
 year: 2025
 sector: Cultura
 nature: Implantação e suporte
 location: Campo Mourão, Paraná
 contractStatus: concluido-com-evidencia
 verifiedDeliveries:
-  - Implantação e configuração da plataforma, confirmadas pelo titular.
-  - Plataforma em funcionamento e em uso, conforme confirmação do titular.
+  - Implantação, configuração e suporte inicial registrados no atestado de capacidade técnica citado no roteiro editorial.
+  - Plataforma em funcionamento e em uso, conforme confirmação do titular e acesso público.
 verifiedResults: []
 recognition:
   title: Cultura reconhecida pela inovação.
@@ -24,7 +24,7 @@ externalLinks:
     url: https://mapas.campomourao.pr.gov.br/
 publish: true
 publicationStatus: aprovado
-reviewedAt: 2026-11-09
+reviewedAt: 2026-11-20
 ---
 
 ## Um ponto de encontro para a cultura

@@ -4,6 +4,48 @@ import PageHeading from '../components/PageHeading.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Icon from '../components/Icon.astro';
 import ProfilePortrait from '../components/ProfilePortrait.astro';
+const professionalExperience = [
+  {
+    title: 'Rede Mapas — MinC / UFPR',
+    description:
+      'Experiência do responsável técnico em análise de projetos de software, levantamento de requisitos e evolução de soluções digitais do ecossistema Mapas Culturais, no âmbito de projeto desenvolvido pela UFPR em parceria com o Ministério da Cultura.',
+  },
+  {
+    title: 'Rede das Artes — Funarte / UFC',
+    description:
+      'Experiência profissional em análise de negócios e sistemas para soluções digitais relacionadas à Rede das Artes, no âmbito do projeto Funarte/UFC.',
+  },
+  {
+    title: 'Mapa Goiano — Secult Goiás',
+    description:
+      'Trajetória profissional em tecnologia aplicada à política cultural estadual, incluindo operação, aprimoramento e apoio à gestão do Mapa Goiano e de instrumentos de fomento.',
+  },
+  {
+    title: 'Cult Editais / PNAB — Ministério da Cultura',
+    description:
+      'Consultoria e apoio técnico a plataformas de editais e à formação de gestores, conforme o histórico profissional do responsável técnico.',
+  },
+  {
+    title: 'Periferia Viva — Ministério das Cidades',
+    description:
+      'Experiência profissional em requisitos, produto, organização de fluxos digitais e apoio a iniciativas voltadas aos territórios periféricos, incluindo o Prêmio Periferia Viva. Essa participação integra a trajetória do responsável técnico, sem representar contrato direto da Conecta.',
+  },
+  {
+    title: 'Mapas Culturais — Acre',
+    description:
+      'Participação técnica na instalação da plataforma Mapas Culturais e na capacitação de gestores, conforme declaração da Fundação de Cultura Elias Mansour.',
+  },
+  {
+    title: 'Caldas Country Show / Studio Tur',
+    description:
+      'Experiência do responsável técnico com sistemas de bilhetagem, integração de pagamentos, controle de acesso, suporte tecnológico, infraestrutura e dados de eventos.',
+  },
+  {
+    title: 'Sistemas culturais — Pirenópolis',
+    description:
+      'Atuação profissional atestada em coordenação de sistemas relacionados a editais culturais e à execução da Lei Aldir Blanc no município.',
+  },
+];
 ---
 
 <BaseLayout
@@ -138,6 +180,30 @@ import ProfilePortrait from '../components/ProfilePortrait.astro';
             Conecta Soluções.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
+  <section class="section soft-section" id="trajetoria" aria-labelledby="trajectory-title">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">
+            <span class="orange-dash"></span>EXPERIÊNCIA DO RESPONSÁVEL TÉCNICO
+          </p>
+          <h2 id="trajectory-title">Conhecimentos construídos em diferentes contextos.</h2>
+        </div>
+        <p>
+          Atuações profissionais de Victor Ferreira. Não representam contratos diretos, clientes ou
+          endosso institucional à Conecta Soluções.
+        </p>
+      </div>
+      <div class="principle-grid" data-professional-experience>
+        {professionalExperience.map((experience) => (
+          <div>
+            <h3>{experience.title}</h3>
+            <p>{experience.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>

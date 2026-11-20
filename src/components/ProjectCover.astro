@@ -7,12 +7,14 @@ interface Props {
   alt: string;
   sizes?: string;
   loading?: 'eager' | 'lazy';
+  caption?: string;
 }
 const {
   id,
   alt,
   sizes = '(max-width: 640px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 80px), 600px',
   loading = 'lazy',
+  caption,
 } = Astro.props;
 const covers = import.meta.glob<{ default: ImageMetadata }>('../assets/projetos/*.png', {
   eager: true,
@@ -33,7 +35,9 @@ const cover = covers[`../assets/projetos/${id}.png`]?.default;
   ) : (
     <div class="project-cover-placeholder" aria-hidden="true">
       <Icon name="culture" size={54} />
-      <span>Cultura, pessoas e tecnologia.</span>
+      <span>Gestão, cultura e tecnologia.</span>
     </div>
   )}
 </div>
+
+{cover && caption && <figcaption>{caption}</figcaption>}

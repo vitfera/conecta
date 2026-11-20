@@ -61,6 +61,9 @@ for (const collection of ['projects', 'products', 'services']) {
       publishedProjects.push({
         id: relative('src/content/projects', source).replace(/\.md$/, ''),
         recognition: /^recognition:\s*$/m.test(frontmatter),
+        relationship: field('relationship'),
+        client: field('client'),
+        order: Number(field('order') ?? 100),
       });
     if (!approved) {
       unpublished.push({
@@ -180,6 +183,12 @@ for (const file of pages) {
   }
 }
 
+for (const file of pages) {
+  const html = await readFile(file, 'utf8');
+  assert.ok(!/R\$\s*\d/.test(html), `${relative(root, file)}: valor contratual exposto`);
+  assert.ok(!/\b\d{3}\.\d{3}\.\d{3}-\d{2}\b/.test(html), `${relative(root, file)}: CPF exposto`);
+}
+
 const robots = await readFile(join(root, 'robots.txt'), 'utf8');
 const sitemap = await readFile(join(root, 'sitemap.xml'), 'utf8');
 const projectIndex = await readFile(join(root, 'projetos/index.html'), 'utf8');
@@ -191,6 +200,35 @@ for (const project of publishedProjects) {
     `Projeto sem card no catálogo: ${project.id}`,
   );
   const story = await readFile(detail, 'utf8');
+  assert.ok(
+    ['contrato-direto', 'via-instituicao-parceira'].includes(project.relationship),
+    `Vínculo do projeto precisa de classificação explícita: ${project.id}`,
+  );
+  const contractualParty = project.client.split(' — ')[0].split('/')[0];
+  assert.ok(
+    story.includes(contractualParty),
+    `História sem identificação da instituição responsável pelo vínculo: ${project.id}`,
+  );
+  if (project.id === 'premio-nacional-vozes-perifericas') {
+    assert.ok(
+      story.includes('Mapa da Cultura, do Ministério da Cultura'),
+      'Vozes Periféricas deve identificar a plataforma Mapa da Cultura do MinC',
+    );
+    assert.ok(
+      !story.includes('Mapas Culturais'),
+      'Vozes Periféricas não deve ser apresentado como plataforma Mapas Culturais',
+    );
+    assert.ok(
+      !story.includes('href="/produtos/mapas-culturais/"'),
+      'Vozes Periféricas não deve receber CTA de serviços Mapas Culturais',
+    );
+  }
+  if (story.includes('data-project-cover="placeholder"')) {
+    assert.ok(
+      !story.includes('Um olhar sobre a plataforma em funcionamento.'),
+      `Capa neutra não comprova plataforma em funcionamento: ${project.id}`,
+    );
+  }
   assert.equal(
     story.includes('data-project-recognition'),
     project.recognition,
@@ -202,6 +240,23 @@ for (const project of publishedProjects) {
       `Projeto fora do sitemap: ${project.id}`,
     );
 }
+const home = await readFile(join(root, 'index.html'), 'utf8');
+const homeProjects = [...home.matchAll(/data-project="([^"]+)"/g)].map(([, id]) => id);
+const highlightedProjects = [...publishedProjects]
+  .filter(({ relationship }) => relationship === 'contrato-direto')
+  .sort((a, b) => a.order - b.order)
+  .slice(0, 2)
+  .map(({ id }) => id);
+assert.deepEqual(
+  homeProjects,
+  highlightedProjects,
+  'Destaques da home divergentes dos contratos diretos',
+);
+assert.ok(
+  !projectIndex.includes('Contratações diretas da Conecta'),
+  'Catálogo deve preservar a apresentação narrativa aprovada',
+);
+
 if (!publishedProjects.length) {
   assert.equal(
     value(projectIndex, 'robots'),

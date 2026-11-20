@@ -17,7 +17,9 @@ interface Props {
 const { project } = Astro.props;
 const { Content } = await render(project);
 const { recognition, externalLinks } = project.data;
-const showMapasServices = (await getPublishedProducts()).some(({ id }) => id === 'mapas-culturais');
+const showMapasServices =
+  (project.body ?? '').includes('Mapas Culturais') &&
+  (await getPublishedProducts()).some(({ id }) => id === 'mapas-culturais');
 ---
 
 <BaseLayout title={project.data.title} description={project.data.description}>
@@ -40,8 +42,8 @@ const showMapasServices = (await getPublishedProducts()).some(({ id }) => id ===
             id={project.id}
             alt={`Tela inicial do ${project.data.title}.`}
             loading="eager"
+            caption="Um olhar sobre a plataforma em funcionamento."
           />
-          <figcaption>Um olhar sobre a plataforma em funcionamento.</figcaption>
         </figure>
       </div>
     </div>
