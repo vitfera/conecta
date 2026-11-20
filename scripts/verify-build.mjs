@@ -223,10 +223,19 @@ for (const project of publishedProjects) {
       'Vozes Periféricas não deve receber CTA de serviços Mapas Culturais',
     );
   }
-  if (story.includes('data-project-cover="placeholder"')) {
+  if (
+    story.includes('data-project-cover="placeholder"') ||
+    story.includes('data-project-cover="illustration"')
+  ) {
     assert.ok(
       !story.includes('Um olhar sobre a plataforma em funcionamento.'),
-      `Capa neutra não comprova plataforma em funcionamento: ${project.id}`,
+      `Capa conceitual ou neutra não comprova plataforma em funcionamento: ${project.id}`,
+    );
+  }
+  if (story.includes('data-project-cover="illustration"')) {
+    assert.ok(
+      story.includes('Ilustração conceitual'),
+      `Capa ilustrada sem identificação: ${project.id}`,
     );
   }
   assert.equal(

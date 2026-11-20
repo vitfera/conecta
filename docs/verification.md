@@ -2,6 +2,12 @@
 
 A execução em Docker tem relatório próprio em [validação Docker](docker-validation.md), com build Linux, CPU emulada sem AVX/AVX2, healthcheck, portas, navegação e contexto de build. Este documento mantém o histórico das verificações do site.
 
+## Capas ilustradas dos projetos — 20 de novembro de 2026
+
+Os nove novos cases receberam capas conceituais próprias geradas com `image_gen`, salvas em `src/assets/projetos/<slug>.illustration.png`. As duas capturas públicas anteriores foram preservadas. Proveniência e temas no [README das capas](../src/assets/projetos/README.md), com [prompts completos](imagegen/2026-11-20-capas-projetos.md).
+
+`check`: 47 arquivos sem erros, avisos ou sugestões. Build estático: 30 páginas, 60 operações de otimização de imagens e 832 links/assets aprovados pelo verify. No Chrome, as onze capas foram decodificadas; nove detalhes exibem legenda conceitual e dois mantêm a legenda das capturas. Home e catálogo reutilizam as mesmas imagens. Desktop em 1440 px e celular em 375/320 px, sem overflow ou erros de página/console. Capturas da interface inspecionadas. A revisão independente não encontrou problemas funcionais ou de acessibilidade; o registro de prompts foi completado para as nove imagens.
+
 ## Atualização do portfólio — 20 de novembro de 2026
 
 Conciliação registrada na [auditoria do portfólio](auditoria-portfolio-2026-11-20.md): dois cases atualizados, nove incluídos e oito experiências profissionais detalhadas separadamente em Quem Somos. O catálogo mantém a apresentação narrativa anterior, sem agrupamentos de contratação. A correção do titular sobre o Mapa da Cultura do MinC no Prêmio Vozes Periféricas foi aplicada.

@@ -37,6 +37,9 @@
   height: 100%;
   object-fit: contain;
 }
+.project-cover[data-project-cover='illustration'] img {
+  object-fit: cover;
+}
 .project-cover-placeholder {
   display: flex;
   flex-direction: column;

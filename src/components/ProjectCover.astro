@@ -19,14 +19,17 @@ const {
 const covers = import.meta.glob<{ default: ImageMetadata }>('../assets/projetos/*.png', {
   eager: true,
 });
-const cover = covers[`../assets/projetos/${id}.png`]?.default;
+const screenshot = covers[`../assets/projetos/${id}.png`]?.default;
+const illustration = covers[`../assets/projetos/${id}.illustration.png`]?.default;
+const cover = screenshot ?? illustration;
+const coverKind = screenshot ? 'image' : illustration ? 'illustration' : 'placeholder';
 ---
 
-<div class="project-cover" data-project-cover={cover ? 'image' : 'placeholder'}>
+<div class="project-cover" data-project-cover={coverKind}>
   {cover ? (
     <Image
       src={cover}
-      alt={alt}
+      alt={coverKind === 'illustration' ? '' : alt}
       widths={[480, 800, 1200, 1440]}
       sizes={sizes}
       format="webp"
@@ -40,4 +43,8 @@ const cover = covers[`../assets/projetos/${id}.png`]?.default;
   )}
 </div>
 
-{cover && caption && <figcaption>{caption}</figcaption>}
+{cover && caption && (
+  <figcaption>
+    {coverKind === 'illustration' ? 'Ilustração conceitual sobre o contexto do projeto.' : caption}
+  </figcaption>
+)}

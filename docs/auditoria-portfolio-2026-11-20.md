@@ -69,8 +69,8 @@ As oito apresentações usam resumos factuais e uma identificação explícita d
 ## Salvaguardas e preservação
 
 - Schema e mecanismo de coleções preservados. O campo existente `relationship` usa valores consistentes no controle editorial. A listagem pública mantém o formato narrativo anterior, sem grupos ou etiquetas de contratação direta, conforme o ajuste solicitado pelo titular.
-- Cards, capas, tipografia, paleta, marca, menu e efeitos existentes reaproveitados. Os novos cases usam somente a composição neutra já prevista; não foram adicionadas imagens de terceiros.
-- Legenda de plataforma em funcionamento condicionada à existência de capa real aprovada. Nenhum placeholder é apresentado como prova de funcionamento.
+- Cards, capas, tipografia, paleta, marca, menu e efeitos existentes reaproveitados. Os nove novos cases receberam ilustrações conceituais próprias na paleta azul e laranja, geradas com `image_gen`; as duas capturas públicas anteriores foram preservadas. Não foram adicionadas marcas, documentos ou fotografias de terceiros.
+- Legenda de plataforma em funcionamento exclusiva das capturas aprovadas. Ilustrações recebem legenda conceitual, e o placeholder de segurança não é apresentado como evidência de funcionamento.
 - As URLs publicadas de Campo Mourão e Cianorte foram preservadas. As novas rotas não duplicam os slugs sugeridos para casos já existentes.
 - Valores contratuais, CPFs, assinaturas, contas, documentos integrais e produtos da OEI não foram copiados. O CNPJ institucional configurado no site foi preservado.
 - A pasta local de referência continua ignorada pelo Git e excluída do contexto Docker; nenhum original foi copiado para `src` ou `public`.
@@ -100,3 +100,9 @@ A revisão independente identificou uma referência literal ao título do case U
 Logs locais de cenários: `/tmp/conecta-portfolio-*.log`; resumo em `/tmp/conecta-portfolio-scenarios.json`. Os scripts temporários de QA e as capturas ficaram em `/tmp`, sem entrar no build.
 
 A validação é local; não houve publicação no servidor, mudança de túnel, DNS ou deploy de produção. Qualquer divulgação futura de produtos, imagens ou documentos depende das autorizações pertinentes.
+
+## Complemento visual após a auditoria
+
+A pedido do titular, os nove cases que ainda usavam a composição neutra receberam capas editoriais próprias geradas com a ferramenta integrada `image_gen`. Os arquivos estão em `src/assets/projetos/<slug>.illustration.png`, com origem e temas registrados no README dessa pasta e os [nove prompts completos](imagegen/2026-11-20-capas-projetos.md) preservados.
+
+A conferência final das capas validou nove ilustrações, duas capturas originais, legendas corretas e decodificação das imagens nos onze detalhes, na home e no catálogo. Desktop em 1440 px e celular em 375/320 px, sem overflow ou erros de console/página. `check`: 47 arquivos sem diagnósticos; build: 30 páginas e 60 operações de otimização de imagens; `verify`: 832 links/assets. As versões WebP são entregues pelo Astro. A revisão independente não apontou problemas funcionais ou de acessibilidade; a pendência de completar os nove prompts foi resolvida antes do commit.
