@@ -59,3 +59,14 @@ Arquivos: `src/content/products/*.md`, `src/components/FeaturedProduct.astro`, `
 ## Limites desta apresentação
 
 Os endereços públicos ou de demonstração das aplicações não foram informados; os links comerciais usam o WhatsApp da Conecta. O sistema de eventos não possui código local para inspeção; sua descrição foi fornecida pelo titular. Não afirmar disponibilidade imediata, clientes, volume de uso ou resultados comerciais a partir da presença dos repositórios locais.
+
+
+## Evolução futura — destaque para Operacionalização da PNAB
+
+Ideia registrada pelo titular em **20/11/2026**, para retomada futura.
+
+- [ ] Incluir **Operacionalização da PNAB** em Produtos como outro destaque, mantendo o destaque do Mapas Culturais.
+- [ ] Criar uma página dedicada com o mesmo cuidado visual e padrão de apresentação da página do Mapas Culturais, descrevendo o serviço prestado pela Conecta e seu valor para a gestão cultural.
+- [ ] Usar o trabalho de Campo Mourão como referência para desenvolver o conteúdo, com base no escopo confirmado e ligação com o case existente em `/projetos/campo-mourao-pnab-2026/`.
+- [ ] Prever a convivência dos dois destaques no catálogo, preservando a identidade visual aprovada e o contato pelo WhatsApp.
+- [ ] Retomar o detalhamento e a revisão editorial antes da implementação. Esta anotação registra a ideia; a criação da página fica para uma etapa futura.
