@@ -16,22 +16,29 @@ const {
 const covers = import.meta.glob<{ default: ImageMetadata }>('../assets/projetos/*.png', {
   eager: true,
 });
-const cover = covers[`../assets/projetos/${id}.png`]?.default;
+const artwork = covers[`../assets/projetos/${id}.artwork.png`]?.default;
+const cover = artwork ?? covers[`../assets/projetos/${id}.png`]?.default;
 const Wrapper = detail ? 'figure' : 'div';
+const caption = artwork
+  ? 'Arte de divulgação do projeto.'
+  : 'Captura da página pública relacionada ao projeto.';
+const alt = artwork
+  ? `Arte de divulgação do projeto ${title}.`
+  : `Captura de tela da página pública relacionada a ${title}.`;
 ---
 
 {cover && (
   <Wrapper class={detail ? 'project-hero-media' : 'project-story-media'}>
-    <div class="project-cover" data-project-cover="image">
+    <div class="project-cover" data-project-cover={artwork ? 'artwork' : 'image'}>
       <Image
         src={cover}
-        alt={detail ? `Captura de tela da página pública relacionada a ${title}.` : ''}
-        widths={[480, 800, 1200, 1440]}
+        alt={detail ? alt : ''}
+        widths={[480, 800, 1200, 1440].filter((width) => width < cover.width).concat(cover.width)}
         sizes={sizes}
         format="webp"
         loading={detail ? 'eager' : 'lazy'}
       />
     </div>
-    {detail && <figcaption>Captura da página pública relacionada ao projeto.</figcaption>}
+    {detail && <figcaption>{caption}</figcaption>}
   </Wrapper>
 )}

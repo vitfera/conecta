@@ -37,6 +37,9 @@
   height: 100%;
   object-fit: contain;
 }
+.project-cover[data-project-cover='artwork'] {
+  background: var(--navy);
+}
 .project-story-copy {
   display: flex;
   flex-direction: column;

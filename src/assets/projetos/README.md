@@ -1,6 +1,6 @@
 # Capas das histórias de projetos
 
-As capas são capturas de páginas públicas relacionadas aos projetos. Quando não há uma captura adequada, o card e a página interna exibem o texto, e o titular pode fornecer uma imagem para adaptação.
+As capas usam capturas de páginas públicas ou imagens fornecidas pelo titular. Quando a capa ainda está pendente, o card e a página interna exibem o texto.
 
 Use o slug do Markdown como nome do PNG. As capturas são feitas em **1440 × 600 px**, proporção **12:5**. O Astro gera versões WebP responsivas. As imagens reproduzem a área pública da página, com as marcas da instituição de origem, e mostram a interface ou o edital retratado.
 
@@ -16,4 +16,6 @@ Use o slug do Markdown como nome do PNG. As capturas são feitas em **1440 × 60
 | `uruacu-pnab-2024-2025.png`                 | [Edital de Pontos de Cultura da PNAB em Uruaçu](https://mapa.culturagoias.com.br/oportunidade/5/)                     |
 | `catalao-pnab-2024-2025.png`                | [Edital de seleção da PNAB em Catalão](https://mapa.culturagoias.com.br/oportunidade/3/)                              |
 
-Vozes Periféricas e Raias do Amanhã aguardam imagens do titular. A tela pública do Mapa da Cultura para Vozes Periféricas apresentou bloqueio no navegador de captura. A página de Raias do Amanhã apresenta o aviso de inscrições encerradas.
+Vozes Periféricas usa a arte enviada pelo titular em `premio-nacional-vozes-perifericas.artwork.png` (768 × 460 px). O sufixo `.artwork.png` identifica imagens de divulgação, que aparecem inteiras no quadro panorâmico.
+
+Raias do Amanhã aguarda imagem do titular. A página do projeto apresenta o aviso de inscrições encerradas.
