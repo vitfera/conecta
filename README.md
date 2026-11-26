@@ -104,8 +104,8 @@ Consulte a [revisão de SEO](docs/seo.md) para verificar os metadados, o sitemap
 
 ## Publicação
 
-O workflow verifica o projeto em pull requests, envios à branch `main` e execuções manuais. O artefato contém somente `dist/`. Para habilitar a publicação no cPanel, configure `DEPLOY_ENABLED=true`, `SITE_URL`, o ambiente de produção e os segredos do workflow.
+O GitHub Actions executa testes e verifica o build. A publicação roda no Git do cPanel, onde `.cpanel.yml` compila e sincroniza o conteúdo estático de `dist/`.
 
-Consulte [a configuração de cPanel e recuperação](docs/deploy.md). O pipeline exige SSH e rsync; se a conta tiver somente SFTP, adapte o transporte antes de habilitar a publicação. Não configure um segundo mecanismo de deploy concorrente.
+No clone do cPanel, configure `SITE_URL` e `DEPLOYPATH` no `.env`. Consulte o [guia de publicação e recuperação](docs/deploy.md).
 
 Referências técnicas: [Astro: coleções de conteúdo](https://docs.astro.build/en/guides/content-collections/), [Astro: configuração estática](https://docs.astro.build/en/reference/configuration-reference/), [GitHub Actions: setup-node](https://github.com/actions/setup-node).
