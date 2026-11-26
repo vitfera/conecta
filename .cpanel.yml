@@ -2,5 +2,5 @@
 deployment:
   tasks:
     - >-
-      PATH="/opt/cpanel/ea-nodejs24/bin:/opt/cpanel/ea-nodejs22/bin:$PATH"
+      PATH="/opt/alt/alt-nodejs24/root/usr/bin:/opt/cpanel/ea-nodejs24/bin:/opt/cpanel/ea-nodejs22/bin:$PATH:/usr/bin"
       node scripts/deploy-cpanel.mjs

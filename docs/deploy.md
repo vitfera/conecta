@@ -5,7 +5,7 @@ O cPanel clona a `main`, executa o build definido em `.cpanel.yml` e publica o c
 ## Configuração inicial
 
 1. No cPanel, confirme o **Document Root** do domínio de produção em **Domínios** e confira o certificado HTTPS. [Raiz do domínio no cPanel](https://docs.cpanel.net/knowledge-base/cpanel-product/how-domains-serve-content/)
-2. Confirme a disponibilidade de Node, npm e rsync no shell da conta. O build de referência usa o Node indicado em `.nvmrc`. A versão mínima está em `package.json`. A tarefa também procura o Node nas instalações EasyApache 24 e 22. [Node.js no cPanel](https://docs.cpanel.net/knowledge-base/general-server-administration/guide-to-node-js-installations/)
+2. Confirme a disponibilidade de Node, npm e rsync no shell da conta. A hospedagem validou o Node 24 e o npm em `/opt/alt/alt-nodejs24/root/usr/bin` e o rsync em `/usr/bin/rsync`. A tarefa prioriza o caminho do CloudLinux e também inclui os caminhos do EasyApache. [Node.js no cPanel](https://docs.cpanel.net/knowledge-base/general-server-administration/guide-to-node-js-installations/)
 3. Abra **Git Version Control → Create**, selecione **Clone a Repository** e clone o repositório em uma pasta fora das raízes públicas, como `repositories/conecta`. Use a branch `main`. Para um repositório privado, configure o acesso de leitura do cPanel ao GitHub. [Acesso a repositórios privados](https://docs.cpanel.net/knowledge-base/web-services/guide-to-git-set-up-access-to-private-repositories/)
 4. Na pasta do clone, crie `.env` com a origem e o caminho absoluto da raiz do domínio. Substitua os dois valores do exemplo pelos dados da conta.
 
