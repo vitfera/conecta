@@ -27,3 +27,7 @@ A solução conecta a venda do ingresso à sua geração digital para o usuário
 ## Uma experiência digital para o evento
 
 O foco está em organizar a oferta dos ingressos e facilitar seu acesso pelo público. A apresentação da solução e o escopo de uso são alinhados com as necessidades de cada evento.
+
+## Experiência no Caldas Country Show
+
+Victor Ferreira, responsável técnico da Conecta, atuou com o sistema de ingressos do Caldas Country Show, incluindo bilhetagem, integração de pagamentos e controle de acesso. [Veja essa atuação na trajetória profissional](/quem-somos/#caldas-country-show).

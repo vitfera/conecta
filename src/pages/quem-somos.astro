@@ -36,9 +36,14 @@ const professionalExperience = [
       'Participação técnica na instalação da plataforma Mapas Culturais e na capacitação de gestores, conforme declaração da Fundação de Cultura Elias Mansour.',
   },
   {
-    title: 'Caldas Country Show / Studio Tur',
+    id: 'caldas-country-show',
+    title: 'Caldas Country Show',
     description:
-      'Experiência do responsável técnico com sistemas de bilhetagem, integração de pagamentos, controle de acesso, suporte tecnológico, infraestrutura e dados de eventos.',
+      'Atuação do responsável técnico com o sistema de ingressos do evento, incluindo bilhetagem, integração de pagamentos, controle de acesso, suporte tecnológico, infraestrutura e dados.',
+    link: {
+      href: '/produtos/ingressos-digitais/',
+      label: 'Conheça o sistema de ingressos',
+    },
   },
   {
     title: 'Sistemas culturais — Pirenópolis',
@@ -199,9 +204,14 @@ const professionalExperience = [
       </div>
       <div class="principle-grid" data-professional-experience>
         {professionalExperience.map((experience) => (
-          <div>
+          <div id={experience.id}>
             <h3>{experience.title}</h3>
             <p>{experience.description}</p>
+            {experience.link && (
+              <a class="text-link" href={experience.link.href}>
+                {experience.link.label} <Icon size={18} />
+              </a>
+            )}
           </div>
         ))}
       </div>
