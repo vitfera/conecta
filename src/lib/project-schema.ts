@@ -5,13 +5,15 @@ export const projectSchema = commonEntrySchema
   .safeExtend({
     storyTitle: z.string().min(5).optional(),
     order: z.number().int().positive().default(100),
-    client: z.string(),
+    client: z.string().optional(),
     relationship: z.string(),
     year: z.number().int(),
     sector: z.string(),
     nature: z.string(),
     location: z.string(),
-    contractStatus: z.enum(['contrato-firmado', 'em-execucao', 'concluido-com-evidencia']),
+    contractStatus: z
+      .enum(['contrato-firmado', 'em-execucao', 'concluido-com-evidencia'])
+      .optional(),
     verifiedDeliveries: z.array(z.string()).default([]),
     verifiedResults: z.array(z.string()).default([]),
     externalLinks: z.array(z.object({ label: z.string(), url: z.url() })).default([]),
@@ -26,6 +28,14 @@ export const projectSchema = commonEntrySchema
       .optional(),
   })
   .strict()
+  .refine((data) => data.relationship === 'atuacao-tecnica' || data.client !== undefined, {
+    path: ['client'],
+    message: 'Projeto com vínculo contratual exige identificação do contratante.',
+  })
+  .refine((data) => data.relationship === 'atuacao-tecnica' || data.contractStatus !== undefined, {
+    path: ['contractStatus'],
+    message: 'Projeto com vínculo contratual exige situação contratual.',
+  })
   .superRefine((data, ctx) => {
     if (data.contractStatus === 'concluido-com-evidencia' && !data.verifiedDeliveries.length)
       ctx.addIssue({

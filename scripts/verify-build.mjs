@@ -201,14 +201,18 @@ for (const project of publishedProjects) {
   );
   const story = await readFile(detail, 'utf8');
   assert.ok(
-    ['contrato-direto', 'via-instituicao-parceira'].includes(project.relationship),
+    ['contrato-direto', 'via-instituicao-parceira', 'atuacao-tecnica'].includes(
+      project.relationship,
+    ),
     `Vínculo do projeto precisa de classificação explícita: ${project.id}`,
   );
-  const contractualParty = project.client.split(' — ')[0].split('/')[0];
-  assert.ok(
-    story.includes(contractualParty),
-    `História sem identificação da instituição responsável pelo vínculo: ${project.id}`,
-  );
+  if (project.relationship !== 'atuacao-tecnica') {
+    const contractualParty = project.client?.split(' — ')[0].split('/')[0];
+    assert.ok(
+      contractualParty && story.includes(contractualParty),
+      `História sem identificação da instituição responsável pelo vínculo: ${project.id}`,
+    );
+  }
   if (project.id === 'premio-nacional-vozes-perifericas') {
     assert.ok(
       story.includes('Mapa da Cultura, do Ministério da Cultura'),

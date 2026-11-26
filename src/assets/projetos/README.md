@@ -15,6 +15,7 @@ Use o slug do Markdown como nome do PNG. As capturas são feitas em **1440 × 60
 | `aparecida-lpg-2024.png`                    | [Edital de premiação da Lei Paulo Gustavo em Aparecida](https://portaldacultura.aparecida.go.gov.br/oportunidade/60/) |
 | `uruacu-pnab-2024-2025.png`                 | [Edital de Pontos de Cultura da PNAB em Uruaçu](https://mapa.culturagoias.com.br/oportunidade/5/)                     |
 | `catalao-pnab-2024-2025.png`                | [Edital de seleção da PNAB em Catalão](https://mapa.culturagoias.com.br/oportunidade/3/)                              |
+| `pirenopolis-sistemas-aldir-blanc.png`      | [Edital de fomento cultural da PNAB em Pirenópolis](https://mapa.culturagoias.com.br/oportunidade/25/)                |
 
 Vozes Periféricas usa a arte enviada pelo titular em `premio-nacional-vozes-perifericas.artwork.png` (768 × 460 px). O sufixo `.artwork.png` identifica imagens de divulgação, que aparecem inteiras no quadro panorâmico.
 

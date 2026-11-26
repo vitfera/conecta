@@ -18,6 +18,22 @@ test('cases institucionais continuam exigindo contratante e situação contratua
   assert.equal(projectSchema.safeParse(project).success, true);
   const { client: _, ...withoutClient } = project;
   assert.equal(projectSchema.safeParse(withoutClient).success, false);
+  const { contractStatus: _status, ...withoutContractStatus } = project;
+  assert.equal(projectSchema.safeParse(withoutContractStatus).success, false);
+});
+
+test('atuação técnica pode ser publicada com o escopo confirmado', () => {
+  const { client: _client, contractStatus: _status, ...technicalProject } = project;
+  assert.equal(
+    projectSchema.safeParse({
+      ...technicalProject,
+      relationship: 'atuacao-tecnica',
+      publish: true,
+      publicationStatus: 'aprovado',
+      reviewedAt: '2026-11-25',
+    }).success,
+    true,
+  );
 });
 
 test('cases institucionais publicados continuam exigindo aprovação e revisão', () => {
