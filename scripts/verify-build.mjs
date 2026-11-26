@@ -80,6 +80,7 @@ for (const collection of ['projects', 'products', 'services']) {
 }
 const titles = new Set();
 const descriptions = new Set();
+const indexableUrls = [];
 const value = (html, name) =>
   [...html.matchAll(/<meta\b[^>]*>/g)]
     .find(([tag]) => tag.includes(`name="${name}"`))?.[0]
@@ -160,6 +161,8 @@ for (const file of pages) {
       );
     }
   }
+  const indexable = value(html, 'robots') === 'index, follow';
+  const canonical = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/)?.[1];
   if (!site) {
     assert.equal(
       value(html, 'robots'),
@@ -168,8 +171,12 @@ for (const file of pages) {
     );
     assert.ok(!html.includes('rel="canonical"'), `${label}: canonical inventado`);
   } else {
-    const canonical = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/)?.[1];
     assert.ok(canonical?.startsWith(`${site}/`), `${label}: canonical fora do domínio configurado`);
+    if (indexable) {
+      const route = `/${label.replace(/index\.html$/, '')}`;
+      assert.equal(canonical, new URL(route, site).href, `${label}: canonical da página incorreto`);
+      indexableUrls.push(canonical);
+    }
   }
   for (const [tag] of html.matchAll(/<(?:a|img|script|link)\b[^>]*>/g)) {
     const url = tag.match(/(?:href|src)="([^"]+)"/)?.[1];
@@ -182,11 +189,26 @@ for (const file of pages) {
     );
     checkedLinks++;
   }
-  for (const [, json] of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+  const structuredData = [
+    ...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs),
+  ].map(([, json]) => JSON.parse(json));
+  if (label === 'index.html') {
+    const organization = structuredData.find((entry) => entry['@type'] === 'Organization');
+    assert.ok(organization?.name, 'A home precisa dos dados da organização');
+    const website = structuredData.find((entry) => entry['@type'] === 'WebSite');
     assert.equal(
-      JSON.parse(json)['@type'],
-      'Organization',
-      `${label}: dados estruturados inválidos`,
+      website?.url,
+      site ? `${site}/` : undefined,
+      'WebSite da home com origem divergente',
+    );
+  }
+  const detailSection = label.match(/^(produtos|projetos|solucoes)\/[^/]+\/index\.html$/)?.[1];
+  if (site && indexable && detailSection) {
+    const trail = structuredData.find((entry) => entry['@type'] === 'BreadcrumbList');
+    assert.deepEqual(
+      trail?.itemListElement.map(({ item }) => item),
+      [`${site}/${detailSection}/`, canonical],
+      `${label}: breadcrumb não corresponde às URLs canônicas`,
     );
   }
 }
@@ -297,8 +319,12 @@ if (!site) {
 } else {
   assert.match(robots, /Allow: \/\s/);
   assert.ok(robots.includes(`Sitemap: ${site}/sitemap.xml`));
-  for (const [, url] of sitemap.matchAll(/<loc>(.*?)<\/loc>/g))
-    assert.ok(url.startsWith(`${site}/`));
+  const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(([, url]) => url);
+  assert.deepEqual(
+    sitemapUrls.sort(),
+    indexableUrls.sort(),
+    'Sitemap divergente das páginas indexáveis',
+  );
 }
 assert.equal(
   pages.filter(

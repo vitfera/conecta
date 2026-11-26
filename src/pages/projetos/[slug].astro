@@ -22,7 +22,11 @@ const showMapasServices =
   (await getPublishedProducts()).some(({ id }) => id === 'mapas-culturais');
 ---
 
-<BaseLayout title={project.data.title} description={project.data.description}>
+<BaseLayout
+  title={project.data.title}
+  description={project.data.description}
+  breadcrumb={{ section: 'Projetos', href: '/projetos/', current: project.data.title }}
+>
   <section class="project-story-heading">
     <div class="container">
       <a class="text-link project-back" href="/projetos/">

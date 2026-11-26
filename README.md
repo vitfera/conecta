@@ -100,6 +100,8 @@ O contato comercial é o WhatsApp **+55 (62) 98275-5571**, configurado em `src/d
 
 O domínio de homologação confirmado é `https://conecta.victor.ferreira.nom.br`, já indicado em `.env.example` e no Compose. `SITE_URL` determina a origem HTTPS usada no build. Sem essa variável, o build local usa `noindex`, o robots bloqueia indexação e não são gerados canonical nem URLs fictícias no sitemap. Se a URL institucional definitiva for diferente, configure-a em `SITE_URL` e execute novamente o build e a verificação. O Nginx de homologação mantém `noindex` no cabeçalho HTTP, sem apagar canonical e sitemap.
 
+Consulte a [revisão de SEO](docs/seo.md) para verificar os metadados, o sitemap e a indexação de Mapas Culturais no domínio de produção.
+
 ## Publicação
 
 O workflow verifica o projeto em pull requests, envios à branch `main` e execuções manuais. O artefato contém somente `dist/`. Para habilitar a publicação no cPanel, configure `DEPLOY_ENABLED=true`, `SITE_URL`, o ambiente de produção e os segredos do workflow.

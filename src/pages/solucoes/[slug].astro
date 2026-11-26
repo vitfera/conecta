@@ -22,7 +22,11 @@ const mapasCulturais =
     : undefined;
 ---
 
-<BaseLayout title={service.data.title} description={service.data.description}>
+<BaseLayout
+  title={service.data.title}
+  description={service.data.description}
+  breadcrumb={{ section: 'Soluções', href: '/solucoes/', current: service.data.shortTitle }}
+>
   <section class="page-heading service-heading">
     <div class="container">
       <a class="breadcrumb" href="/solucoes/">

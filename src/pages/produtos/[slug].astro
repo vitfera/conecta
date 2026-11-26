@@ -29,7 +29,11 @@ const relatedProjects = [...new Set(relatedProjectIds)]
   .filter((project) => project !== undefined);
 ---
 
-<BaseLayout title={title} description={data.description}>
+<BaseLayout
+  title={title}
+  description={data.description}
+  breadcrumb={{ section: 'Produtos', href: '/produtos/', current: data.title }}
+>
   <section class="page-heading service-heading">
     <div class="container">
       <a class="breadcrumb" href="/produtos/">
