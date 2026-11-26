@@ -1,5 +1,5 @@
 ---
-title: 'Mapa Goiano em Goiânia — colaboração'
+title: 'Lei Paulo Gustavo em Goiânia'
 storyTitle: 'Conhecimento técnico em uma rede de colaboração.'
 description: 'Coordenação de TI e Mapa Goiano em trabalho atestado pelo Instituto Brasil Criativo, no contexto de cooperação com a gestão cultural municipal de Goiânia.'
 order: 15
