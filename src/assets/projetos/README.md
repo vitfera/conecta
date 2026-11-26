@@ -10,7 +10,7 @@ Use o slug do Markdown como nome do PNG. As capturas são feitas em **1440 × 60
 | `cianorte-mapas-culturais.png`              | [Mapa Cultural de Cianorte](https://cultura.cianorte.pr.gov.br/)                                                      |
 | `aparecida-portal-da-cultura-pnab-2026.png` | [Portal da Cultura de Aparecida de Goiânia](https://portaldacultura.aparecida.go.gov.br/)                             |
 | `campo-mourao-pnab-2026.png`                | [Edital Campo das Artes, PNAB 01/2026](https://mapas.campomourao.pr.gov.br/oportunidade/87/)                          |
-| `goiania-mapa-goiano-brasil-criativo.png`   | [Editais da Lei Paulo Gustavo em Goiânia](https://mapagoiano.cultura.go.gov.br/projeto/1338/)                         |
+| `goiania-mapa-goiano-brasil-criativo.png`   | [Edital 001/2023 de audiovisual da LPG em Goiânia](https://mapagoiano.cultura.go.gov.br/oportunidade/441/)           |
 | `uruacu-lpg-2024.png`                       | [Edital de audiovisual da Lei Paulo Gustavo em Uruaçu](https://mapagoiano.cultura.go.gov.br/oportunidade/447/)        |
 | `aparecida-lpg-2024.png`                    | [Edital de premiação da Lei Paulo Gustavo em Aparecida](https://portaldacultura.aparecida.go.gov.br/oportunidade/60/) |
 | `uruacu-pnab-2024-2025.png`                 | [Edital de Pontos de Cultura da PNAB em Uruaçu](https://mapa.culturagoias.com.br/oportunidade/5/)                     |
