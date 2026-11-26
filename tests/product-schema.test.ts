@@ -53,15 +53,19 @@ test('serviços sobre software de terceiros exigem atribuição explícita', () 
   assert.equal(productSchema.safeParse(missingAttribution).success, false);
 });
 
-test('aceita um serviço em destaque com referência a um projeto', () => {
+test('aceita um serviço em destaque com referências a projetos em ordem editorial', () => {
+  const relatedProjects = ['campo-mourao-pnab-2026', 'premio-nacional-vozes-perifericas'];
   const result = productSchema.safeParse({
     ...application,
     kind: 'service',
     title: 'Operacionalização de editais',
     featured: true,
-    relatedProject: 'campo-mourao-pnab-2026',
+    relatedProjects,
   });
   assert.equal(result.success, true);
+  if (result.success && result.data.kind === 'service') {
+    assert.deepEqual(result.data.relatedProjects, relatedProjects);
+  }
 });
 
 test('produto publicado precisa de aprovação e data de revisão válida', () => {

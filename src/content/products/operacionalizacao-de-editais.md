@@ -17,10 +17,19 @@ relatedServices:
   - editais-e-mapas-culturais
   - gestao-publica-e-transformacao-digital
   - consultoria-formacao-e-suporte
-relatedProject: campo-mourao-pnab-2026
+relatedProjects:
+  - campo-mourao-pnab-2026
+  - premio-nacional-vozes-perifericas
+  - aparecida-portal-da-cultura-pnab-2026
+  - catalao-pnab-2024-2025
+  - uruacu-pnab-2024-2025
+  - pirenopolis-sistemas-aldir-blanc
+  - uruacu-lpg-2024
+  - aparecida-lpg-2024
+  - goiania-mapa-goiano-brasil-criativo
 publish: true
 publicationStatus: aprovado
-reviewedAt: 2026-11-25
+reviewedAt: 2026-11-26
 ---
 
 ## Preparação do processo

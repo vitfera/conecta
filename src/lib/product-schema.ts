@@ -39,7 +39,7 @@ const platformService = productBase
 const service = productBase
   .safeExtend({
     kind: z.literal('service'),
-    relatedProject: z.string().min(1).optional(),
+    relatedProjects: z.array(z.string().min(1)).default([]),
   })
   .strict();
 

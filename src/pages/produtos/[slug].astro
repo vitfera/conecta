@@ -21,10 +21,11 @@ const { Content } = await render(product);
 const services = (await getPublished('services')).filter((service) =>
   data.relatedServices.includes(service.id as (typeof data.relatedServices)[number]),
 );
-const relatedProject =
-  data.kind === 'service' && data.relatedProject
-    ? (await getPublished('projects')).find(({ id }) => id === data.relatedProject)
-    : undefined;
+const relatedProjectIds = data.kind === 'service' ? data.relatedProjects : [];
+const publishedProjects = relatedProjectIds.length > 0 ? await getPublished('projects') : [];
+const relatedProjects = [...new Set(relatedProjectIds)]
+  .map((id) => publishedProjects.find((project) => project.id === id))
+  .filter((project) => project !== undefined);
 ---
 
 <BaseLayout title={data.title} description={data.description}>
@@ -62,18 +63,20 @@ const relatedProject =
             <p>{data.attribution}</p>
           </div>
         )}
-        {relatedProject && (
-          <div class="related-services">
-            <h2>Projeto relacionado</h2>
+        {relatedProjects.length > 0 && (
+          <section class="related-services" aria-labelledby="related-projects-title">
+            <h2 id="related-projects-title">Projetos relacionados</h2>
             <ul>
-              <li>
-                <a href={`/projetos/${relatedProject.id}/`}>
-                  {relatedProject.data.title}
-                  <Icon name="diagonal" size={17} />
-                </a>
-              </li>
+              {relatedProjects.map((project) => (
+                <li>
+                  <a href={`/projetos/${project.id}/`}>
+                    {project.data.title}
+                    <Icon name="diagonal" size={17} />
+                  </a>
+                </li>
+              ))}
             </ul>
-          </div>
+          </section>
         )}
         <div class="related-services">
           <h2>Como a Conecta pode apoiar</h2>
