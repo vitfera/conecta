@@ -40,6 +40,9 @@
 .project-cover[data-project-cover='artwork'] {
   background: var(--navy);
 }
+.project-cover[data-project-cover='artwork'][data-project-id='premio-nacional-vozes-perifericas'] {
+  background: linear-gradient(#3d065c, #6602a0 14%, #7b02c2 32%, #7b04be 84%, #7503b6);
+}
 .project-cover[data-project-cover='artwork'][data-project-id='raias-do-amanha-comunicacao'] {
   background: #28435e;
 }
