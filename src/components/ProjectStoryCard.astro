@@ -16,9 +16,7 @@ const { project, compact = false, headingLevel: Heading = 'h2' } = Astro.props;
   data-project={project.id}
   data-interactive-card
 >
-  <div class="project-story-media">
-    <ProjectCover id={project.id} alt={`Tela inicial do ${project.data.title}.`} />
-  </div>
+  <ProjectCover id={project.id} title={project.data.title} />
   <div class="project-story-copy">
     <p class="project-story-name">{project.data.title}</p>
     <Heading>{project.data.storyTitle ?? project.data.title}</Heading>

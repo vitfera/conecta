@@ -37,14 +37,7 @@ const showMapasServices =
           <h1>{project.data.storyTitle ?? project.data.title}</h1>
           <p class="project-story-intro">{project.data.description}</p>
         </div>
-        <figure class="project-hero-media">
-          <ProjectCover
-            id={project.id}
-            alt={`Tela inicial do ${project.data.title}.`}
-            loading="eager"
-            caption="Um olhar sobre a plataforma em funcionamento."
-          />
-        </figure>
+        <ProjectCover id={project.id} title={project.data.title} detail />
       </div>
     </div>
   </section>

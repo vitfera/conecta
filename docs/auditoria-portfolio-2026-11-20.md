@@ -106,3 +106,7 @@ A validação é local; não houve publicação no servidor, mudança de túnel,
 A pedido do titular, os nove cases que ainda usavam a composição neutra receberam capas editoriais próprias geradas com a ferramenta integrada `image_gen`. Os arquivos estão em `src/assets/projetos/<slug>.illustration.png`, com origem e temas registrados no README dessa pasta e os [nove prompts completos](imagegen/2026-11-20-capas-projetos.md) preservados.
 
 A conferência final das capas validou nove ilustrações, duas capturas originais, legendas corretas e decodificação das imagens nos onze detalhes, na home e no catálogo. Desktop em 1440 px e celular em 375/320 px, sem overflow ou erros de console/página. `check`: 47 arquivos sem diagnósticos; build: 30 páginas e 60 operações de otimização de imagens; `verify`: 832 links/assets. As versões WebP são entregues pelo Astro. A revisão independente não apontou problemas funcionais ou de acessibilidade; a pendência de completar os nove prompts foi resolvida antes do commit.
+
+## Orientação posterior sobre as capas
+
+O titular pediu capturas de tela reais e indicou que enviará as imagens para os casos sem tela adequada. Sete capturas foram adicionadas às duas já existentes. As ilustrações da rodada anterior foram retiradas dos cards e dos arquivos servidos. Vozes Periféricas e Raias do Amanhã ficam com apresentação de texto até o recebimento das imagens. O [guia das capas](../src/assets/projetos/README.md) registra a fonte de cada captura.
