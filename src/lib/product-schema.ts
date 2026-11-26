@@ -36,6 +36,12 @@ const platformService = productBase
     attribution: z.string().min(20),
   })
   .strict();
+const service = productBase
+  .safeExtend({
+    kind: z.literal('service'),
+    relatedProject: z.string().min(1).optional(),
+  })
+  .strict();
 
-export const productSchema = z.discriminatedUnion('kind', [application, platformService]);
+export const productSchema = z.discriminatedUnion('kind', [application, platformService, service]);
 export type ProductData = z.infer<typeof productSchema>;

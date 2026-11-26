@@ -7,25 +7,27 @@ import ProductCard from '../../components/ProductCard.astro';
 import EmptyState from '../../components/EmptyState.astro';
 import { getPublishedProducts } from '../../lib/content';
 const products = await getPublishedProducts();
-const featured = products.find(({ data }) => data.featured);
-const others = products.filter((product) => product.id !== featured?.id);
+const featured = products.filter(({ data }) => data.featured);
+const others = products.filter(({ data }) => !data.featured);
 ---
 
 <BaseLayout
   title="Produtos"
-  description="Mapas Culturais em destaque, além de sistemas para gestão imobiliária, pesquisas, viagens e ingressos digitais. Conheça os produtos e serviços da Conecta."
+  description="Serviços para plataformas culturais e editais, além de sistemas para gestão imobiliária, pesquisas, viagens e ingressos digitais."
   noindex={products.length === 0}
 >
   <PageHeading
     eyebrow="PRODUTOS"
     title="Tecnologia para diferentes desafios."
-    description="O Mapas Culturais é nossa principal frente de atuação. Conheça também sistemas que conectam informação, atendimento e operação em diferentes setores."
+    description="Conheça os serviços para gestão cultural e os sistemas que conectam informação, atendimento e operação em diferentes setores."
   />
   <section class="section">
     <div class="container">
-      {featured && <FeaturedProduct product={featured} />}
+      {featured.map((product) => (
+        <FeaturedProduct product={product} />
+      ))}
       {others.length > 0 && (
-        <div class:list={['other-products', { 'has-featured': Boolean(featured) }]}>
+        <div class:list={['other-products', { 'has-featured': featured.length > 0 }]}>
           <div class="section-heading">
             <div>
               <p class="eyebrow">

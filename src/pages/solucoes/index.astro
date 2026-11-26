@@ -4,11 +4,10 @@ import PageHeading from '../../components/PageHeading.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
 import Icon from '../../components/Icon.astro';
-import { getPublished } from '../../lib/content';
-import { getPublishedProducts } from '../../lib/content';
+import { getPublished, getPublishedProducts } from '../../lib/content';
 import FeaturedProduct from '../../components/FeaturedProduct.astro';
 const services = (await getPublished('services')).sort((a, b) => a.data.order - b.data.order);
-const featured = (await getPublishedProducts()).find(({ data }) => data.featured);
+const featured = (await getPublishedProducts()).filter(({ data }) => data.featured);
 ---
 
 <BaseLayout
@@ -20,10 +19,12 @@ const featured = (await getPublishedProducts()).find(({ data }) => data.featured
     title="O seu desafio é o ponto de partida."
     description="Seis frentes de atuação que se complementam, da gestão pública aos projetos de cultura e turismo. Combinamos conhecimento técnico e visão de gestão para desenhar o caminho de cada projeto."
   />
-  {featured && (
-    <section class="section flagship-section" aria-label="Mapas Culturais em destaque">
+  {featured.length > 0 && (
+    <section class="section flagship-section" aria-label="Soluções em destaque">
       <div class="container">
-        <FeaturedProduct product={featured} />
+        {featured.map((product) => (
+          <FeaturedProduct product={product} />
+        ))}
       </div>
     </section>
   )}

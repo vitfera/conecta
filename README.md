@@ -77,9 +77,9 @@ Os seis serviços e a apresentação dos serviços sobre Mapas Culturais seguem 
 
 ## Produtos
 
-O catálogo `/produtos/` reúne cinco itens: **Mapas Culturais** em primeiro destaque, Plataforma imobiliária, Pesquisas e indicadores, Rota Fácil e Ingressos digitais para eventos. Produtos tem acesso pelo menu principal e cada item possui detalhe em `/produtos/[slug]/`. A home e Soluções destacam o Mapas e apontam para esse catálogo; Projetos é reservado aos cases institucionais.
+O catálogo `/produtos/` reúne seis itens. **Mapas Culturais** aparece em primeiro destaque, seguido por **Operacionalização de editais** em Produtos e Soluções. O catálogo também apresenta Plataforma imobiliária, Pesquisas e indicadores, Rota Fácil e Ingressos digitais para eventos. Cada item tem uma página em `/produtos/[slug]/`. A home apresenta o Mapas Culturais e os quatro sistemas complementares.
 
-As entradas em `src/content/products/` incluem público, funcionalidades, situação de apresentação e referências às frentes de serviço. O formato `platform-service` exige atribuição à plataforma original; `application` descreve os demais sistemas. A interface apresenta a finalidade de cada produto, com contato pelo WhatsApp e sem afirmar disponibilidade imediata de demonstrações públicas.
+As entradas em `src/content/products/` incluem público, funcionalidades, situação de apresentação e referências às frentes de serviço. O formato `platform-service` exige atribuição à plataforma original, `application` descreve os sistemas e `service` apresenta serviços como a operacionalização de editais. Um serviço pode apontar para um projeto publicado com `relatedProject`. A interface apresenta a finalidade de cada item e oferece contato pelo WhatsApp.
 
 A Plataforma imobiliária usa “Apresentação sob consulta” no card e no detalhe. Os textos dos três sistemas locais foram levantados sem copiar código ou dados de outros repositórios. A descrição de ingressos foi fornecida pelo titular. Consulte o [levantamento e o plano do catálogo](docs/superpowers/plans/2026-11-09-portfolio-solucoes.md).
 

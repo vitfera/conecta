@@ -73,6 +73,9 @@
   border-radius: var(--radius);
   background: #edf3fa;
 }
+.featured-product + .featured-product {
+  margin-top: 24px;
+}
 .featured-product h2 {
   font-size: clamp(2.4rem, 4vw, 3.5rem);
   letter-spacing: -0.05em;
@@ -213,7 +216,7 @@
 }
 @media (max-width: 900px) {
   .featured-product {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 35px;
   }
   .featured-capabilities li {
@@ -248,7 +251,8 @@
     gap: 32px;
   }
   .featured-product h2 {
-    font-size: 2.5rem;
+    font-size: clamp(1.875rem, 9vw, 2.5rem);
+    overflow-wrap: anywhere;
   }
   .featured-product .eyebrow {
     font-size: 0.6rem;

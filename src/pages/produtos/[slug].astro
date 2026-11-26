@@ -21,6 +21,10 @@ const { Content } = await render(product);
 const services = (await getPublished('services')).filter((service) =>
   data.relatedServices.includes(service.id as (typeof data.relatedServices)[number]),
 );
+const relatedProject =
+  data.kind === 'service' && data.relatedProject
+    ? (await getPublished('projects')).find(({ id }) => id === data.relatedProject)
+    : undefined;
 ---
 
 <BaseLayout title={data.title} description={data.description}>
@@ -56,6 +60,19 @@ const services = (await getPublished('services')).filter((service) =>
           <div class="editorial-note">
             <strong>Sobre a plataforma</strong>
             <p>{data.attribution}</p>
+          </div>
+        )}
+        {relatedProject && (
+          <div class="related-services">
+            <h2>Projeto relacionado</h2>
+            <ul>
+              <li>
+                <a href={`/projetos/${relatedProject.id}/`}>
+                  {relatedProject.data.title}
+                  <Icon name="diagonal" size={17} />
+                </a>
+              </li>
+            </ul>
           </div>
         )}
         <div class="related-services">

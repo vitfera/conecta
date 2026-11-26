@@ -129,6 +129,14 @@ for (const file of pages) {
       `${label}: falta destaque para o Mapas Culturais`,
     );
   }
+  if (
+    publishedProducts.includes('operacionalizacao-de-editais') &&
+    ['produtos/index.html', 'solucoes/index.html'].includes(label)
+  ) {
+    const mapas = html.indexOf('data-featured-product="mapas-culturais"');
+    const editais = html.indexOf('data-featured-product="operacionalizacao-de-editais"');
+    assert.ok(editais > mapas, `${label}: destaque de editais ausente ou fora de ordem`);
+  }
   assert.ok(
     html.includes('href="https://wa.me/5562982755571"'),
     `${label}: botão do WhatsApp ausente`,

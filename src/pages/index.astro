@@ -13,7 +13,7 @@ const services = (await getPublished('services')).sort((a, b) => a.data.order - 
 const projects = (await getPublishedProjects())
   .filter(({ data }) => data.relationship === 'contrato-direto')
   .slice(0, 2);
-const products = await getPublishedProducts();
+const products = (await getPublishedProducts()).filter(({ data }) => data.kind !== 'service');
 const featured = products.find(({ data }) => data.featured);
 const otherProducts = products.filter((product) => product.id !== featured?.id).slice(0, 4);
 const steps = [

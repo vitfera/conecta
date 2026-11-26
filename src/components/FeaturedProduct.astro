@@ -7,18 +7,20 @@ interface Props {
 }
 const { product } = Astro.props;
 const { data } = product;
+const isService = data.kind === 'service';
 ---
 
 <article class="featured-product" data-featured-product={product.id} data-interactive-card>
   <div class="featured-product-copy">
     <p class="eyebrow">
-      <span class="orange-dash"></span>NOSSA PRINCIPAL SOLUÇÃO
+      <span class="orange-dash"></span>
+      {isService ? 'FOMENTO CULTURAL' : 'NOSSA PRINCIPAL SOLUÇÃO'}
     </p>
     <h2>{data.title}</h2>
     <p class="featured-description">{data.description}</p>
     <div class="hero-actions">
       <a class="button" href={`/produtos/${product.id}/`}>
-        Conheça o {data.title}
+        {isService ? 'Conheça o serviço' : `Conheça o ${data.title}`}
         <Icon size={18} />
       </a>
       <WhatsAppButton class="button-outline" />
@@ -26,7 +28,9 @@ const { data } = product;
     {data.kind === 'platform-service' && <p class="product-attribution">{data.attribution}</p>}
   </div>
   <div class="featured-capabilities">
-    <p class="eyebrow">DA IMPLANTAÇÃO AO ACOMPANHAMENTO</p>
+    <p class="eyebrow">
+      {isService ? 'DO PLANEJAMENTO AO ACOMPANHAMENTO' : 'DA IMPLANTAÇÃO AO ACOMPANHAMENTO'}
+    </p>
     <ul>
       {data.capabilities.slice(0, 4).map((capability) => (
         <li>

@@ -53,6 +53,17 @@ test('serviços sobre software de terceiros exigem atribuição explícita', () 
   assert.equal(productSchema.safeParse(missingAttribution).success, false);
 });
 
+test('aceita um serviço em destaque com referência a um projeto', () => {
+  const result = productSchema.safeParse({
+    ...application,
+    kind: 'service',
+    title: 'Operacionalização de editais',
+    featured: true,
+    relatedProject: 'campo-mourao-pnab-2026',
+  });
+  assert.equal(result.success, true);
+});
+
 test('produto publicado precisa de aprovação e data de revisão válida', () => {
   assert.equal(
     productSchema.safeParse({ ...application, publicationStatus: 'pendente-de-revisao' }).success,
