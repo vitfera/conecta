@@ -4,7 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
 import Icon from '../../components/Icon.astro';
-import { getPublished } from '../../lib/content';
+import { getPublished, getPublishedProducts } from '../../lib/content';
 export async function getStaticPaths() {
   return (await getPublished('services')).map((service) => ({
     params: { slug: service.id },
@@ -16,6 +16,10 @@ interface Props {
 }
 const { service } = Astro.props;
 const { Content } = await render(service);
+const mapasCulturais =
+  service.id === 'editais-e-mapas-culturais'
+    ? (await getPublishedProducts()).find(({ id }) => id === 'mapas-culturais')
+    : undefined;
 ---
 
 <BaseLayout title={service.data.title} description={service.data.description}>
@@ -37,6 +41,11 @@ const { Content } = await render(service);
     <div class="container detail-grid">
       <article class="prose">
         <Content />
+        {mapasCulturais && (
+          <a class="text-link" href={`/produtos/${mapasCulturais.id}/`}>
+            {mapasCulturais.data.detailTitle ?? mapasCulturais.data.title} <Icon size={18} />
+          </a>
+        )}
       </article>
       <aside class="service-aside">
         <p class="eyebrow">COMO PODEMOS APOIAR</p>

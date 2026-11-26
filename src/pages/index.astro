@@ -36,7 +36,13 @@ const steps = [
 ];
 ---
 
-<BaseLayout title="Mapas Culturais e soluções digitais">
+<BaseLayout
+  title={
+    featured?.id === 'mapas-culturais'
+      ? 'Mapas Culturais, editais e soluções digitais'
+      : 'Gestão cultural e soluções digitais'
+  }
+>
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
@@ -66,7 +72,9 @@ const steps = [
         <div class="hero-actions">
           <WhatsAppButton />
           <a class="text-link" href={featured ? `/produtos/${featured.id}/` : '/produtos/'}>
-            {featured ? `Conheça o ${featured.data.title}` : 'Conheça os produtos'}{' '}
+            {featured
+              ? (featured.data.detailTitle ?? `Conheça o ${featured.data.title}`)
+              : 'Conheça os produtos'}{' '}
             <Icon size={18} />
           </a>
         </div>

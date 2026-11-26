@@ -11,6 +11,7 @@ const serviceIds = [
 ] as const;
 
 const productBase = commonEntrySchema.safeExtend({
+  detailTitle: z.string().min(3).optional(),
   sector: z.string().min(2),
   order: z.number().int().positive(),
   featured: z.boolean().default(false),
@@ -28,6 +29,7 @@ const productBase = commonEntrySchema.safeExtend({
   audience: z.string().min(10),
   capabilities: z.array(z.string().min(5)).min(1).max(6),
   relatedServices: z.array(z.enum(serviceIds)).min(1),
+  relatedProjects: z.array(z.string().min(1)).default([]),
 });
 const application = productBase.safeExtend({ kind: z.literal('application') }).strict();
 const platformService = productBase
@@ -36,12 +38,7 @@ const platformService = productBase
     attribution: z.string().min(20),
   })
   .strict();
-const service = productBase
-  .safeExtend({
-    kind: z.literal('service'),
-    relatedProjects: z.array(z.string().min(1)).default([]),
-  })
-  .strict();
+const service = productBase.safeExtend({ kind: z.literal('service') }).strict();
 
 export const productSchema = z.discriminatedUnion('kind', [application, platformService, service]);
 export type ProductData = z.infer<typeof productSchema>;

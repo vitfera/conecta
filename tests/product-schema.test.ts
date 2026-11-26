@@ -53,6 +53,14 @@ test('serviços sobre software de terceiros exigem atribuição explícita', () 
   assert.equal(productSchema.safeParse(missingAttribution).success, false);
 });
 
+test('permite título de detalhe e referências no produto de plataforma', () => {
+  const detailTitle = 'Implantação e suporte de Mapas Culturais';
+  const relatedProjects = ['campo-mourao-mapas-culturais', 'cianorte-mapas-culturais'];
+  const data = productSchema.parse({ ...platform, detailTitle, relatedProjects });
+  assert.equal(data.detailTitle, detailTitle);
+  assert.deepEqual(data.relatedProjects, relatedProjects);
+});
+
 test('aceita um serviço em destaque com referências a projetos em ordem editorial', () => {
   const relatedProjects = ['campo-mourao-pnab-2026', 'premio-nacional-vozes-perifericas'];
   const result = productSchema.safeParse({

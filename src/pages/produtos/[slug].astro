@@ -17,18 +17,19 @@ interface Props {
 }
 const { product } = Astro.props;
 const { data } = product;
+const title = data.detailTitle ?? data.title;
 const { Content } = await render(product);
 const services = (await getPublished('services')).filter((service) =>
   data.relatedServices.includes(service.id as (typeof data.relatedServices)[number]),
 );
-const relatedProjectIds = data.kind === 'service' ? data.relatedProjects : [];
+const relatedProjectIds = data.relatedProjects ?? [];
 const publishedProjects = relatedProjectIds.length > 0 ? await getPublished('projects') : [];
 const relatedProjects = [...new Set(relatedProjectIds)]
   .map((id) => publishedProjects.find((project) => project.id === id))
   .filter((project) => project !== undefined);
 ---
 
-<BaseLayout title={data.title} description={data.description}>
+<BaseLayout title={title} description={data.description}>
   <section class="page-heading service-heading">
     <div class="container">
       <a class="breadcrumb" href="/produtos/">
@@ -39,7 +40,7 @@ const relatedProjects = [...new Set(relatedProjectIds)]
         <span class="icon-box">
           <Icon name={data.icon} size={30} />
         </span>
-        <h1>{data.title}</h1>
+        <h1>{title}</h1>
       </div>
       <p class="page-description">{data.description}</p>
     </div>
