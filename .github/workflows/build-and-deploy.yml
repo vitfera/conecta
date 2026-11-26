@@ -83,7 +83,10 @@ jobs:
           [[ "$CPANEL_PORT" =~ ^[0-9]{1,5}$ ]]
           (( 10#$CPANEL_PORT > 0 && 10#$CPANEL_PORT < 65536 ))
           [[ "$CPANEL_PATH" =~ ^/home[0-9]*/[a-zA-Z0-9_-]+/public_html(/[a-zA-Z0-9_-]+)*$ ]]
-          test -f dist/index.html && test -f dist/.htaccess
+          if [[ ! -s dist/index.html || ! -s dist/.htaccess || ! -d dist/_astro ]]; then
+            printf '%s\n' 'Artefato incompleto. Confira index.html, .htaccess e _astro/.' >&2
+            exit 1
+          fi
           known_hosts="$RUNNER_TEMP/conecta_known_hosts"
           printf '%s\n' "$CPANEL_KNOWN_HOSTS" > "$known_hosts"
           chmod 600 "$known_hosts"

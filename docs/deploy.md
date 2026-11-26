@@ -4,11 +4,11 @@
 
 O pipeline `.github/workflows/build-and-deploy.yml` publica somente os arquivos de `dist/`, por SSH e rsync. Ele fica desativado enquanto a variável de repositório `DEPLOY_ENABLED` não for `true`. Não há credenciais no código.
 
-1. Confirme o domínio, a disponibilidade de SSH/rsync, a porta e o diretório raiz do domínio no cPanel.
+1. Em **Domínios** no cPanel, confirme o domínio de produção e copie o caminho exibido em **Document Root**. Confirme com a hospedagem o host, a porta e a disponibilidade de SSH e rsync. [Raiz do domínio no cPanel](https://docs.cpanel.net/knowledge-base/cpanel-product/how-domains-serve-content/)
 2. Faça backup do conteúdo atual desse diretório. Reserve uma pasta exclusiva para este site: a sincronização remove arquivos que não existem no build para retirar páginas antigas e conteúdos despublicados.
 3. O fluxo fornecido aceita `/home/USUARIO/public_html` ou uma subpasta desse caminho; também aceita diretórios como `/home2/USUARIO/public_html`. Se o domínio usar outra estrutura, ajuste e revise a validação do destino antes de habilitar o deploy.
 4. Crie manualmente um arquivo vazio chamado `.conecta-static-site` no diretório exclusivo do site. O deploy verifica esse marcador antes de sincronizar. O marcador, `.well-known/` e `cgi-bin/` são preservados.
-5. Ative HTTPS no cPanel e mantenha o DNS apontado para essa hospedagem. Configure o redirecionamento para HTTPS no painel, considerando a configuração real do provedor.
+5. Confirme o DNS e o certificado do domínio no painel. Ative o redirecionamento para HTTPS conforme a configuração do provedor. [Certificados no cPanel](https://docs.cpanel.net/cpanel/security/ssl-tls-certificates/)
 6. Crie uma chave SSH própria para deploy e autorize a chave pública nessa conta. Dê a ela somente o acesso necessário.
 7. Confira a chave pública do servidor com o provedor por um canal confiável. Cadastre a linha correspondente em `CPANEL_KNOWN_HOSTS`; para porta diferente de 22, use o formato `[host]:porta`. Não confie apenas no resultado de uma consulta de rede sem validar a impressão digital.
 
@@ -34,19 +34,31 @@ No ambiente `production`, crie os segredos:
 
 O build deve receber `SITE_URL` como variável de repositório, porque acontece antes do job do ambiente de produção. O deploy não inicia em pull requests. Os jobs de publicação são serializados para evitar duas sincronizações simultâneas; uma publicação em andamento não é cancelada pela próxima.
 
-O job usa um agente SSH temporário e verifica o host estritamente. Não há fallback que desative a conferência de identidade do servidor. As Actions estão fixadas em commits oficiais.
+O job exige `index.html`, `.htaccess` e `_astro/` no artefato antes de abrir a conexão SSH. Ele usa um agente temporário e verifica a identidade do servidor pela chave cadastrada. As Actions estão fixadas em commits oficiais. [Ambientes de deploy do GitHub](https://docs.github.com/en/actions/concepts/workflows-and-actions/deployment-environments)
 
-## Primeiro teste
+## Verificação antes de habilitar a publicação
 
-Prefira um domínio de homologação e uma pasta exclusiva antes de usar o domínio público. Configure o domínio correspondente em `SITE_URL`, execute o workflow manualmente na branch `main` e confira:
+Com a publicação desabilitada, execute o workflow manualmente na branch `main` com `SITE_URL` apontando para o domínio de produção. Confira o build e o artefato `conecta-dist-COMMIT`. Ele deve conter `index.html`, `.htaccess`, `robots.txt`, `sitemap.xml`, `favicon.png` e `_astro/`. O conteúdo de `dist/` vai diretamente na raiz do domínio.
+
+Para reproduzir a verificação local, use a origem HTTPS definitiva no lugar de `https://conecta.example.com`.
+
+```sh
+SITE_URL=https://conecta.example.com npm run build
+SITE_URL=https://conecta.example.com npm run verify
+```
+
+## Validação após a primeira publicação
 
 - Página inicial, seis soluções, contato e 404.
-- HTTPS, canonical, Open Graph, `robots.txt` e `sitemap.xml`.
+- HTTPS, canonical, Open Graph, `robots.txt` e `sitemap.xml` no domínio de produção.
+- `/produtos/mapas-culturais/` com HTTP 200, canonical no domínio de produção e permissão de indexação no HTML e nos cabeçalhos.
 - Ausência de projetos ainda não liberados e de rotas da antiga seção Conteúdos.
 - `.htaccess` ativo e cabeçalhos servidos pelo Apache.
 - Acesso por celular e navegação por teclado.
 
-O `.htaccess` desativa listagem de diretórios, configura a 404, compressão e cache dos recursos compilados. Recursos com cache longo devem ter nomes versionados, como os arquivos produzidos pelo Astro. Se o provedor bloquear alguma diretiva, revise o erro do Apache e adapte apenas a diretiva afetada. O servidor estático de prévia do Astro não interpreta `.htaccess`.
+O `.htaccess` configura a página 404, a compressão e o cache. O cache de um ano é reservado aos arquivos versionados de `/_astro/`. Páginas, sitemap e favicon são revalidados, e os erros usam `no-store`. Teste essas regras no Apache. A execução da prévia do Astro valida o HTML, enquanto as diretivas dependem da configuração de `AllowOverride` do provedor. [Diretivas de cabeçalho do Apache](https://httpd.apache.org/docs/2.4/mod/mod_headers.html)
+
+Para verificar a indexação, use os passos da [revisão de SEO](seo.md#validação-para-produção).
 
 ## Recuperação de uma versão anterior
 

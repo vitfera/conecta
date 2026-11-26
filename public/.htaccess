@@ -9,12 +9,9 @@ ErrorDocument 404 /404.html
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 
-  <FilesMatch "\.(html|xml|txt)$">
-    Header set Cache-Control "public, max-age=0, must-revalidate"
-  </FilesMatch>
-  <FilesMatch "\.(css|js|webp|png|woff2)$">
-    Header set Cache-Control "public, max-age=31536000, immutable"
-  </FilesMatch>
+  Header always set Cache-Control "public, max-age=0, must-revalidate"
+  Header always set Cache-Control "public, max-age=31536000, immutable" "expr=%{REQUEST_URI} =~ m#^/_astro/#"
+  Header always set Cache-Control "no-store" "expr=%{REQUEST_STATUS} -ge 400"
 </IfModule>
 
 <IfModule mod_deflate.c>
