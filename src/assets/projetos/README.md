@@ -18,4 +18,4 @@ Use o slug do Markdown como nome do PNG. As capturas são feitas em **1440 × 60
 
 Vozes Periféricas usa a arte enviada pelo titular em `premio-nacional-vozes-perifericas.artwork.png` (768 × 460 px). O sufixo `.artwork.png` identifica imagens de divulgação, que aparecem inteiras no quadro panorâmico.
 
-Raias do Amanhã aguarda imagem do titular. A página do projeto apresenta o aviso de inscrições encerradas.
+Raias do Amanhã usa o logo enviado pelo titular em `raias-do-amanha-comunicacao.artwork.png` (335 × 597 px), centralizado em um quadro com a cor de fundo da imagem.

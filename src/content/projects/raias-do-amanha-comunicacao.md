@@ -30,4 +30,4 @@ As atribuições previstas incluem planejamento da comunicação institucional, 
 
 O escopo também contempla a organização de indicadores e registros para monitoramento das ações e documentação do projeto, aproximando comunicação, gestão e acompanhamento de iniciativas sociais.
 
-A descrição corresponde à atuação contratada, sem afirmar encerramento ou conclusão dos serviços. Esta apresentação não utiliza fotografias de participantes, peças do projeto ou marcas do Instituto.
+A descrição corresponde à atuação contratada, sem afirmar encerramento ou conclusão dos serviços.

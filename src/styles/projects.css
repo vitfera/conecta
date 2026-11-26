@@ -40,6 +40,15 @@
 .project-cover[data-project-cover='artwork'] {
   background: var(--navy);
 }
+.project-cover[data-project-cover='artwork'][data-project-id='raias-do-amanha-comunicacao'] {
+  background: #28435e;
+}
+.project-cover[data-project-cover='artwork'][data-project-id='raias-do-amanha-comunicacao'] img {
+  display: block;
+  width: 64%;
+  margin-inline: auto;
+  object-fit: cover;
+}
 .project-story-copy {
   display: flex;
   flex-direction: column;

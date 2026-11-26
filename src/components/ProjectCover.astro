@@ -29,7 +29,11 @@ const alt = artwork
 
 {cover && (
   <Wrapper class={detail ? 'project-hero-media' : 'project-story-media'}>
-    <div class="project-cover" data-project-cover={artwork ? 'artwork' : 'image'}>
+    <div
+      class="project-cover"
+      data-project-cover={artwork ? 'artwork' : 'image'}
+      data-project-id={id}
+    >
       <Image
         src={cover}
         alt={detail ? alt : ''}
