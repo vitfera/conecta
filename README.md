@@ -1,6 +1,6 @@
 # Conecta Soluções
 
-Site institucional em português brasileiro, construído com Astro, TypeScript e CSS, com atuação apresentada em gestão, tecnologia, cultura e turismo. O build gera arquivos estáticos para hospedagem Apache/cPanel; não requer Node no servidor de produção.
+Site institucional da Conecta Soluções em português brasileiro, construído com Astro, TypeScript e CSS. Apresenta a atuação da empresa em gestão, tecnologia, cultura e turismo. O build gera os arquivos estáticos de `dist/` para hospedagem em Apache/cPanel ou Nginx.
 
 ## Desenvolvimento local
 
@@ -11,9 +11,10 @@ npm ci
 npm run dev
 ```
 
-Abra **http://127.0.0.1:4321/**. O Astro atualiza a prévia quando os arquivos mudam. A versão instalada do Astro mantém o servidor em segundo plano:
+Abra **http://127.0.0.1:4321/** para acompanhar as alterações. Para iniciar e gerenciar a prévia em segundo plano, use os comandos abaixo.
 
 ```sh
+npm run dev -- --background
 npx astro dev status
 npx astro dev logs
 npx astro dev stop
@@ -23,7 +24,7 @@ Se o ambiente restringir a configuração global da telemetria, execute os coman
 
 ## Homologação com Docker Compose
 
-O Docker preserva a arquitetura estática: build com Node 24.22.2 e `npm ci`, seguido de Nginx 1.30.6 sem root. A porta externa padrão é **3019**, configurável por `APP_PORT`. O processamento de imagens é compilado para CPU x86-64 básica, sem exigir AVX/AVX2; as otimizações continuam obrigatórias.
+O Docker executa o build com Node 24.22.2 e `npm ci`. O Nginx 1.30.6 serve os arquivos estáticos com um usuário sem privilégios. A porta externa padrão é **3019**, configurável por `APP_PORT`. A otimização de imagens usa Sharp e libvips compilados para CPU x86-64 básica, incluindo VMs sem AVX/AVX2.
 
 ```sh
 docker compose up --build -d --wait
@@ -32,7 +33,7 @@ docker compose logs -f app
 docker compose down
 ```
 
-Origem prevista na VM: **http://192.168.3.85:3019**. Hostname de homologação: **https://conecta.victor.ferreira.nom.br/**, com HTTPS atendido pelo Cloudflare. Consulte [operação e configuração Docker](docs/docker.md) e [resultados da validação](docs/docker-validation.md). Túnel, DNS e publicação externa são uma etapa separada.
+A origem prevista na VM é **http://192.168.3.85:3019**. O domínio de homologação é **https://conecta.victor.ferreira.nom.br/**, previsto para acesso HTTPS pelo Cloudflare. A configuração do túnel e do DNS ocorre fora do Compose. Consulte [operação e configuração Docker](docs/docker.md) e [resultados da validação](docs/docker-validation.md).
 
 ## Verificação
 
@@ -43,13 +44,13 @@ npm run build
 npm run verify
 ```
 
-Os testes verificam a política editorial. `check` valida tipos e componentes. `verify` inspeciona o resultado em `dist/`: rotas, links, assets, metadados, idioma e exclusão de conteúdo sem liberação. `npm run preview` serve o build na porta informada pelo Astro. `npm run format` formata o código e ignora o pacote local de referência.
+Os testes verificam os schemas e as regras editoriais. `npm run check` valida tipos e componentes. `npm run verify` confere rotas, links, assets, metadados e regras de publicação no `dist/` gerado pelo build. Para inspecionar o build enquanto a prévia de desenvolvimento usa a porta 4321, execute `npm run preview -- --port 4322`. `npm run format` formata o código e ignora o pacote local de referência.
 
 ## Organização
 
 - `src/pages/`: home, páginas institucionais, catálogos, detalhes e endpoints estáticos de SEO.
 - `src/components/`, `src/layouts/` e `src/styles/`: elementos e identidade visual compartilhados.
-- `src/content/`: serviços, projetos e plataformas em Markdown.
+- `src/content/` reúne os serviços, produtos e projetos em Markdown.
 - `src/content.config.ts`: definição das coleções; os schemas testáveis ficam em `src/lib/`.
 - `src/lib/`: consultas e regras de publicação.
 - `src/data/site.ts`: identificação, contato e navegação.
@@ -61,7 +62,7 @@ A pasta **`conecta-solucoes/` é material de referência local e não é version
 
 ## Conteúdo e revisão editorial
 
-Para inserir a foto de Victor Ferreira em Quem Somos, salve uma imagem JPEG vertical **3:4**, preferencialmente **900 × 1200 px**, em `src/assets/equipe/victor-ferreira.jpg`. O arquivo é detectado automaticamente e substitui o espaço reservado. A [orientação da foto](src/assets/equipe/README.md) detalha o enquadramento e a atualização do build.
+A foto de **Victor Ferreira** já aparece em **Quem Somos** e está versionada em `src/assets/equipe/victor-ferreira.jpg`. Para trocá-la, substitua o arquivo no mesmo caminho por um JPEG vertical na proporção **3:4**. Consulte o [guia do retrato](src/assets/equipe/README.md) para o enquadramento e a atualização do build.
 
 Uma entrada aparece no site somente quando tem publicação explícita, status aprovado e data válida de revisão:
 
@@ -73,7 +74,7 @@ reviewedAt: 2026-11-09
 
 Omitir esses campos mantém a entrada oculta. Uma revisão com data futura também não publica a entrada. As listas, a home, as páginas individuais e o sitemap usam a mesma regra. Para retirar uma entrada, defina `publish: false` e publique um novo build.
 
-Os seis serviços e a apresentação dos serviços sobre Mapas Culturais seguem o briefing fornecido. O portfólio foi conciliado com o roteiro editorial de 20/11/2026. Campo Mourão mantém a implantação atestada; Cianorte descreve escopo contratado, aguardando comprovação documental de conclusão. Antes de liberar outros projetos, confira vínculo, escopo, direitos de divulgação e evidência de cada entrega e resultado. Um contrato firmado não comprova conclusão. Experiências individuais do responsável técnico são apresentadas separadamente. O site não possui seção de notícias ou blog.
+Antes de publicar um projeto, confira o vínculo, o escopo, os direitos de divulgação e as evidências de entregas e resultados. Registre a conclusão somente quando houver entrega confirmada. As experiências profissionais do responsável técnico ficam na seção Trajetória de Quem Somos (`/quem-somos/#trajetoria`).
 
 ## Produtos
 
@@ -85,13 +86,13 @@ A Plataforma imobiliária usa “Apresentação sob consulta” no card e no det
 
 ## Histórias de projetos
 
-O catálogo `/projetos/` apresenta onze histórias em uma listagem contínua, com seis contratações diretas e cinco prestações via instituições classificadas no conteúdo editorial. Os textos identificam a participação sem cabeçalhos ou etiquetas contratuais na interface. A home usa os mesmos cards e destaca Vozes Periféricas e o Portal da Cultura de Aparecida. As páginas não exibem ficha técnica de localidade, período ou contrato. As URLs anteriores de Campo Mourão e Cianorte foram preservadas.
+O catálogo `/projetos/` reúne as histórias do portfólio em uma lista contínua. Cada página descreve o contexto e a contribuição da Conecta. A home usa os mesmos cards para destacar Vozes Periféricas e o Portal da Cultura de Aparecida. O nome do arquivo Markdown define o slug da página. Preserve os slugs existentes ao editar títulos.
 
-Edite as histórias em `src/content/projects/`. O campo `storyTitle` define o título narrativo e `order` controla a ordem. O campo existente `relationship` usa `contrato-direto` ou `via-instituicao-parceira`; `client` registra a instituição com a qual existe o vínculo. Vínculo e situação permanecem no conteúdo editorial; um projeto concluído exige uma entrega confirmada. O bloco opcional `recognition` exige `title`, `recipient`, `description` e `sourceUrl` HTTP. O reconhecimento de Campo Mourão é atribuído ao município com seu projeto.
+Edite as histórias em `src/content/projects/`. O campo `title` é o nome do projeto, `storyTitle` define o título narrativo e `order` controla a ordem no catálogo. O campo `relationship` aceita `contrato-direto`, `via-instituicao-parceira` ou `atuacao-tecnica`. Os casos com vínculo contratual exigem `client` e `contractStatus`. `atuacao-tecnica` permite apresentar o escopo, como no projeto da PNAB em Pirenópolis. O bloco opcional `recognition` exige `title`, `recipient`, `description` e `sourceUrl` HTTP ou HTTPS. O reconhecimento de Campo Mourão é atribuído ao município e ao seu projeto.
 
 As capas ficam em `src/assets/projetos/`. O Astro entrega versões WebP responsivas das capturas de páginas públicas e das imagens fornecidas pelo titular, com origem registrada no [guia das capas](src/assets/projetos/README.md). Os casos que aguardam imagem usam cards de texto. Consulte também a [auditoria do portfólio](docs/auditoria-portfolio-2026-11-20.md).
 
-O Prêmio Nacional Vozes Periféricas foi contratado pela OEI e usa a plataforma **Mapa da Cultura, do Ministério da Cultura**, conforme correção do titular. A apresentação é institucional e não divulga produtos do contrato. Oito experiências profissionais do responsável técnico ficam separadas em `/quem-somos/#trajetoria`, sem serem convertidas em contratos ou clientes diretos da Conecta. Propostas e outras frentes sem validação não viraram cases.
+O Prêmio Nacional Vozes Periféricas apresenta a atuação contratada pela OEI na plataforma **Mapa da Cultura, do Ministério da Cultura**. A divulgação de documentos e produtos de contratos depende das autorizações de cada projeto.
 
 ## Contato e domínio
 
@@ -101,7 +102,7 @@ O domínio de homologação confirmado é `https://conecta.victor.ferreira.nom.b
 
 ## Publicação
 
-O workflow verifica o projeto em pull requests e commits em `main`, e guarda somente `dist/` como artefato. O deploy fica desativado até configurar `DEPLOY_ENABLED`, domínio, ambiente e segredos. O domínio continua apontando para o cPanel.
+O workflow verifica o projeto em pull requests, envios à branch `main` e execuções manuais. O artefato contém somente `dist/`. Para habilitar a publicação no cPanel, configure `DEPLOY_ENABLED=true`, `SITE_URL`, o ambiente de produção e os segredos do workflow.
 
 Consulte [a configuração de cPanel e recuperação](docs/deploy.md). O pipeline exige SSH e rsync; se a conta tiver somente SFTP, adapte o transporte antes de habilitar a publicação. Não configure um segundo mecanismo de deploy concorrente.
 
