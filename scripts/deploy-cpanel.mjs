@@ -45,7 +45,12 @@ execFileSync('rsync', ['--version'], { stdio: 'ignore' });
 execFileSync('npm', ['ci', '--include=dev', '--engine-strict'], { stdio: 'inherit' });
 execFileSync('npm', ['run', 'build'], {
   stdio: 'inherit',
-  env: { ...process.env, ROLLDOWN_WORKER_THREADS: '1', TOKIO_WORKER_THREADS: '1' },
+  env: {
+    ...process.env,
+    ROLLDOWN_WORKER_THREADS: '1',
+    TOKIO_WORKER_THREADS: '1',
+    RAYON_NUM_THREADS: '1',
+  },
 });
 execFileSync('npm', ['run', 'verify'], { stdio: 'inherit' });
 
