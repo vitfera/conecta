@@ -22,6 +22,8 @@ Em **Git Version Control → Manage → Pull or Deploy**, clique em **Update fro
 
 O arquivo `.env` fica no clone, fora da raiz pública. O Apache serve os arquivos estáticos e aplica o `.htaccess` do build.
 
+O build no cPanel limita o Rolldown e o Tokio a um worker para reduzir o uso de threads na hospedagem compartilhada. [Configuração de workers do Rolldown](https://github.com/rolldown/rolldown/blob/v1.2.16/docs/guide/troubleshooting.md)
+
 ## Conferência após a publicação
 
 - Página inicial e `/produtos/mapas-culturais/` respondem com HTTP 200 em HTTPS.

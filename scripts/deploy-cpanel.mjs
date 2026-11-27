@@ -43,7 +43,10 @@ function needsMarker() {
 needsMarker();
 execFileSync('rsync', ['--version'], { stdio: 'ignore' });
 execFileSync('npm', ['ci', '--include=dev', '--engine-strict'], { stdio: 'inherit' });
-execFileSync('npm', ['run', 'build'], { stdio: 'inherit' });
+execFileSync('npm', ['run', 'build'], {
+  stdio: 'inherit',
+  env: { ...process.env, ROLLDOWN_WORKER_THREADS: '1', TOKIO_WORKER_THREADS: '1' },
+});
 execFileSync('npm', ['run', 'verify'], { stdio: 'inherit' });
 
 if (needsMarker()) writeFileSync(marker, '', { flag: 'wx' });
