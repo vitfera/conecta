@@ -1,22 +1,34 @@
 ---
 import { analyticsOrigin, googleAnalyticsId } from '../lib/analytics';
+
+const initialization = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${googleAnalyticsId}');
+`;
 ---
 
-{googleAnalyticsId && <script is:inline define:vars={{ analyticsOrigin, googleAnalyticsId }}>
-  if (window.location.origin === analyticsOrigin) {
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function gtag() {
-      window.dataLayer.push(arguments);
-    };
-    window.gtag('js', new Date());
-    window.gtag('config', googleAnalyticsId, {
-      allow_google_signals: false,
-      allow_ad_personalization_signals: false,
-    });
-
-    const tag = document.createElement('script');
-    tag.async = true;
-    tag.src = `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`;
-    document.head.append(tag);
-  }
-</script>}
+{googleAnalyticsId && (
+  <>
+    <script is:inline define:vars={{ analyticsOrigin, googleAnalyticsId }}>
+      if (window.location.origin !== analyticsOrigin) {
+        window[`ga-disable-${googleAnalyticsId}`] = true;
+      }
+      window.dataLayer = window.dataLayer || [];
+      function setGoogleTagDefaults() {
+        window.dataLayer.push(arguments);
+      }
+      setGoogleTagDefaults('set', {
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false,
+      });
+    </script>
+    <script
+      is:inline
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+    ></script>
+    <script is:inline set:html={initialization}></script>
+  </>
+)}
