@@ -96,7 +96,7 @@ O Prêmio Nacional Vozes Periféricas apresenta a atuação contratada pela OEI 
 
 ## Contato e domínio
 
-O contato comercial é o WhatsApp **+55 (62) 98275-5571**, configurado em `src/data/site.ts`. Os botões abrem `https://wa.me/5562982755571` em uma nova aba. O site não incorpora o WhatsApp, nem utiliza formulário ou cookies de rastreamento; a conversa acontece no serviço externo.
+O contato comercial é o WhatsApp **+55 (62) 98275-5571**, configurado em `src/data/site.ts`. Os botões abrem `https://wa.me/5562982755571` em uma nova aba. A conversa acontece no serviço externo.
 
 O domínio de homologação confirmado é `https://conecta.victor.ferreira.nom.br`, já indicado em `.env.example` e no Compose. `SITE_URL` determina a origem HTTPS usada no build. Sem essa variável, o build local usa `noindex`, o robots bloqueia indexação e não são gerados canonical nem URLs fictícias no sitemap. Se a URL institucional definitiva for diferente, configure-a em `SITE_URL` e execute novamente o build e a verificação. O Nginx de homologação mantém `noindex` no cabeçalho HTTP, sem apagar canonical e sitemap.
 
@@ -106,6 +106,6 @@ Consulte a [revisão de SEO](docs/seo.md) para verificar os metadados, o sitemap
 
 O GitHub Actions executa testes e verifica o build. A publicação roda no Git do cPanel, onde `.cpanel.yml` compila e sincroniza o conteúdo estático de `dist/`.
 
-No clone do cPanel, configure `SITE_URL` e `DEPLOYPATH` no `.env`. Consulte o [guia de publicação e recuperação](docs/deploy.md).
+No clone do cPanel, configure `SITE_URL` e `DEPLOYPATH` no `.env`. A medição do Google Analytics é opcional e usa `PUBLIC_GA_MEASUREMENT_ID` no build de produção. Consulte o [guia de publicação e recuperação](docs/deploy.md).
 
 Referências técnicas: [Astro: coleções de conteúdo](https://docs.astro.build/en/guides/content-collections/), [Astro: configuração estática](https://docs.astro.build/en/reference/configuration-reference/), [GitHub Actions: setup-node](https://github.com/actions/setup-node).

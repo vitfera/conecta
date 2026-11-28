@@ -1,0 +1,22 @@
+---
+import { analyticsOrigin, googleAnalyticsId } from '../lib/analytics';
+---
+
+{googleAnalyticsId && <script is:inline define:vars={{ analyticsOrigin, googleAnalyticsId }}>
+  if (window.location.origin === analyticsOrigin) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag('js', new Date());
+    window.gtag('config', googleAnalyticsId, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+    });
+
+    const tag = document.createElement('script');
+    tag.async = true;
+    tag.src = `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`;
+    document.head.append(tag);
+  }
+</script>}

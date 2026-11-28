@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 import { site } from '../data/site';
 import logo from '../assets/conecta-logo.png';
 import { getImage } from 'astro:assets';
@@ -73,6 +74,7 @@ if (indexable && canonical && breadcrumb) {
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <GoogleAnalytics />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />

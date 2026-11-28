@@ -24,6 +24,12 @@ O arquivo `.env` fica no clone, fora da raiz pública. O Apache serve os arquivo
 
 O build no cPanel limita a um worker o runtime do Rolldown (Tokio) e o pool do Rayon para reduzir o uso de threads na hospedagem compartilhada. [Configuração de workers do Rolldown](https://github.com/rolldown/rolldown/blob/v1.2.16/docs/guide/troubleshooting.md)
 
+## Google Analytics
+
+Para ativar a medição no domínio `https://conectasolucoesweb.com.br`, adicione `PUBLIC_GA_MEASUREMENT_ID` ao `.env` do clone com o ID do fluxo da Web do Google Analytics 4, que começa com `G-`. Execute **Deploy HEAD Commit** para gerar os arquivos estáticos com a tag. Com a variável vazia, o build omite a tag. [Configuração da tag no Google Analytics](https://support.google.com/analytics/answer/15756615?hl=pt-BR)
+
+Após publicar, abra a página inicial e uma página de produto. Use o Tag Assistant para conferir a instalação e o relatório **Tempo real** para confirmar que as visitas chegaram à propriedade. [Verificação do Google Analytics](https://developers.google.com/analytics/devguides/collection/ga4/troubleshoot)
+
 ## Conferência após a publicação
 
 - Página inicial e `/produtos/mapas-culturais/` respondem com HTTP 200 em HTTPS.
