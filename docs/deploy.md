@@ -26,7 +26,7 @@ O build no cPanel limita a um worker o runtime do Rolldown (Tokio) e o pool do R
 
 ## Google Analytics
 
-Para ativar a medição no domínio `https://conectasolucoesweb.com.br`, adicione `PUBLIC_GA_MEASUREMENT_ID` ao `.env` do clone com o ID do fluxo da Web do Google Analytics 4, que começa com `G-`. Execute **Deploy HEAD Commit** para gerar os arquivos estáticos com a tag. Com a variável vazia, o build omite a tag. [Configuração da tag no Google Analytics](https://support.google.com/analytics/answer/15756615?hl=pt-BR)
+O build de `https://conectasolucoesweb.com.br` já usa o ID de medição `G-3TB4GDP7RY`. Para trocar o ID, informe o novo valor em `PUBLIC_GA_MEASUREMENT_ID` no `.env` do clone. Para desativar a medição, inclua `PUBLIC_GA_MEASUREMENT_ID=`. Execute **Deploy HEAD Commit** para aplicar a configuração no build estático. [Configuração da tag no Google Analytics](https://support.google.com/analytics/answer/15756615?hl=pt-BR)
 
 Após publicar, abra a página inicial e uma página de produto. Use o Tag Assistant para conferir a instalação e o relatório **Tempo real** para confirmar que as visitas chegaram à propriedade. [Verificação do Google Analytics](https://developers.google.com/analytics/devguides/collection/ga4/troubleshoot)
 

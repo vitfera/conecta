@@ -106,6 +106,6 @@ Consulte a [revisão de SEO](docs/seo.md) para verificar os metadados, o sitemap
 
 O GitHub Actions executa testes e verifica o build. A publicação roda no Git do cPanel, onde `.cpanel.yml` compila e sincroniza o conteúdo estático de `dist/`.
 
-No clone do cPanel, configure `SITE_URL` e `DEPLOYPATH` no `.env`. A medição do Google Analytics é opcional e usa `PUBLIC_GA_MEASUREMENT_ID` no build de produção. Consulte o [guia de publicação e recuperação](docs/deploy.md).
+No clone do cPanel, configure `SITE_URL` e `DEPLOYPATH` no `.env`. O build do domínio de produção já inclui o Google Analytics. Consulte o [guia de publicação e recuperação](docs/deploy.md).
 
 Referências técnicas: [Astro: coleções de conteúdo](https://docs.astro.build/en/guides/content-collections/), [Astro: configuração estática](https://docs.astro.build/en/reference/configuration-reference/), [GitHub Actions: setup-node](https://github.com/actions/setup-node).
